@@ -33,6 +33,7 @@ namespace MyDearBaby
             this.lbl_actualDate = new System.Windows.Forms.Label();
             this.checkedListBox_children = new System.Windows.Forms.CheckedListBox();
             this.btn_addEnjoyment = new System.Windows.Forms.Button();
+            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
             this.SuspendLayout();
             // 
             // richTextBox_enjoyment
@@ -54,10 +55,12 @@ namespace MyDearBaby
             // 
             // checkedListBox_children
             // 
+            this.checkedListBox_children.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.checkedListBox_children.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBox_children.FormattingEnabled = true;
             this.checkedListBox_children.Location = new System.Drawing.Point(59, 87);
             this.checkedListBox_children.Name = "checkedListBox_children";
-            this.checkedListBox_children.Size = new System.Drawing.Size(417, 92);
+            this.checkedListBox_children.Size = new System.Drawing.Size(417, 88);
             this.checkedListBox_children.TabIndex = 2;
             // 
             // btn_addEnjoyment
@@ -71,11 +74,20 @@ namespace MyDearBaby
             this.btn_addEnjoyment.UseVisualStyleBackColor = true;
             this.btn_addEnjoyment.Click += new System.EventHandler(this.btn_addEnjoyment_Click);
             // 
+            // domainUpDown1
+            // 
+            this.domainUpDown1.Location = new System.Drawing.Point(309, 16);
+            this.domainUpDown1.Name = "domainUpDown1";
+            this.domainUpDown1.Size = new System.Drawing.Size(150, 27);
+            this.domainUpDown1.TabIndex = 4;
+            this.domainUpDown1.Text = "domainUpDown1";
+            // 
             // AddEnjoyment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 506);
+            this.Controls.Add(this.domainUpDown1);
             this.Controls.Add(this.btn_addEnjoyment);
             this.Controls.Add(this.checkedListBox_children);
             this.Controls.Add(this.lbl_actualDate);
@@ -93,5 +105,6 @@ namespace MyDearBaby
         private System.Windows.Forms.Label lbl_actualDate;
         private System.Windows.Forms.CheckedListBox checkedListBox_children;
         private System.Windows.Forms.Button btn_addEnjoyment;
+        private System.Windows.Forms.DomainUpDown domainUpDown1;
     }
 }

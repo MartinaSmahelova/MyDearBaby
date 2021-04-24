@@ -12,21 +12,19 @@ namespace MyDearBaby
 {
     public partial class AddEnjoyment : Form
     {
-        public List<Child> listOfChildren;
+        Enjoyments enjoyments = new Enjoyments();
 
         public AddEnjoyment()
         {
             InitializeComponent();
 
-            ShowActualDate();
+            lbl_actualDate.Text = enjoyments.ShowActualDate();
 
-            lbl_actualDate.Text = ShowActualDate();
+            enjoyments.ListOfChildren = DeserializeChildFileJsonToListOfChildren(enjoyments.ListOfChildren, ChildFilePath());
 
-            listOfChildren = DeserializeChildFileJsonToListOfChildren(listOfChildren, ChildFilePath());
-
-            if (listOfChildren != null)
+            if (enjoyments.ListOfChildren != null)
             {
-                foreach (var child in listOfChildren)
+                foreach (var child in enjoyments.ListOfChildren)
                 {
                     checkedListBox_children.Items.Add(child);
                 }
@@ -61,15 +59,6 @@ namespace MyDearBaby
             return children;
         }
 
-        private string ShowActualDate()
-        {
-            //toDO: https://docs.microsoft.com/cs-cz/dotnet/api/system.globalization.cultureinfo.invariantculture?view=net-5.0
-            //      https://docs.microsoft.com/cs-cz/dotnet/api/system.globalization.cultureinfo.createspecificculture?view=net-5.0
-            //lbl_actualDate.Text = DateTime.Parse(input, invC, DateTimeStyles.RoundtripKind);
-
-            return DateTime.Now.ToString("dd/MM/yyyy hh:mm");
-        }
-
         private void btn_addEnjoyment_Click(object sender, EventArgs e)
         {
             SaveEnjoyment(EnjoymentFilePath());
@@ -86,12 +75,17 @@ namespace MyDearBaby
             {
                 using (StreamWriter writer = new StreamWriter(EnjoymentFilePath(), append: true))
                 {
-                    writer.WriteLine(ShowActualDate());
+                    writer.WriteLine(enjoyments.ShowActualDate());
                     WriteCheckedChildren(writer);
                     writer.WriteLine(richTextBox_enjoyment.Text);
                     writer.WriteLine("******************************************");
                 }
-            }  
+            }
+
+            else
+            {
+                File.WriteAllText(enjoymentFilePath, "Zážitky <3");
+            }
         }
 
         private void WriteCheckedChildren(StreamWriter writer)
@@ -101,5 +95,6 @@ namespace MyDearBaby
                 writer.WriteLine(checkedListBox_children.CheckedItems[i].ToString());
             }
         }
+
     }
 }

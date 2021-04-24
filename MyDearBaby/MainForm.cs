@@ -59,11 +59,13 @@ namespace MyDearBaby
                 Directory.CreateDirectory(Path.GetDirectoryName(childFilePath));
             }
 
-            if (File.Exists(childFilePath))
+            if (!File.Exists(childFilePath))
             {
-                string jsonString = File.ReadAllText(childFilePath);
-                childrenListJson = JsonConvert.DeserializeObject<List<Child>>(jsonString);
+                File.WriteAllText(childFilePath, "[]");
             }
+
+            string jsonString = File.ReadAllText(childFilePath);
+            childrenListJson = JsonConvert.DeserializeObject<List<Child>>(jsonString);
 
             return childrenListJson;
         }
