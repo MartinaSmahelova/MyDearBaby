@@ -8,7 +8,7 @@ namespace MyDearBaby
     {
         public List<String> ListOfEnjoymentsCategories { get; set; }
         public List<String> ListOfEnjoyments { get; set; }
-        public List<Child> ListOfChildren { get; set; } = new List<Child>();
+        public List<Child> ListOfChildren { get; set; };
 
         public Enjoyments()
         {
@@ -17,7 +17,7 @@ namespace MyDearBaby
 
         public void ShowActualDate()
         {
-
+          
         }
 
         public void AddEnjoyment()

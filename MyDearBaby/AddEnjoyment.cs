@@ -17,24 +17,89 @@ namespace MyDearBaby
         public AddEnjoyment()
         {
             InitializeComponent();
-            lbl_actualDate.Text = DateTime.Now.ToString("dd/MM/yyyy hh/mm");
-            string jsonString = File.ReadAllText(FindChildFilePath());
-            listOfChildren = JsonConvert.DeserializeObject<List<Child>>(jsonString);
 
-            foreach (var child in listOfChildren)
+            ShowActualDate();
+
+            lbl_actualDate.Text = ShowActualDate();
+
+            listOfChildren = DeserializeChildFileJsonToListOfChildren(listOfChildren, ChildFilePath());
+
+            if (listOfChildren != null)
             {
-                checkedListBox_children.Items.Add(child);
+                foreach (var child in listOfChildren)
+                {
+                    checkedListBox_children.Items.Add(child);
+                }
             }
         }
 
-        public string FindChildFilePath()
+        public string ChildFilePath()
         {
-            string specialFolderApplicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string applicationDataFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string programName = "MyDearChild";
             string childFile = "child.json";
-            string childFilePath = Path.Combine(specialFolderApplicationDataPath, programName, childFile);
+            string childFilePath = Path.Combine(applicationDataFolderPath, programName, childFile);
 
             return childFilePath;
+        }
+
+        public string EnjoymentFilePath()
+        {
+            string myDocumentsFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string programName = "MyDearChild";
+            string enjoymentsFile = "zážitky.txt";
+            string enjoymentsFilePath = Path.Combine(myDocumentsFilePath, programName, enjoymentsFile);
+
+            return enjoymentsFilePath;
+        }
+
+        private List<Child> DeserializeChildFileJsonToListOfChildren(List<Child> children, string childFilePath)
+        {
+            string jsonString = File.ReadAllText(childFilePath);
+            children = JsonConvert.DeserializeObject<List<Child>>(jsonString);
+
+            return children;
+        }
+
+        private string ShowActualDate()
+        {
+            //toDO: https://docs.microsoft.com/cs-cz/dotnet/api/system.globalization.cultureinfo.invariantculture?view=net-5.0
+            //      https://docs.microsoft.com/cs-cz/dotnet/api/system.globalization.cultureinfo.createspecificculture?view=net-5.0
+            //lbl_actualDate.Text = DateTime.Parse(input, invC, DateTimeStyles.RoundtripKind);
+
+            return DateTime.Now.ToString("dd/MM/yyyy hh:mm");
+        }
+
+        private void btn_addEnjoyment_Click(object sender, EventArgs e)
+        {
+            SaveEnjoyment(EnjoymentFilePath());
+        }
+
+        private void SaveEnjoyment(string enjoymentFilePath)
+        {
+            if (!Directory.Exists(Path.GetDirectoryName(enjoymentFilePath)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(enjoymentFilePath));
+            }
+
+            if (File.Exists(enjoymentFilePath))
+            {
+                using (StreamWriter writer = new StreamWriter(EnjoymentFilePath(), append: true))
+                {
+                    writer.WriteLine(ShowActualDate());
+                    WriteCheckedChildren(writer);
+                    writer.WriteLine(richTextBox_enjoyment.Text);
+                    writer.WriteLine("******************************************");
+                }
+            }  
+        }
+
+        private void WriteCheckedChildren(StreamWriter writer)
+        {
+            for (int i = 0; i <= (checkedListBox_children.CheckedItems.Count - 1); i++)
+            {
+                writer.WriteLine(checkedListBox_children.CheckedItems[i].ToString());
+            }
         }
     }
 }

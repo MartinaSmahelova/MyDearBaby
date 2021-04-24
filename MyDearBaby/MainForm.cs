@@ -15,12 +15,11 @@ namespace MyDearBaby
     public partial class MainForm : Form
     {
         public List<Child> listOfChildren;
-       // public Enjoyments enjoyments = new Enjoyments();
 
         public MainForm()
         {
             InitializeComponent();
-            listOfChildren = DeserializeChildFileJsonToListOdChildren(FindChildFilePath());
+            listOfChildren = DeserializeChildFileJsonToListOfChildren(ChildFilePath());
         }
 
         private void btn_addChild_Click(object sender, EventArgs e)
@@ -28,17 +27,17 @@ namespace MyDearBaby
             using (var childForm = new AddChild())
             {
                 childForm.ShowDialog();
-                //DateTime dateOfBirth = Convert.ToDateTime(childForm.DateOfBirth);
-               // var child = new Child(childForm.ChildName, childForm.ChildGender, childForm.DateOfBirth);
-                //enjoyments.ListOfChildren.Add(child);
-                listOfChildren.Add(childForm.Child);
+
+                if (childForm.Child != null)
+                {
+                    listOfChildren.Add(childForm.Child);
+                }
             }
         }
 
         private void btn_addEnjoyment_Click(object sender, EventArgs e)
         {
-            string listOfChildrenJson = JsonConvert.SerializeObject(listOfChildren, Formatting.Indented);
-            File.WriteAllText(FindChildFilePath(), listOfChildrenJson);
+            SerializeListOfChildrenToChildFileJonson(listOfChildren, ChildFilePath());
 
             using (var enjoymentForm = new AddEnjoyment())
             {
@@ -48,11 +47,10 @@ namespace MyDearBaby
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string listOfChildrenJson = JsonConvert.SerializeObject(listOfChildren, Formatting.Indented);
-            File.WriteAllText(FindChildFilePath(), listOfChildrenJson);
+            SerializeListOfChildrenToChildFileJonson(listOfChildren, ChildFilePath());
         }
 
-        public List<Child> DeserializeChildFileJsonToListOdChildren(string childFilePath)
+        public List<Child> DeserializeChildFileJsonToListOfChildren(string childFilePath)
         {  
             List<Child> childrenListJson = new List<Child>();
 
@@ -70,7 +68,13 @@ namespace MyDearBaby
             return childrenListJson;
         }
 
-        public string FindChildFilePath()
+        private void SerializeListOfChildrenToChildFileJonson(List<Child> listOfChildren, string childFilePath)
+        {
+            string listOfChildrenJson = JsonConvert.SerializeObject(listOfChildren, Formatting.Indented);
+            File.WriteAllText(childFilePath, listOfChildrenJson);
+        }
+
+        public string ChildFilePath()
         {
             string specialFolderApplicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string programName = "MyDearChild";
@@ -79,7 +83,5 @@ namespace MyDearBaby
 
             return childFilePath;
         }
-
-   
     }
 }

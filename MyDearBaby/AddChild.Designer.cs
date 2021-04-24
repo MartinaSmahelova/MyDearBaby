@@ -39,14 +39,8 @@ namespace MyDearBaby
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tb_dayOFBirth = new System.Windows.Forms.TextBox();
-            this.tb_monthOfBirth = new System.Windows.Forms.TextBox();
-            this.tb_yearOfBirth = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker_dateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dateTimePicker_dateOfBirth = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +53,7 @@ namespace MyDearBaby
             this.btn_OK.TabIndex = 0;
             this.btn_OK.Text = "OK";
             this.btn_OK.UseVisualStyleBackColor = true;
+            this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
             // 
             // tb_childName
             // 
@@ -71,7 +66,7 @@ namespace MyDearBaby
             // rb_girl
             // 
             this.rb_girl.AutoSize = true;
-            this.rb_girl.Location = new System.Drawing.Point(34, 136);
+            this.rb_girl.Location = new System.Drawing.Point(34, 147);
             this.rb_girl.Name = "rb_girl";
             this.rb_girl.Size = new System.Drawing.Size(69, 24);
             this.rb_girl.TabIndex = 2;
@@ -83,7 +78,7 @@ namespace MyDearBaby
             // rb_boy
             // 
             this.rb_boy.AutoSize = true;
-            this.rb_boy.Location = new System.Drawing.Point(34, 166);
+            this.rb_boy.Location = new System.Drawing.Point(34, 177);
             this.rb_boy.Name = "rb_boy";
             this.rb_boy.Size = new System.Drawing.Size(58, 24);
             this.rb_boy.TabIndex = 3;
@@ -104,7 +99,7 @@ namespace MyDearBaby
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 113);
+            this.label2.Location = new System.Drawing.Point(34, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 20);
             this.label2.TabIndex = 5;
@@ -113,72 +108,24 @@ namespace MyDearBaby
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 204);
+            this.label3.Location = new System.Drawing.Point(34, 224);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Datum narození";
             // 
-            // tb_dayOFBirth
-            // 
-            this.tb_dayOFBirth.Location = new System.Drawing.Point(34, 255);
-            this.tb_dayOFBirth.Name = "tb_dayOFBirth";
-            this.tb_dayOFBirth.Size = new System.Drawing.Size(58, 27);
-            this.tb_dayOFBirth.TabIndex = 7;
-            // 
-            // tb_monthOfBirth
-            // 
-            this.tb_monthOfBirth.Location = new System.Drawing.Point(98, 255);
-            this.tb_monthOfBirth.Name = "tb_monthOfBirth";
-            this.tb_monthOfBirth.Size = new System.Drawing.Size(58, 27);
-            this.tb_monthOfBirth.TabIndex = 8;
-            // 
-            // tb_yearOfBirth
-            // 
-            this.tb_yearOfBirth.Location = new System.Drawing.Point(162, 255);
-            this.tb_yearOfBirth.Name = "tb_yearOfBirth";
-            this.tb_yearOfBirth.Size = new System.Drawing.Size(94, 27);
-            this.tb_yearOfBirth.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(174, 232);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 20);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Rok";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(98, 232);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 20);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Měsíc";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 232);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 20);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Den";
-            // 
-            // dateTimePicker_dateOfBirth
-            // 
-            this.dateTimePicker_dateOfBirth.Location = new System.Drawing.Point(34, 288);
-            this.dateTimePicker_dateOfBirth.Name = "dateTimePicker_dateOfBirth";
-            this.dateTimePicker_dateOfBirth.Size = new System.Drawing.Size(250, 27);
-            this.dateTimePicker_dateOfBirth.TabIndex = 13;
-            this.dateTimePicker_dateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePicker_dateOfBirth_ValueChanged);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.DataMember = "";
+            // 
+            // dateTimePicker_dateOfBirth
+            // 
+            this.dateTimePicker_dateOfBirth.Location = new System.Drawing.Point(34, 258);
+            this.dateTimePicker_dateOfBirth.Name = "dateTimePicker_dateOfBirth";
+            this.dateTimePicker_dateOfBirth.Size = new System.Drawing.Size(250, 27);
+            this.dateTimePicker_dateOfBirth.TabIndex = 13;
+            this.dateTimePicker_dateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePicker_dateOfBirth_ValueChanged);
             // 
             // AddChild
             // 
@@ -186,12 +133,6 @@ namespace MyDearBaby
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 395);
             this.Controls.Add(this.dateTimePicker_dateOfBirth);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.tb_yearOfBirth);
-            this.Controls.Add(this.tb_monthOfBirth);
-            this.Controls.Add(this.tb_dayOFBirth);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -219,13 +160,7 @@ namespace MyDearBaby
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tb_dayOFBirth;
-        private System.Windows.Forms.TextBox tb_monthOfBirth;
-        private System.Windows.Forms.TextBox tb_yearOfBirth;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_dateOfBirth;
         private ErrorProvider errorProvider1;
+        private DateTimePicker dateTimePicker_dateOfBirth;
     }
 }

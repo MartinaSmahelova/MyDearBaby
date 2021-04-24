@@ -10,22 +10,10 @@ namespace MyDearBaby
 {
     public partial class AddChild : Form
     {
-        public string ChildName { get; set; }
-        public Gender ChildGender { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public Child Child { get; set; }
-
-        //public string dayOfBirth;
-        //public string monthOfBirth;
-        //public string yearOfBirth;
-        //public string DateOfBirth 
-        //{
-        //    get
-        //    {
-        //        return dayOfBirth + "/" + monthOfBirth + "/" + yearOfBirth;
-        //    }
-
-        //}
+        private string _childName;
+        private Gender _childGender;
+        private DateTime _dateOfBirth;
+        public Child Child { get; private set; }
 
         public AddChild()
         {
@@ -34,42 +22,27 @@ namespace MyDearBaby
 
         private void rb_girl_CheckedChanged(object sender, EventArgs e)
         {
-            ChildGender = Gender.girl;
+            _childGender = Gender.girl;
         }
 
         private void rb_boy_CheckedChanged(object sender, EventArgs e)
         {
-            ChildGender = Gender.boy;
+            _childGender = Gender.boy;
         }
 
         private void tb_childName_TextChanged(object sender, EventArgs e)
         {
-            ChildName = tb_childName.Text;
+            _childName = tb_childName.Text;
         }
-
-        //private void tb_dayOFBirth_TextChanged(object sender, EventArgs e)
-        //{
-        //    dayOfBirth = tb_dayOFBirth.Text;
-        //}
-
-        //private void tb_monthOfBirth_TextChanged(object sender, EventArgs e)
-        //{
-        //    monthOfBirth = tb_monthOfBirth.Text;
-        //}
-
-        //private void tb_yearOfBirth_TextChanged(object sender, EventArgs e)
-        //{
-        //    yearOfBirth = tb_yearOfBirth.Text;
-        //}
 
         private void dateTimePicker_dateOfBirth_ValueChanged(object sender, EventArgs e)
         {
-            DateOfBirth = Convert.ToDateTime(dateTimePicker_dateOfBirth.Value);
+            _dateOfBirth = Convert.ToDateTime(dateTimePicker_dateOfBirth.Value);
         }
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            Child = new Child(ChildName, ChildGender, DateOfBirth);
+            Child = new Child(_childName, _childGender, _dateOfBirth);
             //if (ValidateName())
             //{
             //    btn_OK.DialogResult = DialogResult.OK;
