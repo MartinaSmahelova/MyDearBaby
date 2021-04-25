@@ -19,7 +19,7 @@ namespace MyDearBaby
         public MainForm()
         {
             InitializeComponent();
-            listOfChildren = DeserializeChildFileJsonToListOfChildren(ChildFilePath());
+            //listOfChildren = DeserializeChildFileJsonToListOfChildren(ChildFilePath());
         }
 
         private void btn_addChild_Click(object sender, EventArgs e)
@@ -28,16 +28,16 @@ namespace MyDearBaby
             {
                 childForm.ShowDialog();
 
-                if (childForm.Child != null)
-                {
-                    listOfChildren.Add(childForm.Child);
-                }
+                //if (childForm.Child != null)
+                //{
+                //    listOfChildren.Add(childForm.Child);
+                //}
             }
         }
 
         private void btn_addEnjoyment_Click(object sender, EventArgs e)
         {
-            SerializeListOfChildrenToChildFileJonson(listOfChildren, ChildFilePath());
+            //SerializeListOfChildrenToChildFileJonson(listOfChildren, ChildFilePath());
 
             using (var enjoymentForm = new AddEnjoyment())
             {
@@ -45,10 +45,10 @@ namespace MyDearBaby
             }
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SerializeListOfChildrenToChildFileJonson(listOfChildren, ChildFilePath());
-        }
+        //private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    SerializeListOfChildrenToChildFileJonson(listOfChildren, ChildFilePath());
+        //}
 
         public List<Child> DeserializeChildFileJsonToListOfChildren(string childFilePath)
         {  

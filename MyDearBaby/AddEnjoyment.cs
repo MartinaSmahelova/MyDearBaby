@@ -31,6 +31,43 @@ namespace MyDearBaby
             }
         }
 
+        private void btn_addEnjoyment_Click(object sender, EventArgs e)
+        {
+            SaveEnjoyment(EnjoymentFilePath());
+        }
+
+        private void SaveEnjoyment(string enjoymentFilePath)
+        {
+            if (!Directory.Exists(Path.GetDirectoryName(enjoymentFilePath)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(enjoymentFilePath));
+            }
+
+            if (File.Exists(enjoymentFilePath))
+            {
+                using (StreamWriter writer = new StreamWriter(EnjoymentFilePath(), append: true))
+                {
+                    writer.WriteLine(enjoyments.ShowActualDate());
+                    WriteCheckedChildren(writer);
+                    writer.WriteLine(richTextBox_enjoyment.Text);
+                    writer.WriteLine("******************************************");
+                }
+            }
+
+            else
+            {
+                File.WriteAllText(enjoymentFilePath, "ZÁŽITKY <3 \n******************************************\n");
+            }
+        }
+
+        private void WriteCheckedChildren(StreamWriter writer)
+        {
+            for (int i = 0; i <= (checkedListBox_children.CheckedItems.Count - 1); i++)
+            {
+                writer.WriteLine(checkedListBox_children.CheckedItems[i].ToString());
+            }
+        }
+
         public string ChildFilePath()
         {
             string applicationDataFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -58,43 +95,5 @@ namespace MyDearBaby
 
             return children;
         }
-
-        private void btn_addEnjoyment_Click(object sender, EventArgs e)
-        {
-            SaveEnjoyment(EnjoymentFilePath());
-        }
-
-        private void SaveEnjoyment(string enjoymentFilePath)
-        {
-            if (!Directory.Exists(Path.GetDirectoryName(enjoymentFilePath)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(enjoymentFilePath));
-            }
-
-            if (File.Exists(enjoymentFilePath))
-            {
-                using (StreamWriter writer = new StreamWriter(EnjoymentFilePath(), append: true))
-                {
-                    writer.WriteLine(enjoyments.ShowActualDate());
-                    WriteCheckedChildren(writer);
-                    writer.WriteLine(richTextBox_enjoyment.Text);
-                    writer.WriteLine("******************************************");
-                }
-            }
-
-            else
-            {
-                File.WriteAllText(enjoymentFilePath, "Zážitky <3");
-            }
-        }
-
-        private void WriteCheckedChildren(StreamWriter writer)
-        {
-            for (int i = 0; i <= (checkedListBox_children.CheckedItems.Count - 1); i++)
-            {
-                writer.WriteLine(checkedListBox_children.CheckedItems[i].ToString());
-            }
-        }
-
     }
 }

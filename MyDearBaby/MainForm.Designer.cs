@@ -62,7 +62,6 @@ namespace MyDearBaby
             this.Controls.Add(this.btn_addChild);
             this.Name = "MainForm";
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.ResumeLayout(false);
 
         }

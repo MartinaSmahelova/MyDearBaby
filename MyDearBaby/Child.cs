@@ -33,8 +33,14 @@ namespace MyDearBaby
         {
             DateTime now = DateTime.Now;
             TimeSpan tameSpan = now - dateofbirth;
+
+            if (dateofbirth > now)
+            {
+                return string.Format($"Miminko se ještě nenarodilo, je teprv na ceste");
+            }
+
             DateTime Age = DateTime.MinValue.AddDays(tameSpan.Days);
-          
+
             if ((Age.Year - 1) == 0)
             {
                 if ((Age.Month - 1) == 0)

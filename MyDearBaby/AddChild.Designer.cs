@@ -41,12 +41,13 @@ namespace MyDearBaby
             this.label3 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dateTimePicker_dateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.groupBoxRadioButtons = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupBoxRadioButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_OK
             // 
-            this.btn_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_OK.Location = new System.Drawing.Point(164, 332);
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size(94, 29);
@@ -66,7 +67,7 @@ namespace MyDearBaby
             // rb_girl
             // 
             this.rb_girl.AutoSize = true;
-            this.rb_girl.Location = new System.Drawing.Point(34, 147);
+            this.rb_girl.Location = new System.Drawing.Point(6, 21);
             this.rb_girl.Name = "rb_girl";
             this.rb_girl.Size = new System.Drawing.Size(69, 24);
             this.rb_girl.TabIndex = 2;
@@ -78,7 +79,7 @@ namespace MyDearBaby
             // rb_boy
             // 
             this.rb_boy.AutoSize = true;
-            this.rb_boy.Location = new System.Drawing.Point(34, 177);
+            this.rb_boy.Location = new System.Drawing.Point(9, 51);
             this.rb_boy.Name = "rb_boy";
             this.rb_boy.Size = new System.Drawing.Size(58, 24);
             this.rb_boy.TabIndex = 3;
@@ -108,7 +109,7 @@ namespace MyDearBaby
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 224);
+            this.label3.Location = new System.Drawing.Point(34, 248);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 20);
             this.label3.TabIndex = 6;
@@ -121,23 +122,33 @@ namespace MyDearBaby
             // 
             // dateTimePicker_dateOfBirth
             // 
-            this.dateTimePicker_dateOfBirth.Location = new System.Drawing.Point(34, 258);
+            this.dateTimePicker_dateOfBirth.Location = new System.Drawing.Point(34, 271);
             this.dateTimePicker_dateOfBirth.Name = "dateTimePicker_dateOfBirth";
             this.dateTimePicker_dateOfBirth.Size = new System.Drawing.Size(250, 27);
             this.dateTimePicker_dateOfBirth.TabIndex = 13;
             this.dateTimePicker_dateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePicker_dateOfBirth_ValueChanged);
+            // 
+            // groupBoxRadioButtons
+            // 
+            this.groupBoxRadioButtons.Controls.Add(this.rb_boy);
+            this.groupBoxRadioButtons.Controls.Add(this.rb_girl);
+            this.groupBoxRadioButtons.Location = new System.Drawing.Point(34, 147);
+            this.groupBoxRadioButtons.Name = "groupBoxRadioButtons";
+            this.groupBoxRadioButtons.Size = new System.Drawing.Size(212, 81);
+            this.groupBoxRadioButtons.TabIndex = 14;
+            this.groupBoxRadioButtons.TabStop = false;
+            this.groupBoxRadioButtons.Validating += new System.ComponentModel.CancelEventHandler(this.groupBoxRadioButtons_Validating);
             // 
             // AddChild
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 395);
+            this.Controls.Add(this.groupBoxRadioButtons);
             this.Controls.Add(this.dateTimePicker_dateOfBirth);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.rb_boy);
-            this.Controls.Add(this.rb_girl);
             this.Controls.Add(this.tb_childName);
             this.Controls.Add(this.btn_OK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -145,7 +156,10 @@ namespace MyDearBaby
             this.MinimizeBox = false;
             this.Name = "AddChild";
             this.Text = "PopupFormChildInfo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddChild_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupBoxRadioButtons.ResumeLayout(false);
+            this.groupBoxRadioButtons.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +176,6 @@ namespace MyDearBaby
         private System.Windows.Forms.Label label3;
         private ErrorProvider errorProvider1;
         private DateTimePicker dateTimePicker_dateOfBirth;
+        private GroupBox groupBoxRadioButtons;
     }
 }
