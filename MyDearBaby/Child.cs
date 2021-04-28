@@ -6,6 +6,7 @@ namespace MyDearBaby
 {
     public enum Gender
     {
+        empty,
         girl, 
         boy,
     }

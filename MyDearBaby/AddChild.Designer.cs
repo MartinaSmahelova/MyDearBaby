@@ -40,7 +40,7 @@ namespace MyDearBaby
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dateTimePicker_dateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.groupBoxRadioButtons = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBoxRadioButtons.SuspendLayout();
@@ -48,6 +48,7 @@ namespace MyDearBaby
             // 
             // btn_OK
             // 
+            this.btn_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_OK.Location = new System.Drawing.Point(164, 332);
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size(94, 29);
@@ -63,6 +64,7 @@ namespace MyDearBaby
             this.tb_childName.Size = new System.Drawing.Size(174, 27);
             this.tb_childName.TabIndex = 1;
             this.tb_childName.TextChanged += new System.EventHandler(this.tb_childName_TextChanged);
+            this.tb_childName.Validating += new System.ComponentModel.CancelEventHandler(this.tb_childName_Validating);
             // 
             // rb_girl
             // 
@@ -79,7 +81,7 @@ namespace MyDearBaby
             // rb_boy
             // 
             this.rb_boy.AutoSize = true;
-            this.rb_boy.Location = new System.Drawing.Point(9, 51);
+            this.rb_boy.Location = new System.Drawing.Point(6, 51);
             this.rb_boy.Name = "rb_boy";
             this.rb_boy.Size = new System.Drawing.Size(58, 24);
             this.rb_boy.TabIndex = 3;
@@ -120,13 +122,19 @@ namespace MyDearBaby
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.DataMember = "";
             // 
-            // dateTimePicker_dateOfBirth
+            // dateTimePickerDateOfBirth
             // 
-            this.dateTimePicker_dateOfBirth.Location = new System.Drawing.Point(34, 271);
-            this.dateTimePicker_dateOfBirth.Name = "dateTimePicker_dateOfBirth";
-            this.dateTimePicker_dateOfBirth.Size = new System.Drawing.Size(250, 27);
-            this.dateTimePicker_dateOfBirth.TabIndex = 13;
-            this.dateTimePicker_dateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePicker_dateOfBirth_ValueChanged);
+            this.dateTimePickerDateOfBirth.CustomFormat = "dd. MM. yyyy";
+            this.dateTimePickerDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.errorProvider1.SetIconAlignment(this.dateTimePickerDateOfBirth, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
+            this.dateTimePickerDateOfBirth.Location = new System.Drawing.Point(34, 271);
+            this.dateTimePickerDateOfBirth.MinDate = new System.DateTime(1921, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerDateOfBirth.Name = "dateTimePickerDateOfBirth";
+            this.dateTimePickerDateOfBirth.Size = new System.Drawing.Size(146, 27);
+            this.dateTimePickerDateOfBirth.TabIndex = 13;
+            this.dateTimePickerDateOfBirth.Value = new System.DateTime(2021, 4, 25, 0, 0, 0, 0);
+            this.dateTimePickerDateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePicker_dateOfBirth_ValueChanged);
+            this.dateTimePickerDateOfBirth.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePickerDateOfBirth_Validating);
             // 
             // groupBoxRadioButtons
             // 
@@ -145,7 +153,7 @@ namespace MyDearBaby
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 395);
             this.Controls.Add(this.groupBoxRadioButtons);
-            this.Controls.Add(this.dateTimePicker_dateOfBirth);
+            this.Controls.Add(this.dateTimePickerDateOfBirth);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -175,7 +183,7 @@ namespace MyDearBaby
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private ErrorProvider errorProvider1;
-        private DateTimePicker dateTimePicker_dateOfBirth;
+        private DateTimePicker dateTimePickerDateOfBirth;
         private GroupBox groupBoxRadioButtons;
     }
 }
