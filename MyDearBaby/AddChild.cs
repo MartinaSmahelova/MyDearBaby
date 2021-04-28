@@ -16,23 +16,18 @@ namespace MyDearBaby
         private string _childName;
         private Gender _childGender;
         private DateTime _dateOfBirth;
-        public List<Child> listOfChildren;
+        public List<Child> ListOfChildren { get; private set; }
         public Child Child { get; private set; }
 
         public AddChild()
         {
             InitializeComponent();
-            //MaxDate is set to nine months from actual date, so some users could use app before child is born
+            //MaxDate is set to nine months from actual date, so some users could use application during pregnancy, before child is born
             dateTimePickerDateOfBirth.MaxDate = DateTime.Now.AddDays(280);
-            listOfChildren = DeserializeChildFileJsonToListOfChildren(ChildFilePath());
+            ListOfChildren = new List<Child>();
+            ListOfChildren = WorkWithFiles.DeserializeChildFileJsonToListOfChildren(WorkWithFiles.ChildFilePath(), ListOfChildren);
         }
 
-        //public void AddChildTo()
-        //{
-        //    _childName = tb_childName.Text;
-        //    _childGende = groupBoxRadioButtons.
-        //    _dateOfBirth = Convert.ToDateTime(dateTimePickerDateOfBirth.Value);
-        //}
         private void rb_girl_CheckedChanged(object sender, EventArgs e)
         {
             _childGender = Gender.girl;
@@ -55,131 +50,55 @@ namespace MyDearBaby
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            //if (ValidateName() && ValidatingRadioButtons() && ValidateDateOfBirth())
-            //{
-            if (_childName != null && _childGender != Gender.empty && _dateOfBirth != null)
+
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
                 Child = new Child(_childName, _childGender, _dateOfBirth);
 
-            }
+                if (Child != null)
+                {
+                    ListOfChildren.Add(Child);
 
-            if (Child != null)
-            {
-                listOfChildren.Add(Child);
+                    btn_OK.DialogResult = DialogResult.OK;
+                    Close();
+                }  
             }
-
-               // btn_OK.DialogResult = DialogResult.OK;
-        //}
-    }
+        }
 
         private void AddChild_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SerializeListOfChildrenToChildFileJonson(listOfChildren, ChildFilePath());
-        }
-
-
-        private bool ValidateName(CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(tb_childName.Text))
-            {
-                MessageBox.Show("Vyplňte jméno");
-                e.Cancel = true;
-                return false;
-            }
-            if (tb_childName.Text.Length <= 2)
-            {
-                MessageBox.Show("Jméno je příliš krátké, musí obsahovat alepsoň tři znaky");
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool ValidatingRadioButtons(CancelEventArgs e)
-        {
-            var validation = groupBoxRadioButtons.Controls
-                          .OfType<RadioButton>()
-                          .Any(r => r.Checked);
-
-            if (!validation)
-            {
-                MessageBox.Show("Vyberte pohlaví");
-                e.Cancel = true;
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool ValidateDateOfBirth(CancelEventArgs e)
-        {
-            if (dateTimePickerDateOfBirth.Value == DateTime.Today)
-            {
-                var closeMsg = MessageBox.Show("Narodilo se Vaše dítě dnes ? Pokud ne, změnte prosím datum narození.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                e.Cancel = true;
-
-                if (closeMsg == DialogResult.No)
-                {
-                    e.Cancel = true;
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public List<Child> DeserializeChildFileJsonToListOfChildren(string childFilePath)
-        {
-            List<Child> childrenListJson = new List<Child>();
-
-            if (!Directory.Exists(Path.GetDirectoryName(childFilePath)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(childFilePath));
-            }
-
-            if (!File.Exists(childFilePath))
-            {
-                File.WriteAllText(childFilePath, "[]");
-            }
-
-            string jsonString = File.ReadAllText(childFilePath);
-            childrenListJson = JsonConvert.DeserializeObject<List<Child>>(jsonString);
-
-            return childrenListJson;
-        }
-
-        private void SerializeListOfChildrenToChildFileJonson(List<Child> listOfChildren, string childFilePath)
-        {
-            string listOfChildrenJson = JsonConvert.SerializeObject(listOfChildren, Formatting.Indented);
-            File.WriteAllText(childFilePath, listOfChildrenJson);
-        }
-
-        public string ChildFilePath()
-        {
-            string specialFolderApplicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string programName = "MyDearChild";
-            string childFile = "child.json";
-            string childFilePath = Path.Combine(specialFolderApplicationDataPath, programName, childFile);
-
-            return childFilePath;
+            WorkWithFiles.SerializeListOfChildrenToChildFileJonson(ListOfChildren, WorkWithFiles.ChildFilePath());
         }
 
         private void tb_childName_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(tb_childName.Text))
             {
-                //MessageBox.Show("Vyplňte jméno");
+                MessageBox.Show("Vyplňte jméno", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
-                tb_childName.Focus();
-                errorProvider1.SetError(tb_childName, "Vyplňte jméno");
-
             }
-            if (tb_childName.Text.Length <= 2)
+            if (tb_childName.Text.Length > 0 && tb_childName.Text.Length <= 2)
             {
-                //MessageBox.Show("Jméno je příliš krátké, musí obsahovat alepsoň tři znaky");
+                MessageBox.Show("Jméno je příliš krátké, musí obsahovat alepsoň tři znaky", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
-                tb_childName.Focus();
-                errorProvider1.SetError(tb_childName, "Jméno je příliš krátké, musí obsahovat alepsoň tři znaky");
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+
+        }
+
+        private void groupBoxRadioButtons_Validating(object sender, CancelEventArgs e)
+        {
+            var validation = groupBoxRadioButtons.Controls
+                      .OfType<RadioButton>()
+                      .Any(r => r.Checked);
+
+            if (!validation)
+            {
+                MessageBox.Show("Vyberte pohlaví", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
             }
             else
             {
@@ -187,21 +106,26 @@ namespace MyDearBaby
             }
         }
 
-        private void groupBoxRadioButtons_Validating(object sender, CancelEventArgs e)
-        {
-            ValidatingRadioButtons(e);
-        }
-
         private void dateTimePickerDateOfBirth_Validating(object sender, CancelEventArgs e)
         {
-            ValidateDateOfBirth(e);
-        }
+            if (dateTimePickerDateOfBirth.Value == DateTime.Today)
+            {
+                var closeMsg = MessageBox.Show("Narodilo se Vaše dítě dnes?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                e.Cancel = true;
 
-        //private void btn_OK_Validating(object sender, CancelEventArgs e)
-        //{
-        //    ValidateName(e);
-        //    ValidatingRadioButtons(e);
-        //    ValidateDateOfBirth(e);
-        //}
+                if (closeMsg == DialogResult.No)
+                {
+                    MessageBox.Show("Změnte prosím datum narození.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    e.Cancel = true;
+                }
+
+                if (closeMsg == DialogResult.Yes)
+                {
+                    _dateOfBirth = dateTimePickerDateOfBirth.Value;
+                    e.Cancel = false;
+                }
+            }
+
+        }
     }
 }

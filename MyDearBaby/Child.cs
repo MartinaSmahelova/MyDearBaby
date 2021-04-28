@@ -4,12 +4,6 @@ using System.Text;
 
 namespace MyDearBaby
 {
-    public enum Gender
-    {
-        empty,
-        girl, 
-        boy,
-    }
     public class Child
     {
         public string Name { get; set; }
@@ -46,15 +40,72 @@ namespace MyDearBaby
             {
                 if ((Age.Month - 1) == 0)
                 {
-                    return string.Format($"{Age.Day - 1} den/dní(i)");
+                    return string.Format($"{Age.Day - 1} {ValidateDateInflection(Age)}");
                 }
 
-                return string.Format($"{Age.Month - 1} měsic(e/ů) {Age.Day - 1} den/dní(i)");
+                return string.Format($"{Age.Month - 1} {ValidateMonthInflection(Age)} {Age.Day - 1} {ValidateDateInflection(Age)}");
             }
 
-            return string.Format($"{Age.Year - 1} rok(y/ů) {Age.Month - 1} měsic(e/ů) {Age.Day - 1} den/dní(i)");
+            return string.Format($"{Age.Year - 1} rok(y/ů) {Age.Month - 1} {ValidateMonthInflection(Age)} {Age.Day - 1} {ValidateDateInflection(Age)}");
         }
 
+        public string ValidateDateInflection(DateTime Age)
+        {
+            if ((Age.Day - 1) == 1)
+            {
+                return "den";
+            }
+            else if ((Age.Day - 1) > 1 && (Age.Day - 1) < 4)
+            {
+                return "dny";
+            }
+
+            else if ((Age.Day - 1) > 4)
+            {
+                return "dní";
+            }
+
+            return "";
+        }
+
+        public string ValidateMonthInflection(DateTime Age)
+        {
+            if ((Age.Month - 1) == 1)
+            {
+                return "měsíc";
+            }
+            else if ((Age.Month - 1) > 1 && (Age.Month - 1) < 4)
+            {
+                return "měsíce";
+            }
+
+            else if ((Age.Month - 1) > 4)
+            {
+                return "měsíců";
+            }
+
+            return "";
+        }
+
+            public string ValidateYearInflection(DateTime Age)
+            {
+                if ((Age.Year - 1)== 1)
+                {
+                    return "rok";
+                }
+                else if ((Age.Year - 1) > 1 && (Age.Year - 1) < 4)
+                {
+                    return "roky";
+                }
+
+                else if ((Age.Year - 1) > 4)
+                {
+                    return "roků";
+                }
+
+                return "";
+            }
+        
         public void ShowQuoteRelatedToChildhood()
         {
 
