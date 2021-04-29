@@ -31,10 +31,10 @@ namespace MyDearBaby
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_OK = new System.Windows.Forms.Button();
-            this.tb_childName = new System.Windows.Forms.TextBox();
-            this.rb_girl = new System.Windows.Forms.RadioButton();
-            this.rb_boy = new System.Windows.Forms.RadioButton();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.tbChildName = new System.Windows.Forms.TextBox();
+            this.rbGirl = new System.Windows.Forms.RadioButton();
+            this.rbBoy = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,48 +44,48 @@ namespace MyDearBaby
             this.groupBoxRadioButtons.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btn_OK
+            // btnOK
             // 
-            this.btn_OK.Location = new System.Drawing.Point(164, 332);
-            this.btn_OK.Name = "btn_OK";
-            this.btn_OK.Size = new System.Drawing.Size(94, 29);
-            this.btn_OK.TabIndex = 0;
-            this.btn_OK.Text = "OK";
-            this.btn_OK.UseVisualStyleBackColor = true;
-            this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
+            this.btnOK.Location = new System.Drawing.Point(164, 332);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(94, 29);
+            this.btnOK.TabIndex = 0;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // tb_childName
+            // tbChildName
             // 
-            this.tb_childName.Location = new System.Drawing.Point(34, 69);
-            this.tb_childName.Name = "tb_childName";
-            this.tb_childName.Size = new System.Drawing.Size(174, 27);
-            this.tb_childName.TabIndex = 1;
-            this.tb_childName.TextChanged += new System.EventHandler(this.tb_childName_TextChanged);
-            this.tb_childName.Validating += new System.ComponentModel.CancelEventHandler(this.tb_childName_Validating);
+            this.tbChildName.Location = new System.Drawing.Point(34, 69);
+            this.tbChildName.Name = "tbChildName";
+            this.tbChildName.Size = new System.Drawing.Size(174, 27);
+            this.tbChildName.TabIndex = 1;
+            this.tbChildName.TextChanged += new System.EventHandler(this.tbChildName_TextChanged);
+            this.tbChildName.Validating += new System.ComponentModel.CancelEventHandler(this.tbChildName_Validating);
             // 
-            // rb_girl
+            // rbGirl
             // 
-            this.rb_girl.AutoSize = true;
-            this.rb_girl.Location = new System.Drawing.Point(6, 21);
-            this.rb_girl.Name = "rb_girl";
-            this.rb_girl.Size = new System.Drawing.Size(69, 24);
-            this.rb_girl.TabIndex = 2;
-            this.rb_girl.TabStop = true;
-            this.rb_girl.Text = "Holka\r\n";
-            this.rb_girl.UseVisualStyleBackColor = true;
-            this.rb_girl.CheckedChanged += new System.EventHandler(this.rb_girl_CheckedChanged);
+            this.rbGirl.AutoSize = true;
+            this.rbGirl.Location = new System.Drawing.Point(6, 21);
+            this.rbGirl.Name = "rbGirl";
+            this.rbGirl.Size = new System.Drawing.Size(69, 24);
+            this.rbGirl.TabIndex = 2;
+            this.rbGirl.TabStop = true;
+            this.rbGirl.Text = "Holka\r\n";
+            this.rbGirl.UseVisualStyleBackColor = true;
+            this.rbGirl.CheckedChanged += new System.EventHandler(this.rbGirl_CheckedChanged);
             // 
-            // rb_boy
+            // rbBoy
             // 
-            this.rb_boy.AutoSize = true;
-            this.rb_boy.Location = new System.Drawing.Point(6, 51);
-            this.rb_boy.Name = "rb_boy";
-            this.rb_boy.Size = new System.Drawing.Size(58, 24);
-            this.rb_boy.TabIndex = 3;
-            this.rb_boy.TabStop = true;
-            this.rb_boy.Text = "Kluk\r\n";
-            this.rb_boy.UseVisualStyleBackColor = true;
-            this.rb_boy.CheckedChanged += new System.EventHandler(this.rb_boy_CheckedChanged);
+            this.rbBoy.AutoSize = true;
+            this.rbBoy.Location = new System.Drawing.Point(6, 51);
+            this.rbBoy.Name = "rbBoy";
+            this.rbBoy.Size = new System.Drawing.Size(58, 24);
+            this.rbBoy.TabIndex = 3;
+            this.rbBoy.TabStop = true;
+            this.rbBoy.Text = "Kluk\r\n";
+            this.rbBoy.UseVisualStyleBackColor = true;
+            this.rbBoy.CheckedChanged += new System.EventHandler(this.rbBoy_CheckedChanged);
             // 
             // label1
             // 
@@ -124,13 +124,13 @@ namespace MyDearBaby
             this.dateTimePickerDateOfBirth.Size = new System.Drawing.Size(146, 27);
             this.dateTimePickerDateOfBirth.TabIndex = 13;
             this.dateTimePickerDateOfBirth.Value = new System.DateTime(2021, 4, 28, 0, 0, 0, 0);
-            this.dateTimePickerDateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePicker_dateOfBirth_ValueChanged);
+            this.dateTimePickerDateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePickerDateOfBirth_ValueChanged);
             this.dateTimePickerDateOfBirth.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePickerDateOfBirth_Validating);
             // 
             // groupBoxRadioButtons
             // 
-            this.groupBoxRadioButtons.Controls.Add(this.rb_boy);
-            this.groupBoxRadioButtons.Controls.Add(this.rb_girl);
+            this.groupBoxRadioButtons.Controls.Add(this.rbBoy);
+            this.groupBoxRadioButtons.Controls.Add(this.rbGirl);
             this.groupBoxRadioButtons.Location = new System.Drawing.Point(34, 147);
             this.groupBoxRadioButtons.Name = "groupBoxRadioButtons";
             this.groupBoxRadioButtons.Size = new System.Drawing.Size(212, 81);
@@ -147,7 +147,7 @@ namespace MyDearBaby
             // 
             // AddChild
             // 
-            this.AcceptButton = this.btn_OK;
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 395);
@@ -157,8 +157,8 @@ namespace MyDearBaby
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tb_childName);
-            this.Controls.Add(this.btn_OK);
+            this.Controls.Add(this.tbChildName);
+            this.Controls.Add(this.btnOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -174,9 +174,9 @@ namespace MyDearBaby
 
         #endregion
 
-        private System.Windows.Forms.Button btn_OK;
-        private System.Windows.Forms.TextBox tb_childName;
-        private System.Windows.Forms.RadioButton rb_girl;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.TextBox tbChildName;
+        private System.Windows.Forms.RadioButton rbGirl;
         private System.Windows.Forms.RadioButton rb_boy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -184,5 +184,6 @@ namespace MyDearBaby
         private DateTimePicker dateTimePickerDateOfBirth;
         private GroupBox groupBoxRadioButtons;
         private MaskedTextBox maskedTextBox1;
+        private RadioButton rbBoy;
     }
 }

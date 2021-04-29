@@ -20,7 +20,7 @@ namespace MyDearBaby
 
             lbl_actualDate.Text = enjoyments.ShowActualDate();
 
-            enjoyments.ListOfChildren = DeserializeChildFileJsonToListOfChildren(enjoyments.ListOfChildren, ChildFilePath());
+            enjoyments.ListOfChildren = WorkWithFiles.DeserializeChildrenJsonFileToListOfChildren(enjoyments.ListOfChildren);
 
             if (enjoyments.ListOfChildren != null)
             {
@@ -33,17 +33,17 @@ namespace MyDearBaby
 
         private void btn_addEnjoyment_Click(object sender, EventArgs e)
         {
-            SaveEnjoyment(EnjoymentFilePath());
+            SaveEnjoyment();
         }
 
-        private void SaveEnjoyment(string enjoymentFilePath)
+        private void SaveEnjoyment()
         {
-            if (!Directory.Exists(Path.GetDirectoryName(enjoymentFilePath)))
+            if (!Directory.Exists(Path.GetDirectoryName(EnjoymentFilePath())))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(enjoymentFilePath));
+                Directory.CreateDirectory(Path.GetDirectoryName(EnjoymentFilePath()));
             }
 
-            if (File.Exists(enjoymentFilePath))
+            if (File.Exists(EnjoymentFilePath()))
             {
                 using (StreamWriter writer = new StreamWriter(EnjoymentFilePath(), append: true))
                 {
@@ -56,7 +56,7 @@ namespace MyDearBaby
 
             else
             {
-                File.WriteAllText(enjoymentFilePath, "ZÁŽITKY <3 \n******************************************\n");
+                File.WriteAllText(EnjoymentFilePath(), "ZÁŽITKY <3 \n******************************************\n");
             }
         }
 
@@ -68,16 +68,6 @@ namespace MyDearBaby
             }
         }
 
-        public string ChildFilePath()
-        {
-            string applicationDataFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string programName = "MyDearChild";
-            string childFile = "child.json";
-            string childFilePath = Path.Combine(applicationDataFolderPath, programName, childFile);
-
-            return childFilePath;
-        }
-
         public string EnjoymentFilePath()
         {
             string myDocumentsFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -86,14 +76,6 @@ namespace MyDearBaby
             string enjoymentsFilePath = Path.Combine(myDocumentsFilePath, programName, enjoymentsFile);
 
             return enjoymentsFilePath;
-        }
-
-        private List<Child> DeserializeChildFileJsonToListOfChildren(List<Child> children, string childFilePath)
-        {
-            string jsonString = File.ReadAllText(childFilePath);
-            children = JsonConvert.DeserializeObject<List<Child>>(jsonString);
-
-            return children;
         }
     }
 }

@@ -46,7 +46,7 @@ namespace MyDearBaby
                 return string.Format($"{Age.Month - 1} {ValidateMonthInflection(Age)} {Age.Day - 1} {ValidateDateInflection(Age)}");
             }
 
-            return string.Format($"{Age.Year - 1} rok(y/ů) {Age.Month - 1} {ValidateMonthInflection(Age)} {Age.Day - 1} {ValidateDateInflection(Age)}");
+            return string.Format($"{Age.Year - 1} {ValidateYearInflection(Age)} {Age.Month - 1} {ValidateMonthInflection(Age)} {Age.Day - 1} {ValidateDateInflection(Age)}");
         }
 
         public string ValidateDateInflection(DateTime Age)

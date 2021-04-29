@@ -22,33 +22,35 @@ namespace MyDearBaby
         public AddChild()
         {
             InitializeComponent();
+
             //MaxDate is set to nine months from actual date, so some users could use application during pregnancy, before child is born
             dateTimePickerDateOfBirth.MaxDate = DateTime.Now.AddDays(280);
+
             ListOfChildren = new List<Child>();
-            ListOfChildren = WorkWithFiles.DeserializeChildFileJsonToListOfChildren(WorkWithFiles.ChildFilePath(), ListOfChildren);
+            ListOfChildren = WorkWithFiles.DeserializeChildrenJsonFileToListOfChildren(ListOfChildren);
         }
 
-        private void rb_girl_CheckedChanged(object sender, EventArgs e)
+        private void rbGirl_CheckedChanged(object sender, EventArgs e)
         {
             _childGender = Gender.girl;
         }
 
-        private void rb_boy_CheckedChanged(object sender, EventArgs e)
+        private void rbBoy_CheckedChanged(object sender, EventArgs e)
         {
             _childGender = Gender.boy;
         }
 
-        private void tb_childName_TextChanged(object sender, EventArgs e)
+        private void tbChildName_TextChanged(object sender, EventArgs e)
         {
-            _childName = tb_childName.Text;
+            _childName = tbChildName.Text;
         }
 
-        private void dateTimePicker_dateOfBirth_ValueChanged(object sender, EventArgs e)
+        private void dateTimePickerDateOfBirth_ValueChanged(object sender, EventArgs e)
         {
             _dateOfBirth = Convert.ToDateTime(dateTimePickerDateOfBirth.Value);
         }
 
-        private void btn_OK_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
 
             if (ValidateChildren(ValidationConstraints.Enabled))
@@ -59,7 +61,7 @@ namespace MyDearBaby
                 {
                     ListOfChildren.Add(Child);
 
-                    btn_OK.DialogResult = DialogResult.OK;
+                    btnOK.DialogResult = DialogResult.OK;
                     Close();
                 }  
             }
@@ -67,17 +69,17 @@ namespace MyDearBaby
 
         private void AddChild_FormClosing(object sender, FormClosingEventArgs e)
         {
-            WorkWithFiles.SerializeListOfChildrenToChildFileJonson(ListOfChildren, WorkWithFiles.ChildFilePath());
+            WorkWithFiles.SerializeListOfChildrenToChildrenJsonFile(ListOfChildren);
         }
 
-        private void tb_childName_Validating(object sender, CancelEventArgs e)
+        private void tbChildName_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(tb_childName.Text))
+            if (string.IsNullOrEmpty(tbChildName.Text))
             {
                 MessageBox.Show("Vyplňte jméno", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
             }
-            if (tb_childName.Text.Length > 0 && tb_childName.Text.Length <= 2)
+            if (tbChildName.Text.Length > 0 && tbChildName.Text.Length <= 2)
             {
                 MessageBox.Show("Jméno je příliš krátké, musí obsahovat alepsoň tři znaky", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
@@ -125,7 +127,6 @@ namespace MyDearBaby
                     e.Cancel = false;
                 }
             }
-
         }
     }
 }
