@@ -18,64 +18,80 @@ namespace MyDearBaby
         {
             InitializeComponent();
 
-            lbl_actualDate.Text = enjoyments.ShowActualDate();
+            lblActualDate.Text = enjoyments.ShowActualDate();
 
-            enjoyments.ListOfChildren = WorkWithFiles.DeserializeChildrenJsonFileToListOfChildren(enjoyments.ListOfChildren);
+            enjoyments.ListOfEnjoymentsCategories = new List<string>();
 
-            if (enjoyments.ListOfChildren != null)
-            {
-                foreach (var child in enjoyments.ListOfChildren)
-                {
-                    checkedListBox_children.Items.Add(child);
-                }
-            }
+            enjoyments.ListOfChildren = Json.DeserializeJsonFile(enjoyments.ListOfChildren, Json.FilePathinAppDataFolder(Json._child));
+            ShowListInCheckedListBox(enjoyments.ListOfChildren, checkedListBoxChildren);
+
+            enjoyments.ListOfEnjoymentsCategories = Json.DeserializeJsonFile(enjoyments.ListOfEnjoymentsCategories, Json.FilePathinAppDataFolder(Json._enjoymentsCategories));
+            ShowListInCheckedListBox(enjoyments.ListOfEnjoymentsCategories, checkedListBoxEnjoymentsCategories);
         }
 
-        private void btn_addEnjoyment_Click(object sender, EventArgs e)
+        private void btnAddEnjoyment_Click(object sender, EventArgs e)
         {
             SaveEnjoyment();
         }
 
+        private void AddEnjoyment_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Json.SerializeJsonFile(enjoyments.ListOfEnjoymentsCategories, Json.FilePathinAppDataFolder(Json._enjoyments));
+        }
+
         private void SaveEnjoyment()
         {
-            if (!Directory.Exists(Path.GetDirectoryName(EnjoymentFilePath())))
+            if (!Directory.Exists(Path.GetDirectoryName(Json.FilePathInMyDocFolder(Json._enjoyments))))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(EnjoymentFilePath()));
+                Directory.CreateDirectory(Path.GetDirectoryName(Json.FilePathInMyDocFolder(Json._enjoyments)));
             }
 
-            if (File.Exists(EnjoymentFilePath()))
+            if (!File.Exists(Json.FilePathInMyDocFolder(Json._enjoyments)))
             {
-                using (StreamWriter writer = new StreamWriter(EnjoymentFilePath(), append: true))
-                {
-                    writer.WriteLine(enjoyments.ShowActualDate());
-                    WriteCheckedChildren(writer);
-                    writer.WriteLine(richTextBox_enjoyment.Text);
-                    writer.WriteLine("******************************************");
-                }
+                File.WriteAllText(Json.FilePathInMyDocFolder(Json._enjoyments), "ZÁŽITKY <3 \n******************************************\n");
             }
 
             else
             {
-                File.WriteAllText(EnjoymentFilePath(), "ZÁŽITKY <3 \n******************************************\n");
+                if (!string.IsNullOrEmpty(richTextBoxEnjoyment.Text))
+                {
+                    using (StreamWriter writer = new StreamWriter(Json.FilePathInMyDocFolder(Json._enjoyments), append: true))
+                    {
+                        writer.WriteLine(enjoyments.ShowActualDate());
+                        WriteCheckedChildren(writer);
+                        WriteCheckedCategories(writer);
+                        writer.WriteLine(richTextBoxEnjoyment.Text);
+                        writer.WriteLine("******************************************");
+                    }
+                }
             }
         }
 
         private void WriteCheckedChildren(StreamWriter writer)
         {
-            for (int i = 0; i <= (checkedListBox_children.CheckedItems.Count - 1); i++)
+            for (int i = 0; i <= (checkedListBoxChildren.CheckedItems.Count - 1); i++)
             {
-                writer.WriteLine(checkedListBox_children.CheckedItems[i].ToString());
+                writer.WriteLine(checkedListBoxChildren.CheckedItems[i].ToString());
             }
         }
 
-        public string EnjoymentFilePath()
+        private void WriteCheckedCategories(StreamWriter writer)
         {
-            string myDocumentsFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string programName = "MyDearChild";
-            string enjoymentsFile = "zážitky.txt";
-            string enjoymentsFilePath = Path.Combine(myDocumentsFilePath, programName, enjoymentsFile);
+            for (int i = 0; i <= (checkedListBoxEnjoymentsCategories.CheckedItems.Count - 1); i++)
+            {
+                writer.WriteLine(checkedListBoxEnjoymentsCategories.CheckedItems[i].ToString());
+            }
+        }
 
-            return enjoymentsFilePath;
+        public void ShowListInCheckedListBox<T>(List<T> list, CheckedListBox checkedListBox)
+        {
+            if (list != null)
+            {
+                foreach (var item in list)
+                {
+                    checkedListBox.Items.Add(item);
+                }
+            }
         }
     }
 }

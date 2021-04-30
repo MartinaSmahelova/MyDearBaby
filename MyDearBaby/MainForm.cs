@@ -23,18 +23,34 @@ namespace MyDearBaby
 
         private void btn_addChild_Click(object sender, EventArgs e)
         {
-            using (var childForm = new AddChild())
+            using (var addhildForm = new AddChildForm())
             {
-                childForm.ShowDialog();
+                addhildForm.ShowDialog();
             }
         }
 
         private void btn_addEnjoyment_Click(object sender, EventArgs e)
         {
 
-            using (var enjoymentForm = new AddEnjoyment())
+            using (var AddEnjoymentForm = new AddEnjoyment())
             {
-                enjoymentForm.ShowDialog();    
+                AddEnjoymentForm.ShowDialog();    
+            }
+        }
+
+        private void butRemoveChild_Click(object sender, EventArgs e)
+        {
+            using (var removeChildForm = new RemoveChildForm())
+            {
+                removeChildForm.ShowDialog();
+            }
+        }
+
+        private void btnAddEnjoymentCategory_Click(object sender, EventArgs e)
+        {
+            using (var addCategoryForm = new AddEnjoymentCategoryForm())
+            {
+                addCategoryForm.ShowDialog();
             }
         }
     }

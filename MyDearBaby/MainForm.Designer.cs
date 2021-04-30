@@ -31,6 +31,8 @@ namespace MyDearBaby
         {
             this.btn_addChild = new System.Windows.Forms.Button();
             this.btn_addEnjoyment = new System.Windows.Forms.Button();
+            this.butRemoveChild = new System.Windows.Forms.Button();
+            this.btnAddEnjoymentCategory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_addChild
@@ -53,11 +55,33 @@ namespace MyDearBaby
             this.btn_addEnjoyment.UseVisualStyleBackColor = true;
             this.btn_addEnjoyment.Click += new System.EventHandler(this.btn_addEnjoyment_Click);
             // 
+            // butRemoveChild
+            // 
+            this.butRemoveChild.Location = new System.Drawing.Point(87, 121);
+            this.butRemoveChild.Name = "butRemoveChild";
+            this.butRemoveChild.Size = new System.Drawing.Size(206, 29);
+            this.butRemoveChild.TabIndex = 2;
+            this.butRemoveChild.Text = "Odeber dítě z aplikace";
+            this.butRemoveChild.UseVisualStyleBackColor = true;
+            this.butRemoveChild.Click += new System.EventHandler(this.butRemoveChild_Click);
+            // 
+            // btnAddEnjoymentCategory
+            // 
+            this.btnAddEnjoymentCategory.Location = new System.Drawing.Point(87, 272);
+            this.btnAddEnjoymentCategory.Name = "btnAddEnjoymentCategory";
+            this.btnAddEnjoymentCategory.Size = new System.Drawing.Size(206, 29);
+            this.btnAddEnjoymentCategory.TabIndex = 3;
+            this.btnAddEnjoymentCategory.Text = "Přidej kategórii zážitků";
+            this.btnAddEnjoymentCategory.UseVisualStyleBackColor = true;
+            this.btnAddEnjoymentCategory.Click += new System.EventHandler(this.btnAddEnjoymentCategory_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAddEnjoymentCategory);
+            this.Controls.Add(this.butRemoveChild);
             this.Controls.Add(this.btn_addEnjoyment);
             this.Controls.Add(this.btn_addChild);
             this.Name = "MainForm";
@@ -70,6 +94,8 @@ namespace MyDearBaby
 
         private System.Windows.Forms.Button btn_addChild;
         private System.Windows.Forms.Button btn_addEnjoyment;
+        private System.Windows.Forms.Button butRemoveChild;
+        private System.Windows.Forms.Button btnAddEnjoymentCategory;
     }
 }
 

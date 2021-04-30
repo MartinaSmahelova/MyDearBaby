@@ -29,71 +29,73 @@ namespace MyDearBaby
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox_enjoyment = new System.Windows.Forms.RichTextBox();
-            this.lbl_actualDate = new System.Windows.Forms.Label();
-            this.checkedListBox_children = new System.Windows.Forms.CheckedListBox();
-            this.btn_addEnjoyment = new System.Windows.Forms.Button();
-            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
+            this.richTextBoxEnjoyment = new System.Windows.Forms.RichTextBox();
+            this.lblActualDate = new System.Windows.Forms.Label();
+            this.checkedListBoxChildren = new System.Windows.Forms.CheckedListBox();
+            this.btnAddEnjoyment = new System.Windows.Forms.Button();
+            this.checkedListBoxEnjoymentsCategories = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
-            // richTextBox_enjoyment
+            // richTextBoxEnjoyment
             // 
-            this.richTextBox_enjoyment.Location = new System.Drawing.Point(59, 197);
-            this.richTextBox_enjoyment.Name = "richTextBox_enjoyment";
-            this.richTextBox_enjoyment.Size = new System.Drawing.Size(417, 241);
-            this.richTextBox_enjoyment.TabIndex = 0;
-            this.richTextBox_enjoyment.Text = "";
+            this.richTextBoxEnjoyment.Location = new System.Drawing.Point(27, 304);
+            this.richTextBoxEnjoyment.Name = "richTextBoxEnjoyment";
+            this.richTextBoxEnjoyment.Size = new System.Drawing.Size(423, 210);
+            this.richTextBoxEnjoyment.TabIndex = 0;
+            this.richTextBoxEnjoyment.Text = "";
             // 
-            // lbl_actualDate
+            // lblActualDate
             // 
-            this.lbl_actualDate.AutoSize = true;
-            this.lbl_actualDate.Location = new System.Drawing.Point(59, 53);
-            this.lbl_actualDate.Name = "lbl_actualDate";
-            this.lbl_actualDate.Size = new System.Drawing.Size(41, 20);
-            this.lbl_actualDate.TabIndex = 1;
-            this.lbl_actualDate.Text = "Date";
+            this.lblActualDate.AutoSize = true;
+            this.lblActualDate.Location = new System.Drawing.Point(27, 47);
+            this.lblActualDate.Name = "lblActualDate";
+            this.lblActualDate.Size = new System.Drawing.Size(41, 20);
+            this.lblActualDate.TabIndex = 1;
+            this.lblActualDate.Text = "Date";
             // 
-            // checkedListBox_children
+            // checkedListBoxChildren
             // 
-            this.checkedListBox_children.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.checkedListBox_children.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox_children.FormattingEnabled = true;
-            this.checkedListBox_children.Location = new System.Drawing.Point(59, 87);
-            this.checkedListBox_children.Name = "checkedListBox_children";
-            this.checkedListBox_children.Size = new System.Drawing.Size(417, 88);
-            this.checkedListBox_children.TabIndex = 2;
+            this.checkedListBoxChildren.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.checkedListBoxChildren.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBoxChildren.FormattingEnabled = true;
+            this.checkedListBoxChildren.Location = new System.Drawing.Point(27, 94);
+            this.checkedListBoxChildren.Name = "checkedListBoxChildren";
+            this.checkedListBoxChildren.Size = new System.Drawing.Size(423, 88);
+            this.checkedListBoxChildren.TabIndex = 2;
             // 
-            // btn_addEnjoyment
+            // btnAddEnjoyment
             // 
-            this.btn_addEnjoyment.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_addEnjoyment.Location = new System.Drawing.Point(190, 465);
-            this.btn_addEnjoyment.Name = "btn_addEnjoyment";
-            this.btn_addEnjoyment.Size = new System.Drawing.Size(142, 29);
-            this.btn_addEnjoyment.TabIndex = 3;
-            this.btn_addEnjoyment.Text = "Přidej zážitek";
-            this.btn_addEnjoyment.UseVisualStyleBackColor = true;
-            this.btn_addEnjoyment.Click += new System.EventHandler(this.btn_addEnjoyment_Click);
+            this.btnAddEnjoyment.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAddEnjoyment.Location = new System.Drawing.Point(177, 538);
+            this.btnAddEnjoyment.Name = "btnAddEnjoyment";
+            this.btnAddEnjoyment.Size = new System.Drawing.Size(117, 29);
+            this.btnAddEnjoyment.TabIndex = 3;
+            this.btnAddEnjoyment.Text = "Přidej zážitek";
+            this.btnAddEnjoyment.UseVisualStyleBackColor = true;
+            this.btnAddEnjoyment.Click += new System.EventHandler(this.btnAddEnjoyment_Click);
             // 
-            // domainUpDown1
+            // checkedListBoxEnjoymentsCategories
             // 
-            this.domainUpDown1.Location = new System.Drawing.Point(309, 16);
-            this.domainUpDown1.Name = "domainUpDown1";
-            this.domainUpDown1.Size = new System.Drawing.Size(150, 27);
-            this.domainUpDown1.TabIndex = 4;
-            this.domainUpDown1.Text = "domainUpDown1";
+            this.checkedListBoxEnjoymentsCategories.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.checkedListBoxEnjoymentsCategories.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBoxEnjoymentsCategories.FormattingEnabled = true;
+            this.checkedListBoxEnjoymentsCategories.Location = new System.Drawing.Point(27, 200);
+            this.checkedListBoxEnjoymentsCategories.Name = "checkedListBoxEnjoymentsCategories";
+            this.checkedListBoxEnjoymentsCategories.Size = new System.Drawing.Size(423, 88);
+            this.checkedListBoxEnjoymentsCategories.TabIndex = 5;
             // 
             // AddEnjoyment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 506);
-            this.Controls.Add(this.domainUpDown1);
-            this.Controls.Add(this.btn_addEnjoyment);
-            this.Controls.Add(this.checkedListBox_children);
-            this.Controls.Add(this.lbl_actualDate);
-            this.Controls.Add(this.richTextBox_enjoyment);
+            this.ClientSize = new System.Drawing.Size(487, 594);
+            this.Controls.Add(this.checkedListBoxEnjoymentsCategories);
+            this.Controls.Add(this.btnAddEnjoyment);
+            this.Controls.Add(this.checkedListBoxChildren);
+            this.Controls.Add(this.lblActualDate);
+            this.Controls.Add(this.richTextBoxEnjoyment);
             this.Name = "AddEnjoyment";
-            this.Text = "PopupFormAddEnjoyment";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEnjoyment_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,10 +103,10 @@ namespace MyDearBaby
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox_enjoyment;
-        private System.Windows.Forms.Label lbl_actualDate;
-        private System.Windows.Forms.CheckedListBox checkedListBox_children;
-        private System.Windows.Forms.Button btn_addEnjoyment;
-        private System.Windows.Forms.DomainUpDown domainUpDown1;
+        private System.Windows.Forms.RichTextBox richTextBoxEnjoyment;
+        private System.Windows.Forms.Label lblActualDate;
+        private System.Windows.Forms.CheckedListBox checkedListBoxChildren;
+        private System.Windows.Forms.Button btnAddEnjoyment;
+        private System.Windows.Forms.CheckedListBox checkedListBoxEnjoymentsCategories;
     }
 }

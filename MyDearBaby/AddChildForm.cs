@@ -11,23 +11,30 @@ using System.Windows.Forms;
 
 namespace MyDearBaby
 {
-    public partial class AddChild : Form
+    public partial class AddChildForm : Form
     {
         private string _childName;
         private Gender _childGender;
         private DateTime _dateOfBirth;
+       
         public List<Child> ListOfChildren { get; private set; }
         public Child Child { get; private set; }
 
-        public AddChild()
+        public AddChildForm()
         {
             InitializeComponent();
 
             //MaxDate is set to nine months from actual date, so some users could use application during pregnancy, before child is born
             dateTimePickerDateOfBirth.MaxDate = DateTime.Now.AddDays(280);
+            dateTimePickerDateOfBirth.Value = DateTime.Today;
 
             ListOfChildren = new List<Child>();
-            ListOfChildren = WorkWithFiles.DeserializeChildrenJsonFileToListOfChildren(ListOfChildren);
+            ListOfChildren = Json.DeserializeJsonFile(ListOfChildren, Json.FilePathinAppDataFolder(Json._child));
+        }
+
+        private void tbChildName_TextChanged(object sender, EventArgs e)
+        {
+            _childName = tbChildName.Text;
         }
 
         private void rbGirl_CheckedChanged(object sender, EventArgs e)
@@ -38,11 +45,6 @@ namespace MyDearBaby
         private void rbBoy_CheckedChanged(object sender, EventArgs e)
         {
             _childGender = Gender.boy;
-        }
-
-        private void tbChildName_TextChanged(object sender, EventArgs e)
-        {
-            _childName = tbChildName.Text;
         }
 
         private void dateTimePickerDateOfBirth_ValueChanged(object sender, EventArgs e)
@@ -69,7 +71,7 @@ namespace MyDearBaby
 
         private void AddChild_FormClosing(object sender, FormClosingEventArgs e)
         {
-            WorkWithFiles.SerializeListOfChildrenToChildrenJsonFile(ListOfChildren);
+            Json.SerializeJsonFile(ListOfChildren, Json.FilePathinAppDataFolder(Json._child));
         }
 
         private void tbChildName_Validating(object sender, CancelEventArgs e)

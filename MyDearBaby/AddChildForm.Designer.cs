@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace MyDearBaby
 {
-    partial class AddChild
+    partial class AddChildForm
     {
         /// <summary>
         /// Required designer variable.
@@ -145,7 +145,7 @@ namespace MyDearBaby
             this.maskedTextBox1.Size = new System.Drawing.Size(125, 27);
             this.maskedTextBox1.TabIndex = 15;
             // 
-            // AddChild
+            // AddChildForm
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -162,8 +162,7 @@ namespace MyDearBaby
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddChild";
-            this.Text = "PopupFormChildInfo";
+            this.Name = "AddChildForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddChild_FormClosing);
             this.groupBoxRadioButtons.ResumeLayout(false);
             this.groupBoxRadioButtons.PerformLayout();
@@ -177,13 +176,12 @@ namespace MyDearBaby
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.TextBox tbChildName;
         private System.Windows.Forms.RadioButton rbGirl;
-        private System.Windows.Forms.RadioButton rb_boy;
+        private System.Windows.Forms.RadioButton rbBoy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private DateTimePicker dateTimePickerDateOfBirth;
         private GroupBox groupBoxRadioButtons;
         private MaskedTextBox maskedTextBox1;
-        private RadioButton rbBoy;
     }
 }
