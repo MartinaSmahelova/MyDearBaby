@@ -61,7 +61,7 @@ namespace MyDearBaby
                 return "dny";
             }
 
-            else if ((Age.Day - 1) > 4)
+            else if ((Age.Day - 1) > 4 || (Age.Day - 1) == 0)
             {
                 return "dní";
             }

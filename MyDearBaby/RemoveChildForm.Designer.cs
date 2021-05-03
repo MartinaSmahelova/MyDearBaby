@@ -60,6 +60,7 @@ namespace MyDearBaby
             this.Controls.Add(this.checkedListBoxChildren);
             this.Controls.Add(this.btnRemove);
             this.Name = "RemoveChildForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RemoveChildForm_FormClosing);
             this.ResumeLayout(false);
 
         }

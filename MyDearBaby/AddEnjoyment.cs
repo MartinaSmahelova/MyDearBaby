@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace MyDearBaby
 {
@@ -36,7 +37,7 @@ namespace MyDearBaby
 
         private void AddEnjoyment_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeJsonFile(enjoyments.ListOfEnjoymentsCategories, Json.FilePathinAppDataFolder(Json._enjoyments));
+            Json.SerializeJsonFile(enjoyments.ListOfEnjoymentsCategories, Json.FilePathinAppDataFolder(Json._enjoymentsCategories));
         }
 
         private void SaveEnjoyment()
@@ -77,6 +78,9 @@ namespace MyDearBaby
 
         private void WriteCheckedCategories(StreamWriter writer)
         {
+            //checkedListBoxChildren.Items.Where(item => item.Select == true)
+            //    .ForEach(i => Console.WriteLine(i.ToString());
+
             for (int i = 0; i <= (checkedListBoxEnjoymentsCategories.CheckedItems.Count - 1); i++)
             {
                 writer.WriteLine(checkedListBoxEnjoymentsCategories.CheckedItems[i].ToString());
