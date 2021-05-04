@@ -1,0 +1,112 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
+using System.Linq;
+
+namespace MyDearBaby
+{
+    public partial class AddEnjoymentForm : Form
+    {
+        private List<Child> listOfChildren = new List<Child>();
+        private List<string> listOfEnjoymentCategories = new List<string>();
+        private List<Enjoyment> listOfEnjoyments = new List<Enjoyment>();
+        private Enjoyment enjoyment;
+        private string actualDateAndTime = DateTime.Now.ToString("dd/MM/yyyy hh:mm");
+
+        public AddEnjoymentForm()
+        {
+            InitializeComponent();
+
+            lblActualDate.Text = actualDateAndTime;
+
+            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathinAppDataFolder(Json.child));
+            FormToolsExtensions.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
+
+            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(Json.enjoymentsCategories));
+            FormToolsExtensions.ShowListInCheckedListBox(listOfEnjoymentCategories, checkedListBoxEnjoymentsCategories);
+
+            listOfEnjoyments = Json.DeserializeJsonFileToList(listOfEnjoyments, Json.FilePathinAppDataFolder(Json.enjoyments));
+        }
+
+        private void btnAddEnjoyment_Click(object sender, EventArgs e)
+        {
+            listOfChildren = AddCheckedItemsToList(listOfChildren, checkedListBoxChildren);
+            listOfEnjoymentCategories = AddCheckedItemsToList(listOfEnjoymentCategories, checkedListBoxEnjoymentsCategories);
+
+            enjoyment = new Enjoyment(listOfChildren, listOfEnjoymentCategories, richTextBoxEnjoyment.Text);
+
+            if (enjoyment != null)
+            {
+                listOfEnjoyments.Add(enjoyment);
+            }
+
+            SaveEnjoyment(enjoyment);
+        }
+
+        private void AddEnjoyment_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Json.SerializeListToJsonFile(listOfEnjoyments, Json.FilePathinAppDataFolder(Json.enjoyments));
+        }
+
+        private void SaveEnjoyment(Enjoyment enjoyment)
+        {
+            if (!Directory.Exists(Path.GetDirectoryName(Json.FilePathInMyDocFolder(Json.enjoymentsTXT))))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Json.FilePathInMyDocFolder(Json.enjoymentsTXT)));
+            }
+
+            if (!File.Exists(Json.FilePathInMyDocFolder(Json.enjoymentsTXT)))
+            {
+                File.WriteAllText(Json.FilePathInMyDocFolder(Json.enjoymentsTXT), "ZÁŽITKY <3 \n******************************************\n");
+            }
+
+            else
+            {
+                if (!string.IsNullOrEmpty(richTextBoxEnjoyment.Text))
+                {
+                    using (StreamWriter writer = new StreamWriter(Json.FilePathInMyDocFolder(Json.enjoymentsTXT), append: true))
+                    {
+                        writer.WriteLine(enjoyment);
+                        //WriteCheckedItems(writer, checkedListBoxChildren);
+                        //WriteCheckedItems(writer, checkedListBoxEnjoymentsCategories);
+                        //writer.WriteLine(richTextBoxEnjoyment.Text);
+                        //writer.WriteLine("------------------------------------------");
+                    }
+                }
+            }
+        }
+
+        //private void WriteCheckedItems(StreamWriter writer, CheckedListBox checkedListBox)
+        //{
+        //    //checkedListBox.Items.Where(item => item.Select == true)
+        //    //    .ForEach(i => Console.WriteLine(i.ToString());
+
+        //    for (int i = 0; i <= (checkedListBox.CheckedItems.Count - 1); i++)
+        //    {
+        //        writer.WriteLine(checkedListBox.CheckedItems[i].ToString());
+        //    }
+        //}
+
+        private List<T> AddCheckedItemsToList<T>(List<T> list, CheckedListBox checkedListBox) 
+        {
+            list.Clear();
+
+            IEnumerable<object> checkedItems = (from object item in checkedListBox.Items
+                                                where checkedListBox.CheckedItems.Contains(item)
+                                                select item);
+
+            foreach (object item in checkedItems)
+            {
+                list.Add((T) item);
+            }
+
+            return list;
+        }
+    }
+}

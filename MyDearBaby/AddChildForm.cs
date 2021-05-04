@@ -13,11 +13,10 @@ namespace MyDearBaby
 {
     public partial class AddChildForm : Form
     {
-        private string _childName;
-        private Gender _childGender;
-        private DateTime _dateOfBirth;
-       
-        public List<Child> ListOfChildren { get; private set; }
+        private string childName;
+        private Gender childGender;
+        private DateTime dateOfBirth;
+        private List<Child> listOfChildren;
         public Child Child { get; private set; }
 
         public AddChildForm()
@@ -28,28 +27,28 @@ namespace MyDearBaby
             dateTimePickerDateOfBirth.MaxDate = DateTime.Now.AddDays(280);
             dateTimePickerDateOfBirth.Value = DateTime.Today;
 
-            ListOfChildren = new List<Child>();
-            ListOfChildren = Json.DeserializeJsonFile(ListOfChildren, Json.FilePathinAppDataFolder(Json._child));
+            listOfChildren = new List<Child>();
+            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathinAppDataFolder(Json.child));
         }
 
         private void tbChildName_TextChanged(object sender, EventArgs e)
         {
-            _childName = tbChildName.Text;
+            childName = tbChildName.Text;
         }
 
         private void rbGirl_CheckedChanged(object sender, EventArgs e)
         {
-            _childGender = Gender.girl;
+            childGender = Gender.girl;
         }
 
         private void rbBoy_CheckedChanged(object sender, EventArgs e)
         {
-            _childGender = Gender.boy;
+            childGender = Gender.boy;
         }
 
         private void dateTimePickerDateOfBirth_ValueChanged(object sender, EventArgs e)
         {
-            _dateOfBirth = Convert.ToDateTime(dateTimePickerDateOfBirth.Value);
+            dateOfBirth = Convert.ToDateTime(dateTimePickerDateOfBirth.Value);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -57,11 +56,11 @@ namespace MyDearBaby
 
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                Child = new Child(_childName, _childGender, _dateOfBirth);
+                Child = new Child(childName, childGender, dateOfBirth);
 
                 if (Child != null)
                 {
-                    ListOfChildren.Add(Child);
+                    listOfChildren.Add(Child);
 
                     btnOK.DialogResult = DialogResult.OK;
                     Close();
@@ -71,7 +70,7 @@ namespace MyDearBaby
 
         private void AddChild_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeJsonFile(ListOfChildren, Json.FilePathinAppDataFolder(Json._child));
+            Json.SerializeListToJsonFile(listOfChildren, Json.FilePathinAppDataFolder(Json.child));
         }
 
         private void tbChildName_Validating(object sender, CancelEventArgs e)
@@ -125,7 +124,7 @@ namespace MyDearBaby
 
                 if (closeMsg == DialogResult.Yes)
                 {
-                    _dateOfBirth = dateTimePickerDateOfBirth.Value;
+                    dateOfBirth = dateTimePickerDateOfBirth.Value;
                     e.Cancel = false;
                 }
             }

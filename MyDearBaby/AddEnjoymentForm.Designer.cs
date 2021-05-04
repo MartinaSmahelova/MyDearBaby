@@ -1,7 +1,7 @@
 ﻿
 namespace MyDearBaby
 {
-    partial class AddEnjoyment
+    partial class AddEnjoymentForm
     {
         /// <summary>
         /// Required designer variable.

@@ -1,7 +1,7 @@
 ﻿
 namespace MyDearBaby
 {
-    partial class RemoveChildForm
+    partial class RemoveEnjoymentCategoryForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,45 +29,46 @@ namespace MyDearBaby
         /// </summary>
         private void InitializeComponent()
         {
+            this.checkedListBoxCategories = new System.Windows.Forms.CheckedListBox();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.checkedListBoxChildren = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
+            // 
+            // checkedListBoxCategories
+            // 
+            this.checkedListBoxCategories.FormattingEnabled = true;
+            this.checkedListBoxCategories.Location = new System.Drawing.Point(55, 32);
+            this.checkedListBoxCategories.Name = "checkedListBoxCategories";
+            this.checkedListBoxCategories.Size = new System.Drawing.Size(426, 180);
+            this.checkedListBoxCategories.TabIndex = 0;
             // 
             // btnRemove
             // 
             this.btnRemove.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnRemove.Location = new System.Drawing.Point(175, 183);
+            this.btnRemove.Location = new System.Drawing.Point(212, 234);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(94, 29);
-            this.btnRemove.TabIndex = 0;
-            this.btnRemove.Text = "Odstraň";
+            this.btnRemove.TabIndex = 1;
+            this.btnRemove.Text = "Odstranit";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // checkedListBoxChildren
-            // 
-            this.checkedListBoxChildren.FormattingEnabled = true;
-            this.checkedListBoxChildren.Location = new System.Drawing.Point(42, 27);
-            this.checkedListBoxChildren.Name = "checkedListBoxChildren";
-            this.checkedListBoxChildren.Size = new System.Drawing.Size(386, 136);
-            this.checkedListBoxChildren.TabIndex = 1;
-            // 
-            // RemoveChildForm
+            // RemoveEnjoymentCategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 224);
-            this.Controls.Add(this.checkedListBoxChildren);
+            this.ClientSize = new System.Drawing.Size(529, 275);
             this.Controls.Add(this.btnRemove);
-            this.Name = "RemoveChildForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RemoveChildForm_FormClosing);
+            this.Controls.Add(this.checkedListBoxCategories);
+            this.Name = "RemoveEnjoymentCategoryForm";
+            this.Text = "RemoveEnjoymentCategoryForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RemoveEnjoymentCategoryForm_FormClosing);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.CheckedListBox checkedListBoxCategories;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.CheckedListBox checkedListBoxChildren;
     }
 }

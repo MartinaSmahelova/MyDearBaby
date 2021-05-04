@@ -17,15 +17,9 @@ namespace MyDearBaby
         {
             InitializeComponent();
 
-            listOfChildren = Json.DeserializeJsonFile(listOfChildren, Json.FilePathinAppDataFolder(Json._child));
+            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathinAppDataFolder(Json.child));
 
-            if (listOfChildren != null)
-            {
-                foreach (var child in listOfChildren)
-                {
-                    checkedListBoxChildren.Items.Add(child);
-                }
-            }
+            FormToolsExtensions.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -36,16 +30,6 @@ namespace MyDearBaby
         private void RemoveChild()
         {
             listOfChildren.Clear();
-
-            //for (int i = 0; i <= (checkedListBoxChildren.CheckedItems.Count - 1); i++)
-            //{
-            //    checkedListBoxChildren.Items.RemoveAt(checkedListBoxChildren.CheckedIndices[i]);
-            //}
-
-            //foreach (var item in checkedListBoxChildren.Items)
-            //{
-            //    listOfChildren.Add((Child)item);
-            //}
 
             IEnumerable<object> notChecked = (from object item in checkedListBoxChildren.Items
                                               where !checkedListBoxChildren.CheckedItems.Contains(item)
@@ -59,7 +43,7 @@ namespace MyDearBaby
 
         private void RemoveChildForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeJsonFile(listOfChildren, Json.FilePathinAppDataFolder(Json._child));
+            Json.SerializeListToJsonFile(listOfChildren, Json.FilePathinAppDataFolder(Json.child));
         }
     }
 }

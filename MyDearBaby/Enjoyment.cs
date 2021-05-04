@@ -4,16 +4,19 @@ using System.Text;
 
 namespace MyDearBaby
 {
-    public class Enjoyments
+    public class Enjoyment
     {
         public List<String> ListOfEnjoymentsCategories { get; set; }
-        //public List<String> ListOfEnjoyments { get; set; }
         public List<Child> ListOfChildren { get; set; }
         public string ActualDate { get; set; }
+        public string EnjoymentText { get; set; }
 
-        public Enjoyments()
+        public Enjoyment(List<Child> listOfChildren, List<string> listOfenjoymentsCategories, string enjoyment)
         {
-      
+            ActualDate = ShowActualDate();
+            ListOfChildren = listOfChildren;
+            ListOfEnjoymentsCategories = listOfenjoymentsCategories;
+            EnjoymentText = enjoyment;
         }
 
         public string ShowActualDate()
@@ -23,6 +26,23 @@ namespace MyDearBaby
             //lbl_actualDate.Text = DateTime.Parse(input, invC, DateTimeStyles.RoundtripKind);
 
             return DateTime.Now.ToString("dd/MM/yyyy hh:mm");
+        }
+
+        //private string WriteAllItemsInList(List<Child> list)
+        //{
+        //    foreach (var item in list)
+        //    {
+        //        return item;
+        //    }
+
+        //    return "";
+        //}
+
+        public override string ToString()
+        {
+            return $"{ActualDate} \n" +
+                   //$"{} \n" +
+                   $"{EnjoymentText}";
         }
 
         public void AddEnjoyment()

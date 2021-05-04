@@ -82,12 +82,13 @@ namespace MyDearBaby
             this.listViewEnjoymentsCategories.Size = new System.Drawing.Size(387, 92);
             this.listViewEnjoymentsCategories.TabIndex = 5;
             this.listViewEnjoymentsCategories.UseCompatibleStateImageBehavior = false;
+            this.listViewEnjoymentsCategories.View = System.Windows.Forms.View.List;
             // 
             // AddEnjoymentCategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 352);
+            this.ClientSize = new System.Drawing.Size(518, 352);
             this.Controls.Add(this.listViewEnjoymentsCategories);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAddCategory);

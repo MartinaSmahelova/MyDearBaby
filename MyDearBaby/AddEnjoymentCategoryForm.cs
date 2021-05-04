@@ -11,16 +11,16 @@ namespace MyDearBaby
     public partial class AddEnjoymentCategoryForm : Form
     {
         private string _enjoymentCategory;
-        Enjoyments enjoyments = new Enjoyments();
+        private List<string> listOfEnjoymentCategories = new List<string>();
 
         public AddEnjoymentCategoryForm()
         {
             InitializeComponent();
 
-            enjoyments.ListOfEnjoymentsCategories = new List<string>();
+            listOfEnjoymentCategories = new List<string>();
 
-            enjoyments.ListOfEnjoymentsCategories = Json.DeserializeJsonFile(enjoyments.ListOfEnjoymentsCategories, Json.FilePathinAppDataFolder(Json._enjoymentsCategories));
-            ShowListInListView(enjoyments.ListOfEnjoymentsCategories, listViewEnjoymentsCategories);
+            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(Json.enjoymentsCategories));
+            ShowListInListView(listOfEnjoymentCategories, listViewEnjoymentsCategories);
         }
         private void tbCategoryname_TextChanged(object sender, EventArgs e)
         {
@@ -31,13 +31,13 @@ namespace MyDearBaby
         {
             if (!string.IsNullOrEmpty(_enjoymentCategory))
             {
-                enjoyments.ListOfEnjoymentsCategories.Add(_enjoymentCategory);
+                listOfEnjoymentCategories.Add(_enjoymentCategory);
             }
         }
 
         private void AddEnjoymentCategoryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeJsonFile(enjoyments.ListOfEnjoymentsCategories, Json.FilePathinAppDataFolder(Json._enjoymentsCategories));
+            Json.SerializeListToJsonFile(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(Json.enjoymentsCategories));
         }
 
         private void tbCategoryName_Validating(object sender, CancelEventArgs e)

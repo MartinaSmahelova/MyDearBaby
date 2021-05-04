@@ -32,7 +32,7 @@ namespace MyDearBaby
         private void btn_addEnjoyment_Click(object sender, EventArgs e)
         {
 
-            using (var AddEnjoymentForm = new AddEnjoyment())
+            using (var AddEnjoymentForm = new AddEnjoymentForm())
             {
                 AddEnjoymentForm.ShowDialog();    
             }
@@ -51,6 +51,14 @@ namespace MyDearBaby
             using (var addCategoryForm = new AddEnjoymentCategoryForm())
             {
                 addCategoryForm.ShowDialog();
+            }
+        }
+
+        private void btnRemoveEnjoymentCategory_Click(object sender, EventArgs e)
+        {
+            using (var removeCategoryForm = new RemoveEnjoymentCategoryForm())
+            {
+                removeCategoryForm.ShowDialog();
             }
         }
     }

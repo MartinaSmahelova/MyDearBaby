@@ -8,11 +8,20 @@ namespace MyDearBaby
 {
     public static class Json
     {
-        public static readonly string _child = "child.json";
-        public static readonly string _enjoymentsCategories = "enjoyments.json";
-        public static readonly string _enjoyments = "zážitky.txt";
+        public static readonly string child = "child.json";
+        public static readonly string enjoymentsCategories = "enjoymentsCategories.json";
+        public static readonly string enjoyments = "enjoyments.json";
+        public static readonly string enjoymentsTXT = "zážitky.txt";
 
-        public static List<T> DeserializeJsonFile<T>(List<T> list, string filePath)
+        /// <summary>
+        /// Validate if directory and file exist. If no create them. 
+        /// If yes deserialize file to list.  
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list">List to deserialize</param>
+        /// <param name="filePath">Directory where is file for deserialization</param>
+        /// <returns></returns>
+        public static List<T> DeserializeJsonFileToList<T>(List<T> list, string filePath)
         {
             ValidateDariectoryAndFileExistance(filePath);
 
@@ -22,7 +31,14 @@ namespace MyDearBaby
             return list;
         }
 
-        public static void SerializeJsonFile<T>(List<T> list, string filePath)
+        /// <summary>
+        /// Validate if directory and file exist. If no create them. 
+        /// If yes serialize list to file. 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list">List to serialize</param>
+        /// <param name="filePath">Directory where to put serialized file</param>
+        public static void SerializeListToJsonFile<T>(List<T> list, string filePath)
         {
             ValidateDariectoryAndFileExistance(filePath);
 
@@ -30,6 +46,11 @@ namespace MyDearBaby
             File.WriteAllText(filePath, serializedList);
         }
 
+        /// <summary>
+        /// File path to App Data folder, to storage application information which are not directly for user. 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static string FilePathinAppDataFolder(string fileName)
         {
             string folderApplicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -39,6 +60,11 @@ namespace MyDearBaby
             return childFilePath;
         }
 
+        /// <summary>
+        /// File path to My Documents folder to storage information for user. 
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public static string FilePathInMyDocFolder(string filename)
         {
             string myDocumentsFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
