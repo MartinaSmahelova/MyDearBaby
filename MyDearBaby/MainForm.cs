@@ -14,7 +14,6 @@ namespace MyDearBaby
 {
     public partial class MainForm : Form
     {
-        public List<Child> listOfChildren;
 
         public MainForm()
         {
@@ -59,6 +58,14 @@ namespace MyDearBaby
             using (var removeCategoryForm = new RemoveEnjoymentCategoryForm())
             {
                 removeCategoryForm.ShowDialog();
+            }
+        }
+
+        private void btnEnjoyments_Click(object sender, EventArgs e)
+        {
+            using (var enjoymentsForm = new EnjoymentsForm())
+            {
+                enjoymentsForm.ShowDialog();
             }
         }
     }

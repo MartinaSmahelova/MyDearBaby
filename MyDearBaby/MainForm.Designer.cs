@@ -34,6 +34,7 @@ namespace MyDearBaby
             this.butRemoveChild = new System.Windows.Forms.Button();
             this.btnAddEnjoymentCategory = new System.Windows.Forms.Button();
             this.btnRemoveEnjoymentCategory = new System.Windows.Forms.Button();
+            this.btnEnjoyments = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_addChild
@@ -86,11 +87,22 @@ namespace MyDearBaby
             this.btnRemoveEnjoymentCategory.UseVisualStyleBackColor = true;
             this.btnRemoveEnjoymentCategory.Click += new System.EventHandler(this.btnRemoveEnjoymentCategory_Click);
             // 
+            // btnEnjoyments
+            // 
+            this.btnEnjoyments.Location = new System.Drawing.Point(389, 198);
+            this.btnEnjoyments.Name = "btnEnjoyments";
+            this.btnEnjoyments.Size = new System.Drawing.Size(94, 29);
+            this.btnEnjoyments.TabIndex = 5;
+            this.btnEnjoyments.Text = "Zážitky";
+            this.btnEnjoyments.UseVisualStyleBackColor = true;
+            this.btnEnjoyments.Click += new System.EventHandler(this.btnEnjoyments_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEnjoyments);
             this.Controls.Add(this.btnRemoveEnjoymentCategory);
             this.Controls.Add(this.btnAddEnjoymentCategory);
             this.Controls.Add(this.butRemoveChild);
@@ -108,6 +120,7 @@ namespace MyDearBaby
         private System.Windows.Forms.Button butRemoveChild;
         private System.Windows.Forms.Button btnAddEnjoymentCategory;
         private System.Windows.Forms.Button btnRemoveEnjoymentCategory;
+        private System.Windows.Forms.Button btnEnjoyments;
     }
 }
 

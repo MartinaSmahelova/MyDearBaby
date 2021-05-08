@@ -28,46 +28,13 @@ namespace MyDearBaby
             return DateTime.Now.ToString("dd/MM/yyyy hh:mm");
         }
 
-        //private string WriteAllItemsInList(List<Child> list)
-        //{
-        //    foreach (var item in list)
-        //    {
-        //        return item;
-        //    }
-
-        //    return "";
-        //}
-
         public override string ToString()
         {
-            return $"{ActualDate} \n" +
-                   //$"{} \n" +
+            return $"--------------------------------------------------------------------- \n" +
+                   $"{ActualDate} \n" +
+                   $"{String.Join("\n", ListOfChildren)} \n" +
+                   $"{String.Join("\n", ListOfEnjoymentsCategories)} \n" +
                    $"{EnjoymentText}";
-        }
-
-        public void AddEnjoyment()
-        {
-
-        }
-
-        public void AddEnjoymentCategory()
-        {
-
-        }
-
-        public void ShowEnjoymentsRelatedToConcreteChild()
-        {
-
-        }
-
-        public void ShowEnjoymentsRelatedToCategory()
-        {
-
-        }
-
-        public void ShowEnjoymentsRelatedToKeyWord()
-        {
-
         }
 
     }

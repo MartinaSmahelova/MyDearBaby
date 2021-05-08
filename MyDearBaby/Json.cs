@@ -8,11 +8,6 @@ namespace MyDearBaby
 {
     public static class Json
     {
-        public static readonly string child = "child.json";
-        public static readonly string enjoymentsCategories = "enjoymentsCategories.json";
-        public static readonly string enjoyments = "enjoyments.json";
-        public static readonly string enjoymentsTXT = "zážitky.txt";
-
         /// <summary>
         /// Validate if directory and file exist. If no create them. 
         /// If yes deserialize file to list.  

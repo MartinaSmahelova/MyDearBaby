@@ -17,7 +17,7 @@ namespace MyDearBaby
         {
             InitializeComponent();
 
-            listOfEnjoymentsCategories = Json.DeserializeJsonFileToList(listOfEnjoymentsCategories, Json.FilePathinAppDataFolder(Json.enjoymentsCategories));
+            listOfEnjoymentsCategories = Json.DeserializeJsonFileToList(listOfEnjoymentsCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
 
             FormToolsExtensions.ShowListInCheckedListBox(listOfEnjoymentsCategories, checkedListBoxCategories);
         }
@@ -43,7 +43,7 @@ namespace MyDearBaby
 
         private void RemoveEnjoymentCategoryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeListToJsonFile(listOfEnjoymentsCategories, Json.FilePathinAppDataFolder(Json.enjoymentsCategories));
+            Json.SerializeListToJsonFile(listOfEnjoymentsCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
         }
     }
 }

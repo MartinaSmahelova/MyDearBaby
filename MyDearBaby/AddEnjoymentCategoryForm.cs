@@ -19,7 +19,7 @@ namespace MyDearBaby
 
             listOfEnjoymentCategories = new List<string>();
 
-            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(Json.enjoymentsCategories));
+            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
             ShowListInListView(listOfEnjoymentCategories, listViewEnjoymentsCategories);
         }
         private void tbCategoryname_TextChanged(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace MyDearBaby
 
         private void AddEnjoymentCategoryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeListToJsonFile(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(Json.enjoymentsCategories));
+            Json.SerializeListToJsonFile(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
         }
 
         private void tbCategoryName_Validating(object sender, CancelEventArgs e)

@@ -25,13 +25,13 @@ namespace MyDearBaby
 
             lblActualDate.Text = actualDateAndTime;
 
-            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathinAppDataFolder(Json.child));
+            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathinAppDataFolder(FilesNames.childJson));
             FormToolsExtensions.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
 
-            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(Json.enjoymentsCategories));
+            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
             FormToolsExtensions.ShowListInCheckedListBox(listOfEnjoymentCategories, checkedListBoxEnjoymentsCategories);
 
-            listOfEnjoyments = Json.DeserializeJsonFileToList(listOfEnjoyments, Json.FilePathinAppDataFolder(Json.enjoyments));
+            listOfEnjoyments = Json.DeserializeJsonFileToList(listOfEnjoyments, Json.FilePathinAppDataFolder(FilesNames.enjoymentsJson));
         }
 
         private void btnAddEnjoyment_Click(object sender, EventArgs e)
@@ -51,47 +51,32 @@ namespace MyDearBaby
 
         private void AddEnjoyment_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeListToJsonFile(listOfEnjoyments, Json.FilePathinAppDataFolder(Json.enjoyments));
+            Json.SerializeListToJsonFile(listOfEnjoyments, Json.FilePathinAppDataFolder(FilesNames.enjoymentsJson));
         }
 
         private void SaveEnjoyment(Enjoyment enjoyment)
         {
-            if (!Directory.Exists(Path.GetDirectoryName(Json.FilePathInMyDocFolder(Json.enjoymentsTXT))))
+            if (!Directory.Exists(Path.GetDirectoryName(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt))))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(Json.FilePathInMyDocFolder(Json.enjoymentsTXT)));
+                Directory.CreateDirectory(Path.GetDirectoryName(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt)));
             }
 
-            if (!File.Exists(Json.FilePathInMyDocFolder(Json.enjoymentsTXT)))
+            if (!File.Exists(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt)))
             {
-                File.WriteAllText(Json.FilePathInMyDocFolder(Json.enjoymentsTXT), "ZÁŽITKY <3 \n******************************************\n");
+                File.WriteAllText(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt), "ZÁŽITKY <3 \n******************************************\n");
             }
 
             else
             {
                 if (!string.IsNullOrEmpty(richTextBoxEnjoyment.Text))
                 {
-                    using (StreamWriter writer = new StreamWriter(Json.FilePathInMyDocFolder(Json.enjoymentsTXT), append: true))
+                    using (StreamWriter writer = new StreamWriter(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt), append: true))
                     {
                         writer.WriteLine(enjoyment);
-                        //WriteCheckedItems(writer, checkedListBoxChildren);
-                        //WriteCheckedItems(writer, checkedListBoxEnjoymentsCategories);
-                        //writer.WriteLine(richTextBoxEnjoyment.Text);
-                        //writer.WriteLine("------------------------------------------");
                     }
                 }
             }
         }
-
-        //private void WriteCheckedItems(StreamWriter writer, CheckedListBox checkedListBox)
-        //{
-        //    //checkedListBox.Items.Where(item => item.Select == true)
-        //    //    .ForEach(i => Console.WriteLine(i.ToString());
-
-        //    for (int i = 0; i <= (checkedListBox.CheckedItems.Count - 1); i++)
-        //    {
-        //        writer.WriteLine(checkedListBox.CheckedItems[i].ToString());
-        //    }
-        //}
 
         private List<T> AddCheckedItemsToList<T>(List<T> list, CheckedListBox checkedListBox) 
         {
