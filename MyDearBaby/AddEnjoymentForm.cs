@@ -25,13 +25,13 @@ namespace MyDearBaby
 
             lblActualDate.Text = actualDateAndTime;
 
-            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathinAppDataFolder(FilesNames.childJson));
+            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
             FormToolsExtensions.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
 
-            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
             FormToolsExtensions.ShowListInCheckedListBox(listOfEnjoymentCategories, checkedListBoxEnjoymentsCategories);
 
-            listOfEnjoyments = Json.DeserializeJsonFileToList(listOfEnjoyments, Json.FilePathinAppDataFolder(FilesNames.enjoymentsJson));
+            listOfEnjoyments = Json.DeserializeJsonFileToList(listOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
         }
 
         private void btnAddEnjoyment_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace MyDearBaby
 
         private void AddEnjoyment_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeListToJsonFile(listOfEnjoyments, Json.FilePathinAppDataFolder(FilesNames.enjoymentsJson));
+            Json.SerializeListToJsonFile(listOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
         }
 
         private void SaveEnjoyment(Enjoyment enjoyment)

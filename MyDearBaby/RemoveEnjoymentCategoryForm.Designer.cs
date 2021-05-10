@@ -40,6 +40,7 @@ namespace MyDearBaby
             this.checkedListBoxCategories.Name = "checkedListBoxCategories";
             this.checkedListBoxCategories.Size = new System.Drawing.Size(426, 180);
             this.checkedListBoxCategories.TabIndex = 0;
+            this.checkedListBoxCategories.Validating += new System.ComponentModel.CancelEventHandler(this.checkedListBoxCategories_Validating);
             // 
             // btnRemove
             // 

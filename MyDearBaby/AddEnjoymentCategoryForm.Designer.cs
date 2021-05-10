@@ -60,7 +60,7 @@ namespace MyDearBaby
             this.btnAddCategory.Location = new System.Drawing.Point(155, 268);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(193, 38);
-            this.btnAddCategory.TabIndex = 3;
+            this.btnAddCategory.TabIndex = 5;
             this.btnAddCategory.Text = "OK";
             this.btnAddCategory.UseVisualStyleBackColor = true;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
@@ -80,7 +80,7 @@ namespace MyDearBaby
             this.listViewEnjoymentsCategories.Location = new System.Drawing.Point(57, 73);
             this.listViewEnjoymentsCategories.Name = "listViewEnjoymentsCategories";
             this.listViewEnjoymentsCategories.Size = new System.Drawing.Size(387, 92);
-            this.listViewEnjoymentsCategories.TabIndex = 5;
+            this.listViewEnjoymentsCategories.TabIndex = 3;
             this.listViewEnjoymentsCategories.UseCompatibleStateImageBehavior = false;
             this.listViewEnjoymentsCategories.View = System.Windows.Forms.View.List;
             // 

@@ -46,7 +46,7 @@ namespace MyDearBaby
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static string FilePathinAppDataFolder(string fileName)
+        public static string FilePathToAppDataFolder(string fileName)
         {
             string folderApplicationDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string programName = "MyDearChild";

@@ -21,10 +21,10 @@ namespace MyDearBaby
         {
             InitializeComponent();
 
-            listOfEnjoyments = Json.DeserializeJsonFileToList(listOfEnjoyments, Json.FilePathinAppDataFolder(FilesNames.enjoymentsJson));
+            listOfEnjoyments = Json.DeserializeJsonFileToList(listOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
             ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
 
-            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
             FormToolsExtensions.ShowListInCheckedListBox(listOfEnjoymentCategories, checkedListBoxCategories);
         }
 

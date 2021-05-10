@@ -28,7 +28,7 @@ namespace MyDearBaby
             dateTimePickerDateOfBirth.Value = DateTime.Today;
 
             listOfChildren = new List<Child>();
-            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathinAppDataFolder(FilesNames.childJson));
+            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
         }
 
         private void tbChildName_TextChanged(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace MyDearBaby
 
         private void AddChild_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeListToJsonFile(listOfChildren, Json.FilePathinAppDataFolder(FilesNames.childJson));
+            Json.SerializeListToJsonFile(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
         }
 
         private void tbChildName_Validating(object sender, CancelEventArgs e)

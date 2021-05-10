@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace MyDearBaby
 {
@@ -17,33 +12,44 @@ namespace MyDearBaby
         {
             InitializeComponent();
 
-            listOfEnjoymentsCategories = Json.DeserializeJsonFileToList(listOfEnjoymentsCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+            listOfEnjoymentsCategories = Json.DeserializeJsonFileToList(listOfEnjoymentsCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
 
             FormToolsExtensions.ShowListInCheckedListBox(listOfEnjoymentsCategories, checkedListBoxCategories);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            RemoveCategory();
-        }
 
-        private void RemoveCategory()
-        {
-            listOfEnjoymentsCategories.Clear();
-
-            IEnumerable<object> notChecked = (from object item in checkedListBoxCategories.Items
-                                              where !checkedListBoxCategories.CheckedItems.Contains(item)
-                                              select item);
-
-            foreach (object item in notChecked)
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                listOfEnjoymentsCategories.Add((string)item);
+                FormToolsExtensions.RemoveCheckedListBoxCheckedItemsFromList(listOfEnjoymentsCategories, checkedListBoxCategories);
             }
+           
         }
 
         private void RemoveEnjoymentCategoryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeListToJsonFile(listOfEnjoymentsCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+            Json.SerializeListToJsonFile(listOfEnjoymentsCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+        }
+
+        private void checkedListBoxCategories_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (checkedListBoxCategories.CheckedItems.Count == 0)
+            {
+                var closeMsg = MessageBox.Show("Nevybrali jste žádnou kategorii. Chcete vybrat kategorii pro smazání?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                e.Cancel = true;
+
+                if (closeMsg == DialogResult.No)
+                {
+                    MessageBox.Show("Strána se uzavře, nevymazali jste žádnou kategorii.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    e.Cancel = true;
+                }
+
+                if (closeMsg == DialogResult.Yes)
+                {  
+                    e.Cancel = false;
+                }
+            }
         }
     }
 }

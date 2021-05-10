@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace MyDearBaby
 {
@@ -17,33 +12,42 @@ namespace MyDearBaby
         {
             InitializeComponent();
 
-            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathinAppDataFolder(FilesNames.childJson));
+            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
 
             FormToolsExtensions.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            RemoveChild();
-        }
-
-        private void RemoveChild()
-        {
-            listOfChildren.Clear();
-
-            IEnumerable<object> notChecked = (from object item in checkedListBoxChildren.Items
-                                              where !checkedListBoxChildren.CheckedItems.Contains(item)
-                                              select item);
-
-            foreach (object item in notChecked)
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                listOfChildren.Add((Child)item);
+                FormToolsExtensions.RemoveCheckedListBoxCheckedItemsFromList(listOfChildren, checkedListBoxChildren);
             }
         }
 
         private void RemoveChildForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeListToJsonFile(listOfChildren, Json.FilePathinAppDataFolder(FilesNames.childJson));
+            Json.SerializeListToJsonFile(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
+        }
+
+        private void checkedListBoxChildren_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (checkedListBoxChildren.CheckedItems.Count == 0)
+            {
+                var closeMsg = MessageBox.Show("Nevybrali jste žádné dítě. Chcete vybrat dítě?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                e.Cancel = true;
+
+                if (closeMsg == DialogResult.No)
+                {
+                    MessageBox.Show("Strána se uzavře, nevymazali jste žádné dítě.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    e.Cancel = true;
+                }
+
+                if (closeMsg == DialogResult.Yes)
+                {
+                    e.Cancel = false;
+                }
+            }
         }
     }
 }

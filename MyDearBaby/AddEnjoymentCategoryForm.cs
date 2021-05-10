@@ -10,49 +10,45 @@ namespace MyDearBaby
 {
     public partial class AddEnjoymentCategoryForm : Form
     {
-        private string _enjoymentCategory;
+        private string enjoymentCategory;
         private List<string> listOfEnjoymentCategories = new List<string>();
 
         public AddEnjoymentCategoryForm()
         {
             InitializeComponent();
 
-            listOfEnjoymentCategories = new List<string>();
-
-            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
-            ShowListInListView(listOfEnjoymentCategories, listViewEnjoymentsCategories);
+            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+            
+            FormToolsExtensions.ShowListInListView(listOfEnjoymentCategories, listViewEnjoymentsCategories);
         }
         private void tbCategoryname_TextChanged(object sender, EventArgs e)
         {
-            _enjoymentCategory = tbCategoryName.Text;
+            enjoymentCategory = tbCategoryName.Text;
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(_enjoymentCategory))
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                listOfEnjoymentCategories.Add(_enjoymentCategory);
+                listOfEnjoymentCategories.Add(enjoymentCategory);
             }
         }
 
         private void AddEnjoymentCategoryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeListToJsonFile(listOfEnjoymentCategories, Json.FilePathinAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+            Json.SerializeListToJsonFile(listOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
         }
 
         private void tbCategoryName_Validating(object sender, CancelEventArgs e)
         {
-
-        }
-
-        public void ShowListInListView<T>(List<T> list, ListView listView)
-        {
-            if (list != null)
+            if (string.IsNullOrEmpty(enjoymentCategory))
             {
-                foreach (var item in list)
-                {
-                    listView.Items.Add(item.ToString());
-                }
+                MessageBox.Show("Zadejte kategorii", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
             }
         }
     }
