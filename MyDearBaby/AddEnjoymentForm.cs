@@ -42,32 +42,6 @@ namespace MyDearBaby
             {
                 listOfEnjoyments.Add(enjoyment);
             }
-
-            SaveEnjoyment(enjoyment);
-        }
-
-        private void SaveEnjoyment(Enjoyment enjoyment)
-        {
-            if (!Directory.Exists(Path.GetDirectoryName(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt))))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt)));
-            }
-
-            if (!File.Exists(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt)))
-            {
-                File.WriteAllText(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt), "ZÁŽITKY <3 \n******************************************\n");
-            }
-
-            else
-            {
-                if (!string.IsNullOrEmpty(richTextBoxEnjoyment.Text))
-                {
-                    using (StreamWriter writer = new StreamWriter(Json.FilePathInMyDocFolder(FilesNames.enjoymentsTxt), append: true))
-                    {
-                        writer.WriteLine(enjoyment);
-                    }
-                }
-            }
         }
 
         private List<T> AddCheckedItemsToList<T>(List<T> list, CheckedListBox checkedListBox) 

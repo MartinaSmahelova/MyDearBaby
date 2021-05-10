@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace MyDearBaby
 {
     public partial class EnjoymentsForm : Form
-    { 
+    {
         private List<Enjoyment> filteredEnjoyments = new List<Enjoyment>();
         private IEnumerable<Enjoyment> filteredEnjoymentsByCategory = new List<Enjoyment>();
+        private bool wereAllEnjoymentsAlreadyDispleyd = false;
         public List<string> listOfEnjoymentCategories { get; set; }
         public List<Enjoyment> listOfEnjoyments { get; set; }
- 
+
         public EnjoymentsForm(List<string> listCategories, List<Enjoyment> listEnjoyments)
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace MyDearBaby
             {
                 richTextBoxEnjoyments.Clear();
                 btnCategoryFilter.Enabled = false;
+                wereAllEnjoymentsAlreadyDispleyd = false;
 
                 if (filteredEnjoyments.Count != 0)
                 {
@@ -64,6 +67,7 @@ namespace MyDearBaby
             {
                 richTextBoxEnjoyments.Clear();
                 btnKeyWordFilter.Enabled = false;
+                wereAllEnjoymentsAlreadyDispleyd = false;
 
                 if (filteredEnjoymentsByCategory.Count() != 0)
                 {
@@ -83,12 +87,50 @@ namespace MyDearBaby
             }
         }
 
-        private void btnClearFilter_Click(object sender, EventArgs e)
+        private void btnShowAllEnjoyments_Click(object sender, EventArgs e)
         {
-            btnCategoryFilter.Enabled = true;
-            btnKeyWordFilter.Enabled = true;
+            if (!wereAllEnjoymentsAlreadyDispleyd)
+            {
+                foreach (int item in checkedListBoxCategories.CheckedIndices)
+                {
+                    checkedListBoxCategories.SetItemCheckState(item, CheckState.Unchecked);
+                }
 
-            FormToolsHelpers.ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
+                FormToolsHelpers.ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
+
+                btnKeyWordFilter.Enabled = true;
+                btnCategoryFilter.Enabled = true;
+
+                wereAllEnjoymentsAlreadyDispleyd = true;
+            }
+
+            else
+            {
+                MessageBox.Show("Máte zobrazeny všchny zážitky", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
         }
+
+        private void SaveEnjoyment(Enjoyment enjoyment)
+        {
+            if (!Directory.Exists(Path.GetDirectoryName(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt))))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt)));
+            }
+
+            if (!File.Exists(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt)))
+            {
+                File.WriteAllText(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt), "ZÁŽITKY <3 \n******************************************\n");
+            }
+
+            else
+            {
+                using (StreamWriter writer = new StreamWriter(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt), append: true))
+                {
+                    writer.WriteLine(richTextBoxEnjoyments.Text);
+                }
+            }
+        }
+
     }
 }

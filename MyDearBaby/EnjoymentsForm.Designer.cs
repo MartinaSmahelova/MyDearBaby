@@ -35,7 +35,7 @@ namespace MyDearBaby
             this.btnKeyWordFilter = new MyDearBaby.RoundButton();
             this.btnCategoryFilter = new MyDearBaby.RoundButton();
             this.roundButton1 = new MyDearBaby.RoundButton();
-            this.roundButton2 = new MyDearBaby.RoundButton();
+            this.roundButton3 = new MyDearBaby.RoundButton();
             this.SuspendLayout();
             // 
             // richTextBoxEnjoyments
@@ -92,31 +92,31 @@ namespace MyDearBaby
             this.roundButton1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.roundButton1.FlatAppearance.BorderSize = 0;
             this.roundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButton1.Location = new System.Drawing.Point(96, 469);
+            this.roundButton1.Location = new System.Drawing.Point(70, 457);
             this.roundButton1.Name = "roundButton1";
-            this.roundButton1.Size = new System.Drawing.Size(50, 48);
+            this.roundButton1.Size = new System.Drawing.Size(82, 81);
             this.roundButton1.TabIndex = 9;
             this.roundButton1.UseVisualStyleBackColor = false;
             // 
-            // roundButton2
+            // roundButton3
             // 
-            this.roundButton2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.roundButton2.FlatAppearance.BorderSize = 0;
-            this.roundButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButton2.Location = new System.Drawing.Point(458, 469);
-            this.roundButton2.Name = "roundButton2";
-            this.roundButton2.Size = new System.Drawing.Size(64, 64);
-            this.roundButton2.TabIndex = 10;
-            this.roundButton2.Text = "Vymaž filtr";
-            this.roundButton2.UseVisualStyleBackColor = false;
-            this.roundButton2.Click += new System.EventHandler(this.btnClearFilter_Click);
+            this.roundButton3.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.roundButton3.FlatAppearance.BorderSize = 0;
+            this.roundButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButton3.Location = new System.Drawing.Point(458, 457);
+            this.roundButton3.Name = "roundButton3";
+            this.roundButton3.Size = new System.Drawing.Size(87, 81);
+            this.roundButton3.TabIndex = 11;
+            this.roundButton3.Text = "Zobraziť všetky zážitky\r\n";
+            this.roundButton3.UseVisualStyleBackColor = false;
+            this.roundButton3.Click += new System.EventHandler(this.btnShowAllEnjoyments_Click);
             // 
             // EnjoymentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 692);
-            this.Controls.Add(this.roundButton2);
+            this.Controls.Add(this.roundButton3);
             this.Controls.Add(this.roundButton1);
             this.Controls.Add(this.btnCategoryFilter);
             this.Controls.Add(this.btnKeyWordFilter);
@@ -124,6 +124,7 @@ namespace MyDearBaby
             this.Controls.Add(this.textBoxKeyWord);
             this.Controls.Add(this.richTextBoxEnjoyments);
             this.Name = "EnjoymentsForm";
+            this.Text = "Uložiť kategorie";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,6 +140,6 @@ namespace MyDearBaby
         private RoundButton btnKeyWordFilter;
         private RoundButton btnCategoryFilter;
         private RoundButton roundButton1;
-        private RoundButton roundButton2;
+        private RoundButton roundButton3;
     }
 }

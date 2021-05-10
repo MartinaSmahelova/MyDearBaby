@@ -60,9 +60,9 @@ namespace MyDearBaby
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
-        public static string FilePathInMyDocFolder(string filename)
+        public static string FilePathTonMyDesktop(string filename)
         {
-            string myDocumentsFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string myDocumentsFilePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string programName = "MyDearChild";
             string enjoymentsFilePath = Path.Combine(myDocumentsFilePath, programName, filename);
 
