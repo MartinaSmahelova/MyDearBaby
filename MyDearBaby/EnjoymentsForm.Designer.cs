@@ -30,53 +30,25 @@ namespace MyDearBaby
         private void InitializeComponent()
         {
             this.richTextBoxEnjoyments = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnCategoryFilter = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
             this.textBoxKeyWord = new System.Windows.Forms.TextBox();
             this.checkedListBoxCategories = new System.Windows.Forms.CheckedListBox();
+            this.btnKeyWordFilter = new MyDearBaby.RoundButton();
+            this.btnCategoryFilter = new MyDearBaby.RoundButton();
+            this.roundButton1 = new MyDearBaby.RoundButton();
+            this.roundButton2 = new MyDearBaby.RoundButton();
             this.SuspendLayout();
             // 
             // richTextBoxEnjoyments
             // 
-            this.richTextBoxEnjoyments.Location = new System.Drawing.Point(50, 37);
+            this.richTextBoxEnjoyments.Location = new System.Drawing.Point(35, 37);
             this.richTextBoxEnjoyments.Name = "richTextBoxEnjoyments";
-            this.richTextBoxEnjoyments.Size = new System.Drawing.Size(462, 431);
+            this.richTextBoxEnjoyments.Size = new System.Drawing.Size(487, 414);
             this.richTextBoxEnjoyments.TabIndex = 0;
             this.richTextBoxEnjoyments.Text = "";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(158, 457);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 43);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnCategoryFilter
-            // 
-            this.btnCategoryFilter.Location = new System.Drawing.Point(365, 556);
-            this.btnCategoryFilter.Name = "btnCategoryFilter";
-            this.btnCategoryFilter.Size = new System.Drawing.Size(114, 62);
-            this.btnCategoryFilter.TabIndex = 2;
-            this.btnCategoryFilter.Text = "Filtruj podle kategorie";
-            this.btnCategoryFilter.UseVisualStyleBackColor = true;
-            this.btnCategoryFilter.Click += new System.EventHandler(this.btnCategoryFilter_Click);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Location = new System.Drawing.Point(365, 488);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(147, 62);
-            this.btnFilter.TabIndex = 4;
-            this.btnFilter.Text = "filtruj podle klíčového slova";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
             // textBoxKeyWord
             // 
-            this.textBoxKeyWord.Location = new System.Drawing.Point(50, 506);
+            this.textBoxKeyWord.Location = new System.Drawing.Point(50, 548);
             this.textBoxKeyWord.Name = "textBoxKeyWord";
             this.textBoxKeyWord.Size = new System.Drawing.Size(300, 27);
             this.textBoxKeyWord.TabIndex = 5;
@@ -84,21 +56,72 @@ namespace MyDearBaby
             // checkedListBoxCategories
             // 
             this.checkedListBoxCategories.FormattingEnabled = true;
-            this.checkedListBoxCategories.Location = new System.Drawing.Point(49, 548);
+            this.checkedListBoxCategories.Location = new System.Drawing.Point(50, 595);
             this.checkedListBoxCategories.Name = "checkedListBoxCategories";
             this.checkedListBoxCategories.Size = new System.Drawing.Size(301, 70);
             this.checkedListBoxCategories.TabIndex = 6;
+            // 
+            // btnKeyWordFilter
+            // 
+            this.btnKeyWordFilter.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnKeyWordFilter.FlatAppearance.BorderSize = 0;
+            this.btnKeyWordFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKeyWordFilter.Location = new System.Drawing.Point(365, 509);
+            this.btnKeyWordFilter.Name = "btnKeyWordFilter";
+            this.btnKeyWordFilter.Size = new System.Drawing.Size(87, 81);
+            this.btnKeyWordFilter.TabIndex = 7;
+            this.btnKeyWordFilter.Text = "Hledej klíčové slovo";
+            this.btnKeyWordFilter.UseVisualStyleBackColor = false;
+            this.btnKeyWordFilter.Click += new System.EventHandler(this.btnKeyWordFilter_Click);
+            // 
+            // btnCategoryFilter
+            // 
+            this.btnCategoryFilter.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnCategoryFilter.FlatAppearance.BorderSize = 0;
+            this.btnCategoryFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategoryFilter.Location = new System.Drawing.Point(434, 596);
+            this.btnCategoryFilter.Name = "btnCategoryFilter";
+            this.btnCategoryFilter.Size = new System.Drawing.Size(79, 69);
+            this.btnCategoryFilter.TabIndex = 8;
+            this.btnCategoryFilter.Text = "Hledej kategorii";
+            this.btnCategoryFilter.UseVisualStyleBackColor = false;
+            this.btnCategoryFilter.Click += new System.EventHandler(this.btnCategoryFilter_Click);
+            // 
+            // roundButton1
+            // 
+            this.roundButton1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.roundButton1.FlatAppearance.BorderSize = 0;
+            this.roundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButton1.Location = new System.Drawing.Point(96, 469);
+            this.roundButton1.Name = "roundButton1";
+            this.roundButton1.Size = new System.Drawing.Size(50, 48);
+            this.roundButton1.TabIndex = 9;
+            this.roundButton1.UseVisualStyleBackColor = false;
+            // 
+            // roundButton2
+            // 
+            this.roundButton2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.roundButton2.FlatAppearance.BorderSize = 0;
+            this.roundButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButton2.Location = new System.Drawing.Point(458, 469);
+            this.roundButton2.Name = "roundButton2";
+            this.roundButton2.Size = new System.Drawing.Size(64, 64);
+            this.roundButton2.TabIndex = 10;
+            this.roundButton2.Text = "Vymaž filtr";
+            this.roundButton2.UseVisualStyleBackColor = false;
+            this.roundButton2.Click += new System.EventHandler(this.btnClearFilter_Click);
             // 
             // EnjoymentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 625);
+            this.ClientSize = new System.Drawing.Size(549, 692);
+            this.Controls.Add(this.roundButton2);
+            this.Controls.Add(this.roundButton1);
+            this.Controls.Add(this.btnCategoryFilter);
+            this.Controls.Add(this.btnKeyWordFilter);
             this.Controls.Add(this.checkedListBoxCategories);
             this.Controls.Add(this.textBoxKeyWord);
-            this.Controls.Add(this.btnFilter);
-            this.Controls.Add(this.btnCategoryFilter);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBoxEnjoyments);
             this.Name = "EnjoymentsForm";
             this.ResumeLayout(false);
@@ -109,12 +132,13 @@ namespace MyDearBaby
         #endregion
 
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnCategoryFilter;
-        private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.RichTextBox richTextBoxEnjoyments;
         private System.Windows.Forms.Button Filter;
         private System.Windows.Forms.TextBox textBoxKeyWord;
         private System.Windows.Forms.CheckedListBox checkedListBoxCategories;
+        private RoundButton btnKeyWordFilter;
+        private RoundButton btnCategoryFilter;
+        private RoundButton roundButton1;
+        private RoundButton roundButton2;
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace MyDearBaby
 {
-    public static class FormToolsExtensions
+    public static class FormToolsHelpers
     {
         public static void ShowListInCheckedListBox<T>(List<T> list, CheckedListBox checkedListBox)
         {
@@ -26,6 +26,17 @@ namespace MyDearBaby
                 foreach (var item in list)
                 {
                     listView.Items.Add(item.ToString());
+                }
+            }
+        }
+
+        public static void ShowListInRichTextBox<T>(List<T> list, RichTextBox richTextBox)
+        {
+            if (list != null)
+            {
+                foreach (var item in list)
+                {
+                    richTextBox.Text += item.ToString() + " \n";
                 }
             }
         }

@@ -22,7 +22,7 @@ namespace MyDearBaby
 
         public override string ToString()
         {
-            return $"{Name}, {ActualAge}";
+            return $"{Name}, {CalculateActualAge(DateOfBirth)}";
         }
 
         public string CalculateActualAge(DateTime dateofbirth)

@@ -1,37 +1,34 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Text;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace MyDearBaby
 {
     public partial class AddEnjoymentForm : Form
     {
-        private List<Child> listOfChildren = new List<Child>();
-        private List<string> listOfEnjoymentCategories = new List<string>();
-        private List<Enjoyment> listOfEnjoyments = new List<Enjoyment>();
         private Enjoyment enjoyment;
         private string actualDateAndTime = DateTime.Now.ToString("dd/MM/yyyy hh:mm");
 
-        public AddEnjoymentForm()
+        public List<Child> listOfChildren { get; set; }
+        public List<string> listOfEnjoymentCategories { get; set; }
+        public List<Enjoyment> listOfEnjoyments { get; set; }
+
+        public AddEnjoymentForm(List<Child> listChild, List<string> listCategories, List<Enjoyment> listEnjoyments)
         {
             InitializeComponent();
 
             lblActualDate.Text = actualDateAndTime;
 
-            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
-            FormToolsExtensions.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
+            listOfChildren = listChild;
+            FormToolsHelpers.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
 
-            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
-            FormToolsExtensions.ShowListInCheckedListBox(listOfEnjoymentCategories, checkedListBoxEnjoymentsCategories);
+            listOfEnjoymentCategories = listCategories;
+            FormToolsHelpers.ShowListInCheckedListBox(listOfEnjoymentCategories, checkedListBoxEnjoymentsCategories);
 
-            listOfEnjoyments = Json.DeserializeJsonFileToList(listOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
+            listOfEnjoyments = listEnjoyments;
         }
 
         private void btnAddEnjoyment_Click(object sender, EventArgs e)
@@ -47,11 +44,6 @@ namespace MyDearBaby
             }
 
             SaveEnjoyment(enjoyment);
-        }
-
-        private void AddEnjoyment_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Json.SerializeListToJsonFile(listOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
         }
 
         private void SaveEnjoyment(Enjoyment enjoyment)

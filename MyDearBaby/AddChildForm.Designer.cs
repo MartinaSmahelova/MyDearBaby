@@ -31,7 +31,6 @@ namespace MyDearBaby
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnOK = new System.Windows.Forms.Button();
             this.tbChildName = new System.Windows.Forms.TextBox();
             this.rbGirl = new System.Windows.Forms.RadioButton();
             this.rbBoy = new System.Windows.Forms.RadioButton();
@@ -40,19 +39,9 @@ namespace MyDearBaby
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.groupBoxRadioButtons = new System.Windows.Forms.GroupBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.btnOK = new MyDearBaby.RoundButton();
             this.groupBoxRadioButtons.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(164, 332);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(94, 29);
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // tbChildName
             // 
@@ -138,32 +127,35 @@ namespace MyDearBaby
             this.groupBoxRadioButtons.TabStop = false;
             this.groupBoxRadioButtons.Validating += new System.ComponentModel.CancelEventHandler(this.groupBoxRadioButtons_Validating);
             // 
-            // maskedTextBox1
+            // btnOK
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(237, 69);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(125, 27);
-            this.maskedTextBox1.TabIndex = 15;
+            this.btnOK.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnOK.FlatAppearance.BorderSize = 0;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Location = new System.Drawing.Point(130, 315);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(66, 61);
+            this.btnOK.TabIndex = 15;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // AddChildForm
             // 
-            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 395);
-            this.Controls.Add(this.maskedTextBox1);
+            this.ClientSize = new System.Drawing.Size(348, 398);
+            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.groupBoxRadioButtons);
             this.Controls.Add(this.dateTimePickerDateOfBirth);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbChildName);
-            this.Controls.Add(this.btnOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddChildForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddChild_FormClosing);
             this.groupBoxRadioButtons.ResumeLayout(false);
             this.groupBoxRadioButtons.PerformLayout();
             this.ResumeLayout(false);
@@ -172,8 +164,6 @@ namespace MyDearBaby
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.TextBox tbChildName;
         private System.Windows.Forms.RadioButton rbGirl;
         private System.Windows.Forms.RadioButton rbBoy;
@@ -182,6 +172,6 @@ namespace MyDearBaby
         private System.Windows.Forms.Label label3;
         private DateTimePicker dateTimePickerDateOfBirth;
         private GroupBox groupBoxRadioButtons;
-        private MaskedTextBox maskedTextBox1;
+        private RoundButton btnOK;
     }
 }

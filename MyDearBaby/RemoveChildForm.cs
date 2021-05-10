@@ -6,28 +6,21 @@ namespace MyDearBaby
 {
     public partial class RemoveChildForm : Form
     {
-        List<Child> listOfChildren = new List<Child>();
+        public List<Child> listOfChildren { get; set; }
 
-        public RemoveChildForm()
+        public RemoveChildForm(List<Child> listChild)
         {
             InitializeComponent();
 
-            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
-
-            FormToolsExtensions.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
+            listOfChildren = listChild;
+            FormToolsHelpers.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
         }
-
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                FormToolsExtensions.RemoveCheckedListBoxCheckedItemsFromList(listOfChildren, checkedListBoxChildren);
+                FormToolsHelpers.RemoveCheckedListBoxCheckedItemsFromList(listOfChildren, checkedListBoxChildren);
             }
-        }
-
-        private void RemoveChildForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Json.SerializeListToJsonFile(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
         }
 
         private void checkedListBoxChildren_Validating(object sender, System.ComponentModel.CancelEventArgs e)

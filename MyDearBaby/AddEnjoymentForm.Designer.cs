@@ -95,7 +95,6 @@ namespace MyDearBaby
             this.Controls.Add(this.lblActualDate);
             this.Controls.Add(this.richTextBoxEnjoyment);
             this.Name = "AddEnjoyment";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEnjoyment_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace MyDearBaby
@@ -11,15 +8,14 @@ namespace MyDearBaby
     public partial class AddEnjoymentCategoryForm : Form
     {
         private string enjoymentCategory;
-        private List<string> listOfEnjoymentCategories = new List<string>();
+        public List<string> listOfEnjoymentCategories { get; set; }
 
-        public AddEnjoymentCategoryForm()
+        public AddEnjoymentCategoryForm(List<string> listCategories)
         {
             InitializeComponent();
 
-            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
-            
-            FormToolsExtensions.ShowListInListView(listOfEnjoymentCategories, listViewEnjoymentsCategories);
+            listOfEnjoymentCategories = listCategories;
+            FormToolsHelpers.ShowListInListView(listOfEnjoymentCategories, listViewEnjoymentsCategories);
         }
         private void tbCategoryname_TextChanged(object sender, EventArgs e)
         {
@@ -32,11 +28,6 @@ namespace MyDearBaby
             {
                 listOfEnjoymentCategories.Add(enjoymentCategory);
             }
-        }
-
-        private void AddEnjoymentCategoryForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Json.SerializeListToJsonFile(listOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
         }
 
         private void tbCategoryName_Validating(object sender, CancelEventArgs e)

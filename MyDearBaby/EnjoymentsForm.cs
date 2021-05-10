@@ -1,65 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace MyDearBaby
 {
     public partial class EnjoymentsForm : Form
-    {
-        private List<Enjoyment> listOfEnjoyments = new List<Enjoyment>();
+    { 
         private List<Enjoyment> filteredEnjoyments = new List<Enjoyment>();
-        private List<string> listOfEnjoymentCategories = new List<string>();
         private IEnumerable<Enjoyment> filteredEnjoymentsByCategory = new List<Enjoyment>();
-      
-
-        public EnjoymentsForm()
+        public List<string> listOfEnjoymentCategories { get; set; }
+        public List<Enjoyment> listOfEnjoyments { get; set; }
+ 
+        public EnjoymentsForm(List<string> listCategories, List<Enjoyment> listEnjoyments)
         {
             InitializeComponent();
 
-            listOfEnjoyments = Json.DeserializeJsonFileToList(listOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
-            ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
+            listOfEnjoymentCategories = listCategories;
+            FormToolsHelpers.ShowListInCheckedListBox(listOfEnjoymentCategories, checkedListBoxCategories);
 
-            listOfEnjoymentCategories = Json.DeserializeJsonFileToList(listOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
-            FormToolsExtensions.ShowListInCheckedListBox(listOfEnjoymentCategories, checkedListBoxCategories);
+            listOfEnjoyments = listEnjoyments;
+            FormToolsHelpers.ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
         }
 
-        private void btnFilter_Click(object sender, EventArgs e)
+        private void btnKeyWordFilter_Click(object sender, EventArgs e)
         {
+            filteredEnjoyments = listOfEnjoyments.Where(x => x.EnjoymentText.Contains(textBoxKeyWord.Text)).ToList();
+
             if (!string.IsNullOrEmpty(textBoxKeyWord.Text))
             {
                 richTextBoxEnjoyments.Clear();
-
-                filteredEnjoyments = listOfEnjoyments.Where(x => x.EnjoymentText.Contains(textBoxKeyWord.Text)).ToList();
+                btnCategoryFilter.Enabled = false;
 
                 if (filteredEnjoyments.Count != 0)
                 {
-                    ShowListInRichTextBox(filteredEnjoyments, richTextBoxEnjoyments);
+                    FormToolsHelpers.ShowListInRichTextBox(filteredEnjoyments, richTextBoxEnjoyments);
                     richTextBoxEnjoyments.ReadOnly = true;
                 }
                 else
                 {
                     richTextBoxEnjoyments.Text = "Nenašli se žádné zážitky, prosím zadejte jíné klíčové slovo";
+                    richTextBoxEnjoyments.ReadOnly = true;
                 }
             }
             else
             {
                 MessageBox.Show("Zadejte klíčové slovo", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        public void ShowListInRichTextBox (List<Enjoyment> list, RichTextBox richTextBox)
-        {
-            if (list != null)
-            {
-                foreach (var item in list)
-                {
-                    richTextBox.Text += item.ToString() + " \n";
-                }
             }
         }
 
@@ -72,6 +59,36 @@ namespace MyDearBaby
             }
 
             filteredEnjoymentsByCategory = listOfEnjoyments.Where(x => list.Any(y => x.ListOfEnjoymentsCategories.Contains(y)));
+
+            if (checkedListBoxCategories.CheckedItems.Count != 0)
+            {
+                richTextBoxEnjoyments.Clear();
+                btnKeyWordFilter.Enabled = false;
+
+                if (filteredEnjoymentsByCategory.Count() != 0)
+                {
+                    FormToolsHelpers.ShowListInRichTextBox(filteredEnjoymentsByCategory.ToList(), richTextBoxEnjoyments);
+                    richTextBoxEnjoyments.ReadOnly = true;
+                }
+                else
+                {
+                    richTextBoxEnjoyments.Text = "Nenašli se žádné zážitky, prosím zadejte jinou kategorii";
+                    richTextBoxEnjoyments.ReadOnly = true;
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Vyberte kategorii", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnClearFilter_Click(object sender, EventArgs e)
+        {
+            btnCategoryFilter.Enabled = true;
+            btnKeyWordFilter.Enabled = true;
+
+            FormToolsHelpers.ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
         }
     }
 }

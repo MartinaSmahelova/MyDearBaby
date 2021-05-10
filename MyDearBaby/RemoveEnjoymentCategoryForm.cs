@@ -6,15 +6,14 @@ namespace MyDearBaby
 {
     public partial class RemoveEnjoymentCategoryForm : Form
     {
-        List<string> listOfEnjoymentsCategories = new List<string>();
+        public List<string> listOfEnjoymentsCategories { get; set; }
 
-        public RemoveEnjoymentCategoryForm()
+        public RemoveEnjoymentCategoryForm(List<string> listCategories)
         {
             InitializeComponent();
 
-            listOfEnjoymentsCategories = Json.DeserializeJsonFileToList(listOfEnjoymentsCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
-
-            FormToolsExtensions.ShowListInCheckedListBox(listOfEnjoymentsCategories, checkedListBoxCategories);
+            listOfEnjoymentsCategories = listCategories;
+            FormToolsHelpers.ShowListInCheckedListBox(listOfEnjoymentsCategories, checkedListBoxCategories);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -22,14 +21,8 @@ namespace MyDearBaby
 
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                FormToolsExtensions.RemoveCheckedListBoxCheckedItemsFromList(listOfEnjoymentsCategories, checkedListBoxCategories);
+                FormToolsHelpers.RemoveCheckedListBoxCheckedItemsFromList(listOfEnjoymentsCategories, checkedListBoxCategories);
             }
-           
-        }
-
-        private void RemoveEnjoymentCategoryForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Json.SerializeListToJsonFile(listOfEnjoymentsCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
         }
 
         private void checkedListBoxCategories_Validating(object sender, System.ComponentModel.CancelEventArgs e)

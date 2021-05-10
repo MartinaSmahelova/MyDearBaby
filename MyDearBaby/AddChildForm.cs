@@ -1,12 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace MyDearBaby
@@ -16,19 +12,17 @@ namespace MyDearBaby
         private string childName;
         private Gender childGender;
         private DateTime dateOfBirth;
-        private List<Child> listOfChildren;
-        public Child Child { get; private set; }
+        private Child Child;
+        public List<Child> listOfChildren { get; set; }
 
-        public AddChildForm()
+        public AddChildForm(List<Child> listChild)
         {
             InitializeComponent();
 
             //MaxDate is set to nine months from actual date, so some users could use application during pregnancy, before child is born
             dateTimePickerDateOfBirth.MaxDate = DateTime.Now.AddDays(280);
             dateTimePickerDateOfBirth.Value = DateTime.Today;
-
-            listOfChildren = new List<Child>();
-            listOfChildren = Json.DeserializeJsonFileToList(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
+            listOfChildren = listChild;
         }
 
         private void tbChildName_TextChanged(object sender, EventArgs e)
@@ -53,7 +47,6 @@ namespace MyDearBaby
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
                 Child = new Child(childName, childGender, dateOfBirth);
@@ -64,13 +57,8 @@ namespace MyDearBaby
 
                     btnOK.DialogResult = DialogResult.OK;
                     Close();
-                }  
+                }
             }
-        }
-
-        private void AddChild_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Json.SerializeListToJsonFile(listOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
         }
 
         private void tbChildName_Validating(object sender, CancelEventArgs e)
@@ -85,6 +73,12 @@ namespace MyDearBaby
                 MessageBox.Show("Jméno je příliš krátké, musí obsahovat alepsoň tři znaky", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
             }
+
+            if (!Regex.IsMatch(tbChildName.Text, @"^[a-zA-Z]+$"))
+            {
+                MessageBox.Show("Jméno může obsahovat jenom písmená");
+            }
+
             else
             {
                 e.Cancel = false;

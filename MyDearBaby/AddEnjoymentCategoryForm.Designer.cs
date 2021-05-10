@@ -95,7 +95,6 @@ namespace MyDearBaby
             this.Controls.Add(this.tbCategoryName);
             this.Controls.Add(this.label1);
             this.Name = "AddEnjoymentCategoryForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEnjoymentCategoryForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
