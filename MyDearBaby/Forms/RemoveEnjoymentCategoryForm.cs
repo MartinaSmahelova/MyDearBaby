@@ -44,5 +44,10 @@ namespace MyDearBaby
                 }
             }
         }
+
+        private void btnX_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

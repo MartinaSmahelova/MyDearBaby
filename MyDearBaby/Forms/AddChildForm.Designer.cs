@@ -47,7 +47,7 @@ namespace MyDearBaby
             // 
             this.tbChildName.Location = new System.Drawing.Point(34, 69);
             this.tbChildName.Name = "tbChildName";
-            this.tbChildName.Size = new System.Drawing.Size(174, 27);
+            this.tbChildName.Size = new System.Drawing.Size(212, 27);
             this.tbChildName.TabIndex = 1;
             this.tbChildName.TextChanged += new System.EventHandler(this.tbChildName_TextChanged);
             this.tbChildName.Validating += new System.ComponentModel.CancelEventHandler(this.tbChildName_Validating);
@@ -79,7 +79,7 @@ namespace MyDearBaby
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 37);
+            this.label1.Location = new System.Drawing.Point(34, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 20);
             this.label1.TabIndex = 4;
@@ -110,7 +110,7 @@ namespace MyDearBaby
             this.dateTimePickerDateOfBirth.Location = new System.Drawing.Point(34, 271);
             this.dateTimePickerDateOfBirth.MinDate = new System.DateTime(1921, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerDateOfBirth.Name = "dateTimePickerDateOfBirth";
-            this.dateTimePickerDateOfBirth.Size = new System.Drawing.Size(146, 27);
+            this.dateTimePickerDateOfBirth.Size = new System.Drawing.Size(212, 27);
             this.dateTimePickerDateOfBirth.TabIndex = 13;
             this.dateTimePickerDateOfBirth.Value = new System.DateTime(2021, 4, 28, 0, 0, 0, 0);
             this.dateTimePickerDateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePickerDateOfBirth_ValueChanged);
@@ -122,17 +122,17 @@ namespace MyDearBaby
             this.groupBoxRadioButtons.Controls.Add(this.rbGirl);
             this.groupBoxRadioButtons.Location = new System.Drawing.Point(34, 147);
             this.groupBoxRadioButtons.Name = "groupBoxRadioButtons";
-            this.groupBoxRadioButtons.Size = new System.Drawing.Size(212, 81);
+            this.groupBoxRadioButtons.Size = new System.Drawing.Size(212, 84);
             this.groupBoxRadioButtons.TabIndex = 14;
             this.groupBoxRadioButtons.TabStop = false;
             this.groupBoxRadioButtons.Validating += new System.ComponentModel.CancelEventHandler(this.groupBoxRadioButtons_Validating);
             // 
             // btnOK
             // 
-            this.btnOK.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(175)))), ((int)(((byte)(248)))));
             this.btnOK.FlatAppearance.BorderSize = 0;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Location = new System.Drawing.Point(130, 315);
+            this.btnOK.Location = new System.Drawing.Point(104, 325);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(66, 61);
             this.btnOK.TabIndex = 15;
@@ -144,7 +144,7 @@ namespace MyDearBaby
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 398);
+            this.ClientSize = new System.Drawing.Size(285, 398);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.groupBoxRadioButtons);
             this.Controls.Add(this.dateTimePickerDateOfBirth);
@@ -152,7 +152,7 @@ namespace MyDearBaby
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbChildName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddChildForm";

@@ -24,6 +24,7 @@ namespace MyDearBaby
 
             listOfEnjoyments = listEnjoyments;
             FormToolsHelpers.ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
+            richTextBoxEnjoyments.ReadOnly = true;
         }
 
         private void btnKeyWordFilter_Click(object sender, EventArgs e)
@@ -43,7 +44,8 @@ namespace MyDearBaby
                 }
                 else
                 {
-                    richTextBoxEnjoyments.Text = "Nenašli se žádné zážitky, prosím zadejte jíné klíčové slovo";
+                    richTextBoxEnjoyments.Clear();
+                    MessageBox.Show("Nenašli se žádné zážitky, prosím zadejte jíné klíčové slovo", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     richTextBoxEnjoyments.ReadOnly = true;
                 }
             }
@@ -76,7 +78,8 @@ namespace MyDearBaby
                 }
                 else
                 {
-                    richTextBoxEnjoyments.Text = "Nenašli se žádné zážitky, prosím zadejte jinou kategorii";
+                    richTextBoxEnjoyments.Clear();
+                    MessageBox.Show("Vašemu zadání neodpovídá žádný zážitek.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     richTextBoxEnjoyments.ReadOnly = true;
                 }
             }
@@ -96,11 +99,14 @@ namespace MyDearBaby
                     checkedListBoxCategories.SetItemCheckState(item, CheckState.Unchecked);
                 }
 
+                textBoxKeyWord.Clear();
+
                 FormToolsHelpers.ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
 
                 btnKeyWordFilter.Enabled = true;
                 btnCategoryFilter.Enabled = true;
 
+                richTextBoxEnjoyments.ReadOnly = true;
                 wereAllEnjoymentsAlreadyDispleyd = true;
             }
 
@@ -111,7 +117,7 @@ namespace MyDearBaby
            
         }
 
-        private void SaveEnjoyment(Enjoyment enjoyment)
+        private void SaveEnjoymentsToTXTFile()
         {
             if (!Directory.Exists(Path.GetDirectoryName(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt))))
             {
@@ -120,17 +126,15 @@ namespace MyDearBaby
 
             if (!File.Exists(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt)))
             {
-                File.WriteAllText(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt), "ZÁŽITKY <3 \n******************************************\n");
-            }
-
-            else
-            {
-                using (StreamWriter writer = new StreamWriter(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt), append: true))
+                string originalFieName = DateTime.Now.ToString("dd.MM.yyyy.HH.mm.ss") + FilesNames.enjoymentsTxt;
+                using (StreamWriter writer = new StreamWriter(Json.FilePathTonMyDesktop(originalFieName)))
                 {
-                    writer.WriteLine(richTextBoxEnjoyments.Text);
+                    writer.Write($"ZÁŽITKY <3 \nUložené {DateTime.Now.ToString("dd.MM.yyyy HH:mm")} \n");
+                    writer.Write(richTextBoxEnjoyments.Text);
                 }
+
+                MessageBox.Show("Vaše zážitky máte uložené na ploše ve složce MyDearChild", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
     }
 }

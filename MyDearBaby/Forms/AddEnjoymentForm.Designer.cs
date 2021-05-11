@@ -32,13 +32,13 @@ namespace MyDearBaby
             this.richTextBoxEnjoyment = new System.Windows.Forms.RichTextBox();
             this.lblActualDate = new System.Windows.Forms.Label();
             this.checkedListBoxChildren = new System.Windows.Forms.CheckedListBox();
-            this.btnAddEnjoyment = new System.Windows.Forms.Button();
             this.checkedListBoxEnjoymentsCategories = new System.Windows.Forms.CheckedListBox();
+            this.btnAddEnjoyment = new MyDearBaby.RoundButton();
             this.SuspendLayout();
             // 
             // richTextBoxEnjoyment
             // 
-            this.richTextBoxEnjoyment.Location = new System.Drawing.Point(27, 304);
+            this.richTextBoxEnjoyment.Location = new System.Drawing.Point(27, 285);
             this.richTextBoxEnjoyment.Name = "richTextBoxEnjoyment";
             this.richTextBoxEnjoyment.Size = new System.Drawing.Size(423, 210);
             this.richTextBoxEnjoyment.TabIndex = 0;
@@ -47,7 +47,7 @@ namespace MyDearBaby
             // lblActualDate
             // 
             this.lblActualDate.AutoSize = true;
-            this.lblActualDate.Location = new System.Drawing.Point(27, 47);
+            this.lblActualDate.Location = new System.Drawing.Point(27, 32);
             this.lblActualDate.Name = "lblActualDate";
             this.lblActualDate.Size = new System.Drawing.Size(41, 20);
             this.lblActualDate.TabIndex = 1;
@@ -58,43 +58,47 @@ namespace MyDearBaby
             this.checkedListBoxChildren.BackColor = System.Drawing.SystemColors.HighlightText;
             this.checkedListBoxChildren.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBoxChildren.FormattingEnabled = true;
-            this.checkedListBoxChildren.Location = new System.Drawing.Point(27, 94);
+            this.checkedListBoxChildren.Location = new System.Drawing.Point(27, 76);
             this.checkedListBoxChildren.Name = "checkedListBoxChildren";
             this.checkedListBoxChildren.Size = new System.Drawing.Size(423, 88);
             this.checkedListBoxChildren.TabIndex = 2;
-            // 
-            // btnAddEnjoyment
-            // 
-            this.btnAddEnjoyment.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAddEnjoyment.Location = new System.Drawing.Point(177, 538);
-            this.btnAddEnjoyment.Name = "btnAddEnjoyment";
-            this.btnAddEnjoyment.Size = new System.Drawing.Size(117, 29);
-            this.btnAddEnjoyment.TabIndex = 3;
-            this.btnAddEnjoyment.Text = "Přidej zážitek";
-            this.btnAddEnjoyment.UseVisualStyleBackColor = true;
-            this.btnAddEnjoyment.Click += new System.EventHandler(this.btnAddEnjoyment_Click);
             // 
             // checkedListBoxEnjoymentsCategories
             // 
             this.checkedListBoxEnjoymentsCategories.BackColor = System.Drawing.SystemColors.HighlightText;
             this.checkedListBoxEnjoymentsCategories.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBoxEnjoymentsCategories.FormattingEnabled = true;
-            this.checkedListBoxEnjoymentsCategories.Location = new System.Drawing.Point(27, 200);
+            this.checkedListBoxEnjoymentsCategories.Location = new System.Drawing.Point(27, 180);
             this.checkedListBoxEnjoymentsCategories.Name = "checkedListBoxEnjoymentsCategories";
             this.checkedListBoxEnjoymentsCategories.Size = new System.Drawing.Size(423, 88);
             this.checkedListBoxEnjoymentsCategories.TabIndex = 5;
             // 
-            // AddEnjoyment
+            // btnAddEnjoyment
+            // 
+            this.btnAddEnjoyment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(240)))), ((int)(((byte)(89)))));
+            this.btnAddEnjoyment.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAddEnjoyment.FlatAppearance.BorderSize = 0;
+            this.btnAddEnjoyment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEnjoyment.Location = new System.Drawing.Point(196, 510);
+            this.btnAddEnjoyment.Name = "btnAddEnjoyment";
+            this.btnAddEnjoyment.Size = new System.Drawing.Size(82, 76);
+            this.btnAddEnjoyment.TabIndex = 8;
+            this.btnAddEnjoyment.Text = "Pridej zážitek";
+            this.btnAddEnjoyment.UseVisualStyleBackColor = false;
+            this.btnAddEnjoyment.Click += new System.EventHandler(this.btnAddEnjoyment_Click);
+            // 
+            // AddEnjoymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 594);
-            this.Controls.Add(this.checkedListBoxEnjoymentsCategories);
+            this.ClientSize = new System.Drawing.Size(487, 596);
             this.Controls.Add(this.btnAddEnjoyment);
+            this.Controls.Add(this.checkedListBoxEnjoymentsCategories);
             this.Controls.Add(this.checkedListBoxChildren);
             this.Controls.Add(this.lblActualDate);
             this.Controls.Add(this.richTextBoxEnjoyment);
-            this.Name = "AddEnjoyment";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "AddEnjoymentForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,7 +109,7 @@ namespace MyDearBaby
         private System.Windows.Forms.RichTextBox richTextBoxEnjoyment;
         private System.Windows.Forms.Label lblActualDate;
         private System.Windows.Forms.CheckedListBox checkedListBoxChildren;
-        private System.Windows.Forms.Button btnAddEnjoyment;
         private System.Windows.Forms.CheckedListBox checkedListBoxEnjoymentsCategories;
+        private RoundButton btnAddEnjoyment;
     }
 }

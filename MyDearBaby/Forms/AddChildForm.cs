@@ -13,7 +13,7 @@ namespace MyDearBaby
         private Gender childGender;
         private DateTime dateOfBirth;
         private Child Child;
-        public List<Child> listOfChildren { get; set; }
+        public List<Child> ListOfChildren { get; set; }
 
         public AddChildForm(List<Child> listChild)
         {
@@ -22,7 +22,7 @@ namespace MyDearBaby
             //MaxDate is set to nine months from actual date, so some users could use application during pregnancy, before child is born
             dateTimePickerDateOfBirth.MaxDate = DateTime.Now.AddDays(280);
             dateTimePickerDateOfBirth.Value = DateTime.Today;
-            listOfChildren = listChild;
+            ListOfChildren = listChild;
         }
 
         private void tbChildName_TextChanged(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace MyDearBaby
 
                 if (Child != null)
                 {
-                    listOfChildren.Add(Child);
+                    ListOfChildren.Add(Child);
 
                     btnOK.DialogResult = DialogResult.OK;
                     Close();

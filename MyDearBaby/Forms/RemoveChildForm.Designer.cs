@@ -1,7 +1,7 @@
 ﻿
 namespace MyDearBaby
 {
-    partial class RemoveEnjoymentCategoryForm
+    partial class RemoveChildForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,48 +29,48 @@ namespace MyDearBaby
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBoxCategories = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxChildren = new System.Windows.Forms.CheckedListBox();
             this.btnRemove = new MyDearBaby.RoundButton();
             this.SuspendLayout();
             // 
-            // checkedListBoxCategories
+            // checkedListBoxChildren
             // 
-            this.checkedListBoxCategories.FormattingEnabled = true;
-            this.checkedListBoxCategories.Location = new System.Drawing.Point(22, 22);
-            this.checkedListBoxCategories.Name = "checkedListBoxCategories";
-            this.checkedListBoxCategories.Size = new System.Drawing.Size(426, 180);
-            this.checkedListBoxCategories.TabIndex = 1;
-            this.checkedListBoxCategories.Validating += new System.ComponentModel.CancelEventHandler(this.checkedListBoxCategories_Validating);
+            this.checkedListBoxChildren.FormattingEnabled = true;
+            this.checkedListBoxChildren.Location = new System.Drawing.Point(27, 24);
+            this.checkedListBoxChildren.Name = "checkedListBoxChildren";
+            this.checkedListBoxChildren.Size = new System.Drawing.Size(426, 158);
+            this.checkedListBoxChildren.TabIndex = 1;
+            this.checkedListBoxChildren.Validating += new System.ComponentModel.CancelEventHandler(this.checkedListBoxChildren_Validating);
             // 
             // btnRemove
             // 
-            this.btnRemove.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(153)))), ((int)(((byte)(249)))));
+            this.btnRemove.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnRemove.FlatAppearance.BorderSize = 0;
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Location = new System.Drawing.Point(200, 218);
+            this.btnRemove.Location = new System.Drawing.Point(200, 208);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(71, 69);
-            this.btnRemove.TabIndex = 3;
+            this.btnRemove.TabIndex = 0;
             this.btnRemove.Text = "Odstraň";
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // RemoveEnjoymentCategoryForm
+            // RemoveChildForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 304);
+            this.ClientSize = new System.Drawing.Size(480, 289);
             this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.checkedListBoxCategories);
-            this.Name = "RemoveEnjoymentCategoryForm";
-            this.Text = "RemoveEnjoymentCategoryForm";
+            this.Controls.Add(this.checkedListBoxChildren);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "RemoveChildForm";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox checkedListBoxCategories;
+        private System.Windows.Forms.CheckedListBox checkedListBoxChildren;
         private RoundButton btnRemove;
     }
 }

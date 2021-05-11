@@ -56,7 +56,7 @@ namespace MyDearBaby
         }
 
         /// <summary>
-        /// File path to My Documents folder to storage information for user. 
+        /// File path to Desktop to storage information for user. 
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>

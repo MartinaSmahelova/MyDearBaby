@@ -9,6 +9,6 @@ namespace MyDearBaby
         public static readonly string childJson = "child.json";
         public static readonly string enjoymentsCategoriesJson = "enjoymentsCategories.json";
         public static readonly string enjoymentsJson = "enjoyments.json";
-        public static readonly string enjoymentsTxt = "zážitky.txt";
+        public static readonly string enjoymentsTxt = "_zážitky.txt";
     }
 }

@@ -8,14 +8,14 @@ namespace MyDearBaby
     public partial class AddEnjoymentCategoryForm : Form
     {
         private string enjoymentCategory;
-        public List<string> listOfEnjoymentCategories { get; set; }
+        public List<string> ListOfEnjoymentCategories { get; set; }
 
         public AddEnjoymentCategoryForm(List<string> listCategories)
         {
             InitializeComponent();
 
-            listOfEnjoymentCategories = listCategories;
-            FormToolsHelpers.ShowListInListView(listOfEnjoymentCategories, listViewEnjoymentsCategories);
+            ListOfEnjoymentCategories = listCategories;
+            FormToolsHelpers.ShowListInListView(ListOfEnjoymentCategories, listViewEnjoymentsCategories);
         }
         private void tbCategoryname_TextChanged(object sender, EventArgs e)
         {
@@ -26,7 +26,7 @@ namespace MyDearBaby
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                listOfEnjoymentCategories.Add(enjoymentCategory);
+                ListOfEnjoymentCategories.Add(enjoymentCategory);
             }
         }
 
