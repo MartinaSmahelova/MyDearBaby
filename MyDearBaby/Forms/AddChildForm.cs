@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace MyDearBaby
@@ -73,12 +72,6 @@ namespace MyDearBaby
                 MessageBox.Show("Jméno je příliš krátké, musí obsahovat alepsoň tři znaky", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
             }
-
-            if (!Regex.IsMatch(tbChildName.Text, @"^[a-zA-Z]+$"))
-            {
-                MessageBox.Show("Jméno může obsahovat jenom písmená");
-            }
-
             else
             {
                 e.Cancel = false;
