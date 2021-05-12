@@ -9,14 +9,12 @@ namespace MyDearBaby
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         public Gender Gender { get; set; }
-        public string ActualAge { get; set; }
-
+      
         public Child(string name, Gender gender, DateTime dateOfBirth)
         {
             Name = name;
             Gender = gender;
             DateOfBirth = dateOfBirth;
-            ActualAge = CalculateActualAge(dateOfBirth);
         }
 
         public override string ToString()

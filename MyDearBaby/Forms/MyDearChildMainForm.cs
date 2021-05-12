@@ -13,9 +13,9 @@ namespace MyDearBaby
         public MyDearChildMainForm()
         {
             InitializeComponent();
-            ListOfChildren = Json.DeserializeJsonFileToList(ListOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
-            ListOfEnjoymentCategories = Json.DeserializeJsonFileToList(ListOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
-            ListOfEnjoyments = Json.DeserializeJsonFileToList(ListOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
+            ListOfChildren = FilesHelper.DeserializeJsonFileToList(ListOfChildren, FilesHelper.FilePathToAppDataFolder(FilesNames.childJson));
+            ListOfEnjoymentCategories = FilesHelper.DeserializeJsonFileToList(ListOfEnjoymentCategories, FilesHelper.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+            ListOfEnjoyments = FilesHelper.DeserializeJsonFileToList(ListOfEnjoyments, FilesHelper.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
 
             if (ListOfEnjoymentCategories.Count == 0)
             {
@@ -25,7 +25,7 @@ namespace MyDearBaby
             }
         }
 
-        private void btnAddChild_Click(object sender, EventArgs e)
+        private void BtnAddChild_Click(object sender, EventArgs e)
         {
             using (var addChildForm = new AddChildForm(ListOfChildren))
             {
@@ -35,7 +35,7 @@ namespace MyDearBaby
         }
 
 
-        private void btnRemoveChild_Click(object sender, EventArgs e)
+        private void BtnRemoveChild_Click(object sender, EventArgs e)
         {
             if (ListOfChildren.Count == 0)
             {
@@ -46,12 +46,12 @@ namespace MyDearBaby
                 using (var removeChildForm = new RemoveChildForm(ListOfChildren))
                 {
                     removeChildForm.ShowDialog();
-                    ListOfChildren = removeChildForm.listOfChildren;
+                    ListOfChildren = removeChildForm.ListOfChildren;
                 }
             }
         }
 
-        private void btnAddEnjoymentCategory_Click(object sender, EventArgs e)
+        private void BtnAddEnjoymentCategory_Click(object sender, EventArgs e)
         {
             using (var addCategoryForm = new AddEnjoymentCategoryForm(ListOfEnjoymentCategories))
             {
@@ -60,16 +60,16 @@ namespace MyDearBaby
             }
         }
 
-        private void btnRemoveEnjoymentCategory_Click(object sender, EventArgs e)
+        private void BtnRemoveEnjoymentCategory_Click(object sender, EventArgs e)
         {
             using (var removeCategoryForm = new RemoveEnjoymentCategoryForm(ListOfEnjoymentCategories))
             {
                 removeCategoryForm.ShowDialog();
-                ListOfEnjoymentCategories = removeCategoryForm.listOfEnjoymentsCategories;
+                ListOfEnjoymentCategories = removeCategoryForm.ListOfEnjoymentsCategories;
             }
         }
 
-        private void btnAddEnjoyment_Click(object sender, EventArgs e)
+        private void BtnAddEnjoyment_Click(object sender, EventArgs e)
         {
             using (var AddEnjoymentForm = new AddEnjoymentForm(ListOfChildren, ListOfEnjoymentCategories, ListOfEnjoyments))
             {
@@ -80,7 +80,7 @@ namespace MyDearBaby
             }
         }
 
-        private void btnEnjoyments_Click(object sender, EventArgs e)
+        private void BtnEnjoyments_Click(object sender, EventArgs e)
         {
             using (var enjoymentsForm = new EnjoymentsForm(ListOfChildren, ListOfEnjoymentCategories, ListOfEnjoyments))
             {
@@ -88,19 +88,19 @@ namespace MyDearBaby
             }
         }
 
-        private void btnX_Click(object sender, EventArgs e)
+        private void BtnX_Click(object sender, EventArgs e)
         {
-            Json.SerializeListToJsonFile(ListOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
-            Json.SerializeListToJsonFile(ListOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
-            Json.SerializeListToJsonFile(ListOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
+            FilesHelper.SerializeListToJsonFile(ListOfChildren, FilesHelper.FilePathToAppDataFolder(FilesNames.childJson));
+            FilesHelper.SerializeListToJsonFile(ListOfEnjoymentCategories, FilesHelper.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+            FilesHelper.SerializeListToJsonFile(ListOfEnjoyments, FilesHelper.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
             Environment.Exit(0);
         }
 
         private void MyDearChildMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Json.SerializeListToJsonFile(ListOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
-            Json.SerializeListToJsonFile(ListOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
-            Json.SerializeListToJsonFile(ListOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
+            FilesHelper.SerializeListToJsonFile(ListOfChildren, FilesHelper.FilePathToAppDataFolder(FilesNames.childJson));
+            FilesHelper.SerializeListToJsonFile(ListOfEnjoymentCategories, FilesHelper.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
+            FilesHelper.SerializeListToJsonFile(ListOfEnjoyments, FilesHelper.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
         }
     }
 }

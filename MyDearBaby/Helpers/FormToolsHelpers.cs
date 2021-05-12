@@ -52,5 +52,18 @@ namespace MyDearBaby
                 list.Add((T)item);
             }
         }
+        public static List<T> AddCheckedItemsToList<T>(List<T> list, CheckedListBox checkedListBox)
+        {
+            IEnumerable<object> checkedItems = (from object item in checkedListBox.Items
+                                                where checkedListBox.CheckedItems.Contains(item)
+                                                select item);
+
+            foreach (object item in checkedItems)
+            {
+                list.Add((T)item);
+            }
+
+            return list;
+        }
     }
 }

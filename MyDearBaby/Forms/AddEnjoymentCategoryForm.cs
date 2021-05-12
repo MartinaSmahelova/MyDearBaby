@@ -17,12 +17,12 @@ namespace MyDearBaby
             ListOfEnjoymentCategories = listCategories;
             FormToolsHelpers.ShowListInListView(ListOfEnjoymentCategories, listViewEnjoymentsCategories);
         }
-        private void tbCategoryname_TextChanged(object sender, EventArgs e)
+        private void TbCategoryname_TextChanged(object sender, EventArgs e)
         {
             enjoymentCategory = tbCategoryName.Text;
         }
 
-        private void btnAddCategory_Click(object sender, EventArgs e)
+        private void BtnAddCategory_Click(object sender, EventArgs e)
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
@@ -30,7 +30,7 @@ namespace MyDearBaby
             }
         }
 
-        private void tbCategoryName_Validating(object sender, CancelEventArgs e)
+        private void TbCategoryName_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(enjoymentCategory))
             {

@@ -74,7 +74,7 @@ namespace MyDearBaby
             this.btnKeyWordFilter.TabIndex = 7;
             this.btnKeyWordFilter.Text = "Hledej klíčové slovo";
             this.btnKeyWordFilter.UseVisualStyleBackColor = false;
-            this.btnKeyWordFilter.Click += new System.EventHandler(this.btnKeyWordFilter_Click);
+            this.btnKeyWordFilter.Click += new System.EventHandler(this.BtnKeyWordFilter_Click);
             // 
             // btnCategoryFilter
             // 
@@ -87,7 +87,7 @@ namespace MyDearBaby
             this.btnCategoryFilter.TabIndex = 8;
             this.btnCategoryFilter.Text = "Hledej kategorii";
             this.btnCategoryFilter.UseVisualStyleBackColor = false;
-            this.btnCategoryFilter.Click += new System.EventHandler(this.btnCategoryFilter_Click);
+            this.btnCategoryFilter.Click += new System.EventHandler(this.BtnCategoryFilter_Click);
             // 
             // btnSaveEnjoyments
             // 
@@ -101,7 +101,7 @@ namespace MyDearBaby
             this.btnSaveEnjoyments.TabIndex = 9;
             this.btnSaveEnjoyments.Text = "Uložiť zážitky do souboru";
             this.btnSaveEnjoyments.UseVisualStyleBackColor = false;
-            this.btnSaveEnjoyments.Click += new System.EventHandler(this.btnSaveEnjoyments_Click);
+            this.btnSaveEnjoyments.Click += new System.EventHandler(this.BtnSaveEnjoyments_Click);
             // 
             // roundButton3
             // 
@@ -114,7 +114,7 @@ namespace MyDearBaby
             this.roundButton3.TabIndex = 11;
             this.roundButton3.Text = "Zobraziť všetky zážitky\r\n";
             this.roundButton3.UseVisualStyleBackColor = false;
-            this.roundButton3.Click += new System.EventHandler(this.btnShowAllEnjoyments_Click);
+            this.roundButton3.Click += new System.EventHandler(this.BtnShowAllEnjoyments_Click);
             // 
             // label1
             // 

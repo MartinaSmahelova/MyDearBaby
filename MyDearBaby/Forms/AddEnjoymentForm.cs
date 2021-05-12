@@ -35,10 +35,10 @@ namespace MyDearBaby
             ListOfEnjoyments = listEnjoyments;
         }
 
-        private void btnAddEnjoyment_Click(object sender, EventArgs e)
+        private void BtnAddEnjoyment_Click(object sender, EventArgs e)
         {
-            checkedChildList = AddCheckedItemsToList(checkedChildList, checkedListBoxChildren);
-            checkedCategoriesList = AddCheckedItemsToList(checkedCategoriesList, checkedListBoxEnjoymentsCategories);
+            checkedChildList = FormToolsHelpers.AddCheckedItemsToList(checkedChildList, checkedListBoxChildren);
+            checkedCategoriesList = FormToolsHelpers.AddCheckedItemsToList(checkedCategoriesList, checkedListBoxEnjoymentsCategories);
 
             enjoyment = new Enjoyment(checkedChildList, checkedCategoriesList, richTextBoxEnjoyment.Text);
 
@@ -52,33 +52,6 @@ namespace MyDearBaby
             }
         }
 
-        private List<T> AddCheckedItemsToList<T>(List<T> list, CheckedListBox checkedListBox) 
-        {
-            IEnumerable<object> checkedItems = (from object item in checkedListBox.Items
-                                                where checkedListBox.CheckedItems.Contains(item)
-                                                select item);
-
-            foreach (object item in checkedItems)
-            {
-                list.Add((T) item);
-            }
-
-            return list;
-        }
-
-        private List<Child> AddCheckedChildItemsToList(CheckedListBox checkedListBox)
-        {
-            var checkedChildList = new List<Child>();
-
-            var checkedItems = checkedListBox.CheckedItems;
-           
-            foreach (Child item in checkedItems)
-            {
-                checkedChildList.Add(item);
-            }
-
-            return checkedChildList;
-        }
-
+      
     }
 }

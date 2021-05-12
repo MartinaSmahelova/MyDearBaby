@@ -40,7 +40,7 @@ namespace MyDearBaby
             this.checkedListBoxChildren.Name = "checkedListBoxChildren";
             this.checkedListBoxChildren.Size = new System.Drawing.Size(426, 158);
             this.checkedListBoxChildren.TabIndex = 1;
-            this.checkedListBoxChildren.Validating += new System.ComponentModel.CancelEventHandler(this.checkedListBoxChildren_Validating);
+            this.checkedListBoxChildren.Validating += new System.ComponentModel.CancelEventHandler(this.CheckedListBoxChildren_Validating);
             // 
             // btnRemove
             // 
@@ -54,7 +54,7 @@ namespace MyDearBaby
             this.btnRemove.TabIndex = 0;
             this.btnRemove.Text = "Odstraň";
             this.btnRemove.UseVisualStyleBackColor = false;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // RemoveChildForm
             // 

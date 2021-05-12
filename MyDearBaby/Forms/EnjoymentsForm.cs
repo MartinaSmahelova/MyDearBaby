@@ -11,26 +11,26 @@ namespace MyDearBaby
     {
         private List<Enjoyment> filteredEnjoyments = new List<Enjoyment>();
         private IEnumerable<Enjoyment> filteredEnjoymentsByCategory = new List<Enjoyment>();
-
         private bool wereAllEnjoymentsAlreadyDispleyd = true;
-        public List<string> listOfEnjoymentCategories { get; set; }
-        public List<Enjoyment> listOfEnjoyments { get; set; }
+
+        public List<string> ListOfEnjoymentCategories { get; set; }
+        public List<Enjoyment> ListOfEnjoyments { get; set; }
 
         public EnjoymentsForm(List<Child> listChild, List<string> listCategories, List<Enjoyment> listEnjoyments)
         {
             InitializeComponent();
 
-            listOfEnjoymentCategories = listCategories;
-            FormToolsHelpers.ShowListInCheckedListBox(listOfEnjoymentCategories, checkedListBoxCategories);
+            ListOfEnjoymentCategories = listCategories;
+            FormToolsHelpers.ShowListInCheckedListBox(ListOfEnjoymentCategories, checkedListBoxCategories);
 
-            listOfEnjoyments = listEnjoyments;
-            FormToolsHelpers.ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
+            ListOfEnjoyments = listEnjoyments;
+            FormToolsHelpers.ShowListInRichTextBox(ListOfEnjoyments, richTextBoxEnjoyments);
             richTextBoxEnjoyments.ReadOnly = true;
         }
 
-        private void btnKeyWordFilter_Click(object sender, EventArgs e)
+        private void BtnKeyWordFilter_Click(object sender, EventArgs e)
         {
-            filteredEnjoyments = listOfEnjoyments.Where(x => x.EnjoymentText.Contains(textBoxKeyWord.Text)).ToList();
+            filteredEnjoyments = ListOfEnjoyments.Where(x => x.EnjoymentText.Contains(textBoxKeyWord.Text)).ToList();
 
             if (!string.IsNullOrEmpty(textBoxKeyWord.Text))
             {
@@ -56,7 +56,7 @@ namespace MyDearBaby
             }
         }
 
-        private void btnCategoryFilter_Click(object sender, EventArgs e)
+        private void BtnCategoryFilter_Click(object sender, EventArgs e)
         {
             List<string> list = new List<string>();
             foreach (var checkeIitem in checkedListBoxCategories.CheckedItems)
@@ -64,7 +64,7 @@ namespace MyDearBaby
                 list.Add((string)checkeIitem);
             }
 
-            filteredEnjoymentsByCategory = listOfEnjoyments.Where(x => list.Any(y => x.ListOfEnjoymentsCategories.Contains(y)));
+            filteredEnjoymentsByCategory = ListOfEnjoyments.Where(x => list.Any(y => x.ListOfEnjoymentsCategories.Contains(y)));
 
             if (checkedListBoxCategories.CheckedItems.Count != 0)
             {
@@ -91,7 +91,7 @@ namespace MyDearBaby
             }
         }
 
-        private void btnShowAllEnjoyments_Click(object sender, EventArgs e)
+        private void BtnShowAllEnjoyments_Click(object sender, EventArgs e)
         {
             if (!wereAllEnjoymentsAlreadyDispleyd)
             {
@@ -102,7 +102,7 @@ namespace MyDearBaby
 
                 textBoxKeyWord.Clear();
 
-                FormToolsHelpers.ShowListInRichTextBox(listOfEnjoyments, richTextBoxEnjoyments);
+                FormToolsHelpers.ShowListInRichTextBox(ListOfEnjoyments, richTextBoxEnjoyments);
 
                 btnKeyWordFilter.Enabled = true;
                 btnCategoryFilter.Enabled = true;
@@ -115,32 +115,12 @@ namespace MyDearBaby
             {
                 MessageBox.Show("Máte zobrazeny všchny zážitky", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-           
         }
 
-        private void SaveEnjoymentsToTXTFile()
+        private void BtnSaveEnjoyments_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(Path.GetDirectoryName(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt))))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt)));
-            }
-
-            if (!File.Exists(Json.FilePathTonMyDesktop(FilesNames.enjoymentsTxt)))
-            {
-                string originalFieName = DateTime.Now.ToString("dd.MM.yyyy.HH.mm.ss") + FilesNames.enjoymentsTxt;
-                using (StreamWriter writer = new StreamWriter(Json.FilePathTonMyDesktop(originalFieName)))
-                {
-                    writer.Write($"ZÁŽITKY <3 \nUložené {DateTime.Now.ToString("dd.MM.yyyy HH:mm")} \n");
-                    writer.Write(richTextBoxEnjoyments.Text);
-                }
-
-                MessageBox.Show("Vaše zážitky máte uložené na pracovní ploše ve složce MyDearChild", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void btnSaveEnjoyments_Click(object sender, EventArgs e)
-        {
-            SaveEnjoymentsToTXTFile();
+            FilesHelper.SaveEnjoymentsFromRichTextBoxToTXTFile(richTextBoxEnjoyments);
+            MessageBox.Show("Vaše zážitky máte uložené na pracovní ploše ve složce MyDearChild", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

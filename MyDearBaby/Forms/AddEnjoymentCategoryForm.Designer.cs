@@ -51,8 +51,8 @@ namespace MyDearBaby
             this.tbCategoryName.Name = "tbCategoryName";
             this.tbCategoryName.Size = new System.Drawing.Size(426, 27);
             this.tbCategoryName.TabIndex = 2;
-            this.tbCategoryName.TextChanged += new System.EventHandler(this.tbCategoryname_TextChanged);
-            this.tbCategoryName.Validating += new System.ComponentModel.CancelEventHandler(this.tbCategoryName_Validating);
+            this.tbCategoryName.TextChanged += new System.EventHandler(this.TbCategoryname_TextChanged);
+            this.tbCategoryName.Validating += new System.ComponentModel.CancelEventHandler(this.TbCategoryName_Validating);
             // 
             // label2
             // 
@@ -85,7 +85,7 @@ namespace MyDearBaby
             this.btnAddCategory.TabIndex = 0;
             this.btnAddCategory.Text = "OK";
             this.btnAddCategory.UseVisualStyleBackColor = false;
-            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
+            this.btnAddCategory.Click += new System.EventHandler(this.BtnAddCategory_Click);
             // 
             // AddEnjoymentCategoryForm
             // 

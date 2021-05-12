@@ -85,7 +85,7 @@ namespace MyDearBaby
             this.btnAddEnjoyment.TabIndex = 8;
             this.btnAddEnjoyment.Text = "Pridej zážitek";
             this.btnAddEnjoyment.UseVisualStyleBackColor = false;
-            this.btnAddEnjoyment.Click += new System.EventHandler(this.btnAddEnjoyment_Click);
+            this.btnAddEnjoyment.Click += new System.EventHandler(this.BtnAddEnjoyment_Click);
             // 
             // AddEnjoymentForm
             // 

@@ -12,7 +12,7 @@ namespace MyDearBaby
         private string childName;
         private Gender childGender;
         private DateTime dateOfBirth;
-        private Child Child;
+        private Child child;
         public List<Child> ListOfChildren { get; set; }
 
         public AddChildForm(List<Child> listChild)
@@ -25,35 +25,35 @@ namespace MyDearBaby
             ListOfChildren = listChild;
         }
 
-        private void tbChildName_TextChanged(object sender, EventArgs e)
+        private void TbChildName_TextChanged(object sender, EventArgs e)
         {
             childName = tbChildName.Text;
         }
 
-        private void rbGirl_CheckedChanged(object sender, EventArgs e)
+        private void RbGirl_CheckedChanged(object sender, EventArgs e)
         {
             childGender = Gender.girl;
         }
 
-        private void rbBoy_CheckedChanged(object sender, EventArgs e)
+        private void RbBoy_CheckedChanged(object sender, EventArgs e)
         {
             childGender = Gender.boy;
         }
 
-        private void dateTimePickerDateOfBirth_ValueChanged(object sender, EventArgs e)
+        private void DateTimePickerDateOfBirth_ValueChanged(object sender, EventArgs e)
         {
             dateOfBirth = Convert.ToDateTime(dateTimePickerDateOfBirth.Value);
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                Child = new Child(childName, childGender, dateOfBirth);
+                child = new Child(childName, childGender, dateOfBirth);
 
-                if (Child != null)
+                if (child != null)
                 {
-                    ListOfChildren.Add(Child);
+                    ListOfChildren.Add(child);
 
                     btnOK.DialogResult = DialogResult.OK;
                     Close();

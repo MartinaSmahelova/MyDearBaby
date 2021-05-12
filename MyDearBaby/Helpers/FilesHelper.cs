@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace MyDearBaby
 {
-    public static class Json
+    public static class FilesHelper
     {
         /// <summary>
         /// Validate if directory and file exist. If no create them. 
@@ -79,6 +80,24 @@ namespace MyDearBaby
             if (!File.Exists(filePath))
             {
                 File.WriteAllText(filePath, "[]");
+            }
+        }
+
+        public static void SaveEnjoymentsFromRichTextBoxToTXTFile(RichTextBox richTextBox)
+        {
+            if (!Directory.Exists(Path.GetDirectoryName(FilesHelper.FilePathTonMyDesktop(FilesNames.enjoymentsTxt))))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(FilesHelper.FilePathTonMyDesktop(FilesNames.enjoymentsTxt)));
+            }
+
+            if (!File.Exists(FilesHelper.FilePathTonMyDesktop(FilesNames.enjoymentsTxt)))
+            {
+                string originalFieName = DateTime.Now.ToString("dd.MM.yyyy.HH.mm.ss") + FilesNames.enjoymentsTxt;
+                using (StreamWriter writer = new StreamWriter(FilesHelper.FilePathTonMyDesktop(originalFieName)))
+                {
+                    writer.Write($"ZÁŽITKY <3 \nUložené {DateTime.Now.ToString("dd.MM.yyyy HH:mm")} \n");
+                    writer.Write(richTextBox.Text);
+                }
             }
         }
     }

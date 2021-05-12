@@ -6,26 +6,26 @@ namespace MyDearBaby
 {
     public partial class RemoveEnjoymentCategoryForm : Form
     {
-        public List<string> listOfEnjoymentsCategories { get; set; }
+        public List<string> ListOfEnjoymentsCategories { get; set; }
 
         public RemoveEnjoymentCategoryForm(List<string> listCategories)
         {
             InitializeComponent();
 
-            listOfEnjoymentsCategories = listCategories;
-            FormToolsHelpers.ShowListInCheckedListBox(listOfEnjoymentsCategories, checkedListBoxCategories);
+            ListOfEnjoymentsCategories = listCategories;
+            FormToolsHelpers.ShowListInCheckedListBox(ListOfEnjoymentsCategories, checkedListBoxCategories);
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        private void BtnRemove_Click(object sender, EventArgs e)
         {
 
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                FormToolsHelpers.RemoveCheckedListBoxCheckedItemsFromList(listOfEnjoymentsCategories, checkedListBoxCategories);
+                FormToolsHelpers.RemoveCheckedListBoxCheckedItemsFromList(ListOfEnjoymentsCategories, checkedListBoxCategories);
             }
         }
 
-        private void checkedListBoxCategories_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void CheckedListBoxCategories_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (checkedListBoxCategories.CheckedItems.Count == 0)
             {
@@ -45,7 +45,7 @@ namespace MyDearBaby
             }
         }
 
-        private void btnX_Click(object sender, EventArgs e)
+        private void BtnX_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }

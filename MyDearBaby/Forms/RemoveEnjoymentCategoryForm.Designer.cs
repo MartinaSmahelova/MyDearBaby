@@ -40,7 +40,7 @@ namespace MyDearBaby
             this.checkedListBoxCategories.Name = "checkedListBoxCategories";
             this.checkedListBoxCategories.Size = new System.Drawing.Size(426, 158);
             this.checkedListBoxCategories.TabIndex = 1;
-            this.checkedListBoxCategories.Validating += new System.ComponentModel.CancelEventHandler(this.checkedListBoxCategories_Validating);
+            this.checkedListBoxCategories.Validating += new System.ComponentModel.CancelEventHandler(this.CheckedListBoxCategories_Validating);
             // 
             // btnRemove
             // 
@@ -54,7 +54,7 @@ namespace MyDearBaby
             this.btnRemove.TabIndex = 0;
             this.btnRemove.Text = "Odstraň";
             this.btnRemove.UseVisualStyleBackColor = false;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // RemoveEnjoymentCategoryForm
             // 

@@ -49,7 +49,7 @@ namespace MyDearBaby
             this.tbChildName.Name = "tbChildName";
             this.tbChildName.Size = new System.Drawing.Size(212, 27);
             this.tbChildName.TabIndex = 1;
-            this.tbChildName.TextChanged += new System.EventHandler(this.tbChildName_TextChanged);
+            this.tbChildName.TextChanged += new System.EventHandler(this.TbChildName_TextChanged);
             this.tbChildName.Validating += new System.ComponentModel.CancelEventHandler(this.tbChildName_Validating);
             // 
             // rbGirl
@@ -62,7 +62,7 @@ namespace MyDearBaby
             this.rbGirl.TabStop = true;
             this.rbGirl.Text = "Holka\r\n";
             this.rbGirl.UseVisualStyleBackColor = true;
-            this.rbGirl.CheckedChanged += new System.EventHandler(this.rbGirl_CheckedChanged);
+            this.rbGirl.CheckedChanged += new System.EventHandler(this.RbGirl_CheckedChanged);
             // 
             // rbBoy
             // 
@@ -74,7 +74,7 @@ namespace MyDearBaby
             this.rbBoy.TabStop = true;
             this.rbBoy.Text = "Kluk\r\n";
             this.rbBoy.UseVisualStyleBackColor = true;
-            this.rbBoy.CheckedChanged += new System.EventHandler(this.rbBoy_CheckedChanged);
+            this.rbBoy.CheckedChanged += new System.EventHandler(this.RbBoy_CheckedChanged);
             // 
             // label1
             // 
@@ -113,7 +113,7 @@ namespace MyDearBaby
             this.dateTimePickerDateOfBirth.Size = new System.Drawing.Size(212, 27);
             this.dateTimePickerDateOfBirth.TabIndex = 13;
             this.dateTimePickerDateOfBirth.Value = new System.DateTime(2021, 4, 28, 0, 0, 0, 0);
-            this.dateTimePickerDateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePickerDateOfBirth_ValueChanged);
+            this.dateTimePickerDateOfBirth.ValueChanged += new System.EventHandler(this.DateTimePickerDateOfBirth_ValueChanged);
             this.dateTimePickerDateOfBirth.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePickerDateOfBirth_Validating);
             // 
             // groupBoxRadioButtons
@@ -138,7 +138,7 @@ namespace MyDearBaby
             this.btnOK.TabIndex = 15;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = false;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
             // AddChildForm
             // 

@@ -51,7 +51,7 @@ namespace MyDearBaby
             this.roundButton1.TabIndex = 6;
             this.roundButton1.Text = "Pridej kategorii zážitků";
             this.roundButton1.UseVisualStyleBackColor = false;
-            this.roundButton1.Click += new System.EventHandler(this.btnAddEnjoymentCategory_Click);
+            this.roundButton1.Click += new System.EventHandler(this.BtnAddEnjoymentCategory_Click);
             // 
             // btn_addEnjoyment
             // 
@@ -64,7 +64,7 @@ namespace MyDearBaby
             this.btn_addEnjoyment.TabIndex = 7;
             this.btn_addEnjoyment.Text = "Pridej zážitek";
             this.btn_addEnjoyment.UseVisualStyleBackColor = false;
-            this.btn_addEnjoyment.Click += new System.EventHandler(this.btnAddEnjoyment_Click);
+            this.btn_addEnjoyment.Click += new System.EventHandler(this.BtnAddEnjoyment_Click);
             // 
             // tnEnjoyments
             // 
@@ -77,7 +77,7 @@ namespace MyDearBaby
             this.tnEnjoyments.TabIndex = 8;
             this.tnEnjoyments.Text = "Zážitky";
             this.tnEnjoyments.UseVisualStyleBackColor = false;
-            this.tnEnjoyments.Click += new System.EventHandler(this.btnEnjoyments_Click);
+            this.tnEnjoyments.Click += new System.EventHandler(this.BtnEnjoyments_Click);
             // 
             // btnAddChild
             // 
@@ -90,7 +90,7 @@ namespace MyDearBaby
             this.btnAddChild.TabIndex = 9;
             this.btnAddChild.Text = "Pridej profil dítěte";
             this.btnAddChild.UseVisualStyleBackColor = false;
-            this.btnAddChild.Click += new System.EventHandler(this.btnAddChild_Click);
+            this.btnAddChild.Click += new System.EventHandler(this.BtnAddChild_Click);
             // 
             // btnRemoveEnjoymentCategory
             // 
@@ -103,7 +103,7 @@ namespace MyDearBaby
             this.btnRemoveEnjoymentCategory.TabIndex = 10;
             this.btnRemoveEnjoymentCategory.Text = "Odeber kategorii zážitků";
             this.btnRemoveEnjoymentCategory.UseVisualStyleBackColor = false;
-            this.btnRemoveEnjoymentCategory.Click += new System.EventHandler(this.btnRemoveEnjoymentCategory_Click);
+            this.btnRemoveEnjoymentCategory.Click += new System.EventHandler(this.BtnRemoveEnjoymentCategory_Click);
             // 
             // btnRemoveChild
             // 
@@ -116,7 +116,7 @@ namespace MyDearBaby
             this.btnRemoveChild.TabIndex = 11;
             this.btnRemoveChild.Text = "Odeber profil dítěte";
             this.btnRemoveChild.UseVisualStyleBackColor = false;
-            this.btnRemoveChild.Click += new System.EventHandler(this.btnRemoveChild_Click);
+            this.btnRemoveChild.Click += new System.EventHandler(this.BtnRemoveChild_Click);
             // 
             // btnX
             // 
@@ -129,7 +129,7 @@ namespace MyDearBaby
             this.btnX.TabIndex = 12;
             this.btnX.Text = "X";
             this.btnX.UseVisualStyleBackColor = false;
-            this.btnX.Click += new System.EventHandler(this.btnX_Click);
+            this.btnX.Click += new System.EventHandler(this.BtnX_Click);
             // 
             // label1
             // 
