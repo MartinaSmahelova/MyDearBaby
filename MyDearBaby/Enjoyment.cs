@@ -31,7 +31,7 @@ namespace MyDearBaby
         {
             return $"---------------------------------------------------------------------------- \n" +
                    $"{ActualDate} \n" +
-                   $"{String.Join("\n", ListOfChildren)} \n" +
+                    $"{String.Join("\n", ListOfChildren)} \n" +
                    $"{String.Join("\n", ListOfEnjoymentsCategories)} \n" +
                    $"{EnjoymentText}";
         }

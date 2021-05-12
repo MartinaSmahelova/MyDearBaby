@@ -99,6 +99,7 @@ namespace MyDearBaby
             this.Controls.Add(this.richTextBoxEnjoyment);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddEnjoymentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 

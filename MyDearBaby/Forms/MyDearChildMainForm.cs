@@ -16,6 +16,13 @@ namespace MyDearBaby
             ListOfChildren = Json.DeserializeJsonFileToList(ListOfChildren, Json.FilePathToAppDataFolder(FilesNames.childJson));
             ListOfEnjoymentCategories = Json.DeserializeJsonFileToList(ListOfEnjoymentCategories, Json.FilePathToAppDataFolder(FilesNames.enjoymentsCategoriesJson));
             ListOfEnjoyments = Json.DeserializeJsonFileToList(ListOfEnjoyments, Json.FilePathToAppDataFolder(FilesNames.enjoymentsJson));
+
+            if (ListOfEnjoymentCategories.Count == 0)
+            {
+                ListOfEnjoymentCategories.Add("Vtipný");
+                ListOfEnjoymentCategories.Add("Sny");
+                ListOfEnjoymentCategories.Add("Pohyb");
+            }
         }
 
         private void btnAddChild_Click(object sender, EventArgs e)
@@ -30,10 +37,17 @@ namespace MyDearBaby
 
         private void btnRemoveChild_Click(object sender, EventArgs e)
         {
-            using (var removeChildForm = new RemoveChildForm(ListOfChildren))
+            if (ListOfChildren.Count == 0)
             {
-                removeChildForm.ShowDialog();
-                ListOfChildren = removeChildForm.listOfChildren;
+                MessageBox.Show("Nemáte uložený žádný profil dítěte. Vložte nejdřív profil dítěte.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                using (var removeChildForm = new RemoveChildForm(ListOfChildren))
+                {
+                    removeChildForm.ShowDialog();
+                    ListOfChildren = removeChildForm.listOfChildren;
+                }
             }
         }
 
@@ -68,7 +82,7 @@ namespace MyDearBaby
 
         private void btnEnjoyments_Click(object sender, EventArgs e)
         {
-            using (var enjoymentsForm = new EnjoymentsForm(ListOfEnjoymentCategories, ListOfEnjoyments))
+            using (var enjoymentsForm = new EnjoymentsForm(ListOfChildren, ListOfEnjoymentCategories, ListOfEnjoyments))
             {
                 enjoymentsForm.ShowDialog();
             }

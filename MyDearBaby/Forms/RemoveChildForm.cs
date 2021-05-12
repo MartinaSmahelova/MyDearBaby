@@ -13,7 +13,16 @@ namespace MyDearBaby
             InitializeComponent();
 
             listOfChildren = listChild;
-            FormToolsHelpers.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
+            if (listOfChildren.Count == 0)
+            {
+                MessageBox.Show("Nemáte uložené žádný profil dítěte. Vložte nejdřív profil dítěte.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //this.Close();
+            }
+            else
+            {
+                FormToolsHelpers.ShowListInCheckedListBox(listOfChildren, checkedListBoxChildren);
+            }
+            
         }
         private void btnRemove_Click(object sender, EventArgs e)
         {

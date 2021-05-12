@@ -101,6 +101,7 @@ namespace MyDearBaby
             this.btnSaveEnjoyments.TabIndex = 9;
             this.btnSaveEnjoyments.Text = "Uložiť zážitky do souboru";
             this.btnSaveEnjoyments.UseVisualStyleBackColor = false;
+            this.btnSaveEnjoyments.Click += new System.EventHandler(this.btnSaveEnjoyments_Click);
             // 
             // roundButton3
             // 
@@ -139,6 +140,7 @@ namespace MyDearBaby
             this.Controls.Add(this.richTextBoxEnjoyments);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EnjoymentsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 

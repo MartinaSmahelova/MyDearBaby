@@ -37,7 +37,6 @@ namespace MyDearBaby
             this.btnRemoveEnjoymentCategory = new MyDearBaby.RoundButton();
             this.btnRemoveChild = new MyDearBaby.RoundButton();
             this.btnX = new MyDearBaby.RoundButton();
-            this.roundButton3 = new MyDearBaby.RoundButton();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -59,7 +58,7 @@ namespace MyDearBaby
             this.btn_addEnjoyment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(240)))), ((int)(((byte)(89)))));
             this.btn_addEnjoyment.FlatAppearance.BorderSize = 0;
             this.btn_addEnjoyment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addEnjoyment.Location = new System.Drawing.Point(269, 321);
+            this.btn_addEnjoyment.Location = new System.Drawing.Point(266, 310);
             this.btn_addEnjoyment.Name = "btn_addEnjoyment";
             this.btn_addEnjoyment.Size = new System.Drawing.Size(82, 76);
             this.btn_addEnjoyment.TabIndex = 7;
@@ -132,27 +131,15 @@ namespace MyDearBaby
             this.btnX.UseVisualStyleBackColor = false;
             this.btnX.Click += new System.EventHandler(this.btnX_Click);
             // 
-            // roundButton3
-            // 
-            this.roundButton3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.roundButton3.FlatAppearance.BorderSize = 0;
-            this.roundButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButton3.Location = new System.Drawing.Point(502, 12);
-            this.roundButton3.Name = "roundButton3";
-            this.roundButton3.Size = new System.Drawing.Size(40, 38);
-            this.roundButton3.TabIndex = 13;
-            this.roundButton3.Text = "?";
-            this.roundButton3.UseVisualStyleBackColor = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe Script", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(414, 401);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 36);
+            this.label1.Size = new System.Drawing.Size(171, 36);
             this.label1.TabIndex = 14;
-            this.label1.Text = "MyDearChild";
+            this.label1.Text = "MyDearBaby";
             // 
             // MyDearChildMainForm
             // 
@@ -162,7 +149,6 @@ namespace MyDearBaby
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(609, 446);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.roundButton3);
             this.Controls.Add(this.btnX);
             this.Controls.Add(this.btnRemoveChild);
             this.Controls.Add(this.btnRemoveEnjoymentCategory);
@@ -189,7 +175,6 @@ namespace MyDearBaby
         private RoundButton btnRemoveEnjoymentCategory;
         private RoundButton btnRemoveChild;
         private RoundButton btnX;
-        private RoundButton roundButton3;
         private System.Windows.Forms.Label label1;
     }
 }

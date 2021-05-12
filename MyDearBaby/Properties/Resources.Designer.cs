@@ -63,49 +63,9 @@ namespace MyDearBaby.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Family1 {
-            get {
-                object obj = ResourceManager.GetObject("Family1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Family2 {
             get {
                 object obj = ResourceManager.GetObject("Family2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sibling {
-            get {
-                object obj = ResourceManager.GetObject("sibling", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sibling__1_ {
-            get {
-                object obj = ResourceManager.GetObject("sibling (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sibling__2_ {
-            get {
-                object obj = ResourceManager.GetObject("sibling (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

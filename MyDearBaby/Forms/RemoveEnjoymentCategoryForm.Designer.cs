@@ -65,6 +65,7 @@ namespace MyDearBaby
             this.Controls.Add(this.checkedListBoxCategories);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RemoveEnjoymentCategoryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
 
         }

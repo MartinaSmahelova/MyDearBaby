@@ -156,6 +156,7 @@ namespace MyDearBaby
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddChildForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.groupBoxRadioButtons.ResumeLayout(false);
             this.groupBoxRadioButtons.PerformLayout();
             this.ResumeLayout(false);

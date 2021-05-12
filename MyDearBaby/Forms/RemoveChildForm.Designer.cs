@@ -65,6 +65,7 @@ namespace MyDearBaby
             this.Controls.Add(this.checkedListBoxChildren);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RemoveChildForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
 
         }

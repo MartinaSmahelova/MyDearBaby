@@ -42,7 +42,7 @@ namespace MyDearBaby
             this.label1.Location = new System.Drawing.Point(29, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(231, 20);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 7;
             this.label1.Text = "Momentálně máte tyto kategorie:";
             // 
             // tbCategoryName
@@ -76,12 +76,13 @@ namespace MyDearBaby
             // btnAddCategory
             // 
             this.btnAddCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(207)))), ((int)(((byte)(177)))));
+            this.btnAddCategory.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnAddCategory.FlatAppearance.BorderSize = 0;
             this.btnAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddCategory.Location = new System.Drawing.Point(203, 254);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(67, 67);
-            this.btnAddCategory.TabIndex = 7;
+            this.btnAddCategory.TabIndex = 0;
             this.btnAddCategory.Text = "OK";
             this.btnAddCategory.UseVisualStyleBackColor = false;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
@@ -98,6 +99,7 @@ namespace MyDearBaby
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddEnjoymentCategoryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 

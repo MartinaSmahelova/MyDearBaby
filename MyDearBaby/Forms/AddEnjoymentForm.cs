@@ -42,9 +42,13 @@ namespace MyDearBaby
 
             enjoyment = new Enjoyment(checkedChildList, checkedCategoriesList, richTextBoxEnjoyment.Text);
 
-            if (enjoyment != null)
+            if (enjoyment != null && !String.IsNullOrEmpty(richTextBoxEnjoyment.Text))
             {
                 ListOfEnjoyments.Add(enjoyment);
+            }
+            else
+            {
+                MessageBox.Show("Nezadali jste žádný zážitek, okno se uzavře.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -62,20 +66,18 @@ namespace MyDearBaby
             return list;
         }
 
-        private List<Child> AddCheckedChildItemsToList(List<Child> list, CheckedListBox checkedListBox)
+        private List<Child> AddCheckedChildItemsToList(CheckedListBox checkedListBox)
         {
-            list.Clear();
+            var checkedChildList = new List<Child>();
 
-            IEnumerable<object> checkedItems = (from object item in checkedListBox.Items
-                                                where checkedListBox.CheckedItems.Contains(item)
-                                                select item);
-
-            foreach (object item in checkedItems)
+            var checkedItems = checkedListBox.CheckedItems;
+           
+            foreach (Child item in checkedItems)
             {
-                list.Add((Child)item);
+                checkedChildList.Add(item);
             }
 
-            return list;
+            return checkedChildList;
         }
 
     }

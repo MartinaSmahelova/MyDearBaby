@@ -11,11 +11,12 @@ namespace MyDearBaby
     {
         private List<Enjoyment> filteredEnjoyments = new List<Enjoyment>();
         private IEnumerable<Enjoyment> filteredEnjoymentsByCategory = new List<Enjoyment>();
-        private bool wereAllEnjoymentsAlreadyDispleyd = false;
+
+        private bool wereAllEnjoymentsAlreadyDispleyd = true;
         public List<string> listOfEnjoymentCategories { get; set; }
         public List<Enjoyment> listOfEnjoyments { get; set; }
 
-        public EnjoymentsForm(List<string> listCategories, List<Enjoyment> listEnjoyments)
+        public EnjoymentsForm(List<Child> listChild, List<string> listCategories, List<Enjoyment> listEnjoyments)
         {
             InitializeComponent();
 
@@ -133,8 +134,13 @@ namespace MyDearBaby
                     writer.Write(richTextBoxEnjoyments.Text);
                 }
 
-                MessageBox.Show("Vaše zážitky máte uložené na ploše ve složce MyDearChild", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vaše zážitky máte uložené na pracovní ploše ve složce MyDearChild", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnSaveEnjoyments_Click(object sender, EventArgs e)
+        {
+            SaveEnjoymentsToTXTFile();
         }
     }
 }
