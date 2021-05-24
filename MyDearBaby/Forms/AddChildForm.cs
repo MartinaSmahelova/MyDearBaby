@@ -31,12 +31,12 @@ namespace MyDearBaby
 
         private void RbGirl_CheckedChanged(object sender, EventArgs e)
         {
-            childGender = Gender.girl;
+            childGender = Gender.Girl;
         }
 
         private void RbBoy_CheckedChanged(object sender, EventArgs e)
         {
-            childGender = Gender.boy;
+            childGender = Gender.Boy;
         }
 
         private void DateTimePickerDateOfBirth_ValueChanged(object sender, EventArgs e)
