@@ -29,7 +29,7 @@ namespace MyDearBaby
         {
             if (checkedListBoxCategories.CheckedItems.Count == 0)
             {
-                var closeMsg = MessageBox.Show("Nevybrali jste žádnou kategorii. Chcete vybrat kategorii pro smazání?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult closeMsg = MessageBox.Show("Nevybrali jste žádnou kategorii. Chcete vybrat kategorii pro smazání?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 e.Cancel = true;
 
                 if (closeMsg == DialogResult.No)

@@ -100,7 +100,7 @@ namespace MyDearBaby
         {
             if (dateTimePickerDateOfBirth.Value == DateTime.Today)
             {
-                var closeMsg = MessageBox.Show("Narodilo se Vaše dítě dnes?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult closeMsg = MessageBox.Show("Narodilo se Vaše dítě dnes?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 e.Cancel = true;
 
                 if (closeMsg == DialogResult.No)

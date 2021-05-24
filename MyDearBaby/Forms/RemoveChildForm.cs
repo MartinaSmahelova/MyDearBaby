@@ -28,7 +28,7 @@ namespace MyDearBaby
         {
             if (checkedListBoxChildren.CheckedItems.Count == 0)
             {
-                var closeMsg = MessageBox.Show("Nevybrali jste žádné dítě. Chcete vybrat dítě?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult closeMsg = MessageBox.Show("Nevybrali jste žádné dítě. Chcete vybrat dítě?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 e.Cancel = true;
 
                 if (closeMsg == DialogResult.No)
