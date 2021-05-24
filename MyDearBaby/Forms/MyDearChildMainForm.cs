@@ -10,6 +10,7 @@ namespace MyDearBaby
         public List<string> ListOfEnjoymentCategories { get; private set; }
         public List<Enjoyment> ListOfEnjoyments { get; private set; }
 
+        
         public MyDearChildMainForm()
         {
             InitializeComponent();
