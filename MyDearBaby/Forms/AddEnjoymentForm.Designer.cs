@@ -57,6 +57,7 @@ namespace MyDearBaby
             // 
             this.checkedListBoxChildren.BackColor = System.Drawing.SystemColors.HighlightText;
             this.checkedListBoxChildren.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBoxChildren.CheckOnClick = true;
             this.checkedListBoxChildren.FormattingEnabled = true;
             this.checkedListBoxChildren.Location = new System.Drawing.Point(27, 76);
             this.checkedListBoxChildren.Name = "checkedListBoxChildren";
@@ -67,6 +68,7 @@ namespace MyDearBaby
             // 
             this.checkedListBoxEnjoymentsCategories.BackColor = System.Drawing.SystemColors.HighlightText;
             this.checkedListBoxEnjoymentsCategories.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBoxEnjoymentsCategories.CheckOnClick = true;
             this.checkedListBoxEnjoymentsCategories.FormattingEnabled = true;
             this.checkedListBoxEnjoymentsCategories.Location = new System.Drawing.Point(27, 180);
             this.checkedListBoxEnjoymentsCategories.Name = "checkedListBoxEnjoymentsCategories";

@@ -35,6 +35,7 @@ namespace MyDearBaby
             // 
             // checkedListBoxChildren
             // 
+            this.checkedListBoxChildren.CheckOnClick = true;
             this.checkedListBoxChildren.FormattingEnabled = true;
             this.checkedListBoxChildren.Location = new System.Drawing.Point(27, 24);
             this.checkedListBoxChildren.Name = "checkedListBoxChildren";

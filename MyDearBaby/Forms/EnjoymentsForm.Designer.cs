@@ -56,6 +56,7 @@ namespace MyDearBaby
             // 
             // checkedListBoxCategories
             // 
+            this.checkedListBoxCategories.CheckOnClick = true;
             this.checkedListBoxCategories.FormattingEnabled = true;
             this.checkedListBoxCategories.Location = new System.Drawing.Point(50, 639);
             this.checkedListBoxCategories.Name = "checkedListBoxCategories";
