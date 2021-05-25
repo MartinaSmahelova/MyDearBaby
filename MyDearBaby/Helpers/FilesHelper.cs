@@ -22,12 +22,8 @@ namespace MyDearBaby
         /// <returns></returns>
         public static List<T> DeserializeJsonFileToList<T>(List<T> list, string filePath)
         {
-            if (list is null)
-            {
-                throw new ArgumentNullException(nameof(list));
-            }
-
-            ValidateDariectoryAndFileExistance(filePath);
+            DariectoryValidation(filePath);
+            FileValidation(filePath); 
 
             try
             {
@@ -41,6 +37,7 @@ namespace MyDearBaby
                 log.Error($"There are some problems with deserialization of file on file path {filePath} ", ex);
                 throw ex;
             }
+
         }
 
         /// <summary>
@@ -52,15 +49,11 @@ namespace MyDearBaby
         /// <param name="filePath">Directory where to put serialized file</param>
         public static void SerializeListToJsonFile<T>(List<T> list, string filePath)
         {
-            if (list is null)
-            {
-                throw new ArgumentNullException(nameof(list));
-            }
+            DariectoryValidation(filePath);
+            FileValidation(filePath);
 
             try
             {
-                ValidateDariectoryAndFileExistance(filePath);
-
                 string serializedList = JsonConvert.SerializeObject(list, Formatting.Indented);
                 File.WriteAllText(filePath, serializedList);
             }
@@ -98,7 +91,7 @@ namespace MyDearBaby
             return enjoymentsFilePath;
         }
 
-        public static void ValidateDariectoryAndFileExistance(string filePath)
+        public static void DariectoryValidation(string filePath)
         {
             try
             {
@@ -113,7 +106,10 @@ namespace MyDearBaby
             {
                 log.Error($"There are some problems with directory creation {filePath}", ex);
             }
+        }
 
+        public static void FileValidation(string filePath)
+        {
             try
             {
                 log.Debug($"Validating if file {filePath} exists.");
@@ -125,9 +121,8 @@ namespace MyDearBaby
             }
             catch (Exception ex)
             {
-
                 log.Error($"There are some problems with file creation {filePath}", ex);
-            }   
+            }
         }
 
         public static void SaveEnjoymentsFromRichTextBoxToTXTFile(RichTextBox richTextBox)
